@@ -11,15 +11,15 @@ import java.util.logging.Logger;
 class App {
 
 	public static void main(String[] args) {
-		String url = "jdbc:postgresql://localhost:5432/demo";
+		String url = "jdbc:postgresql://0.0.0.0:54320/DemoDB";
 		String user = "demo";
 		String password = "demo1234";
 
 		try (Connection con = DriverManager.getConnection(url, user, password);
 				Statement st = con.createStatement();
-				ResultSet rs = st.executeQuery("SELECT VERSION()")) {
+				ResultSet rs = st.executeQuery("SELECT * FROM CUSTOMER")) {
 			if (rs.next()) {
-				System.out.println(rs.getString(1));
+				System.out.println(rs);
 			}
 		} catch (SQLException ex) {
 			Logger logger = Logger.getLogger(App.class.getName());
