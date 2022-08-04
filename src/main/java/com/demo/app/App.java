@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 class App {
 
 	public static void main(String[] args) {
-		String url = "jdbc:postgresql://localhost:5432/demodb";
+		String url = "jdbc:postgresql://localhost:5432/demo";
 		String user = "demo";
 		String password = "demo1234";
 
