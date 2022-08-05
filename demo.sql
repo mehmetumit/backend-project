@@ -1,4 +1,4 @@
-CREATE DATABASE "DemoDB"
+CREATE DATABASE "demodb"
     WITH
     OWNER = demo
     ENCODING = 'UTF8'

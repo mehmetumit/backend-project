@@ -4,7 +4,7 @@ Backend project with Java and PostgreSQL
 
 ## Run postgresql and pgadmin containers
 ```sh
-docker-compose up -d
+docker-compose up
 ```
 ## Run backend
 ```sh
