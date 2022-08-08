@@ -66,7 +66,9 @@ public class CategoryDAOImpl implements CategoryDAO {
         Connection conn = DatabaseController.getConnection();
         // We will define values later in prepareStatement
         String query = "INSERT INTO category(category_id,category_name) VALUES(?,?)";
+
         PreparedStatement ps = conn.prepareStatement(query);
+
         ps.setLong(1, category.getId());
         ps.setString(2, category.getName());
 
@@ -79,15 +81,29 @@ public class CategoryDAOImpl implements CategoryDAO {
     }
 
     @Override
-    public int save(Category obj) throws SQLException {
+    public int save(Category category) throws SQLException {
         // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
-    public int update(Category obj) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
+    public int update(Category category) throws SQLException {
+        Connection conn = DatabaseController.getConnection();
+
+        // We will define values later in prepareStatement
+        String query = "UPDATE category SET category_name = ? WHERE category_id = ?";
+
+        PreparedStatement ps = conn.prepareStatement(query);
+
+        ps.setString(1, category.getName());
+        ps.setLong(2, category.getId());
+
+        int result = ps.executeUpdate();
+
+        DatabaseController.closePreparedStatement(ps);
+        DatabaseController.closeConnection(conn);
+
+        return result;
     }
 
 }
