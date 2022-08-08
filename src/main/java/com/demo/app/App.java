@@ -4,40 +4,15 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.demo.app.dao.CategoryDAO;
-import com.demo.app.daoImpl.CategoryDAOImpl;
-import com.demo.app.models.Category;
+import com.demo.app.dao.CustomerDAO;
+import com.demo.app.daoImpl.CustomerDAOImpl;
 
 class App {
 
 	public static void main(String[] args) {
-		CategoryDAO categoryDAO = new CategoryDAOImpl();
+		CustomerDAO customerDAO = new CustomerDAOImpl();
 		try {
-			int id = 10;
-			System.out.println("Before update id=" + id);
-			// Get one
-			Category category = categoryDAO.get(id);
-			System.out.println(category);
-			// Get all
-			List<Category> catList = categoryDAO.getAll();
-			for (Category cat : catList) {
-				System.out.println(cat);
-			}
-			// Update category
-			category.setName("Updated Category");
-			categoryDAO.update(category);
-			// Get updated one
-			category = categoryDAO.get(id);
-			System.out.println("After update id=" + id);
-			System.out.println(category);
-			// Delete one
-			categoryDAO.delete(category);
-			System.out.println("After delete id=" + id);
-			// Get all
-			catList = categoryDAO.getAll();
-			for (Category cat : catList) {
-				System.out.println(cat);
-			}
+			int id = 0;
 
 		} catch (Exception ex) {
 			Logger logger = Logger.getLogger(App.class.getName());

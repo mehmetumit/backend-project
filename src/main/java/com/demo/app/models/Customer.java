@@ -1,42 +1,39 @@
 package com.demo.app.models;
 
 public class Customer {
-	private int id;
+	private long id;
 	private String name;
 	private String surname;
 	private String phoneNum;
 	private String email;
-	private boolean isActive;
 	private int discountRate;
+	private boolean isActive;
 
-	public Customer(int id, String name, String surname, String phoneNum, String email, boolean isActive,
-			int discountRate) {
-		super();
+	public Customer(long id, String name, String surname, String phoneNum, String email, int discountRate,
+			boolean isActive) {
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
 		this.phoneNum = phoneNum;
 		this.email = email;
-		this.isActive = isActive;
 		this.discountRate = discountRate;
+		this.isActive = isActive;
 	}
 
-	public Customer(String name, String surname, String phoneNum, String email, boolean isActive,
-			int discountRate) {
-		super();
+	public Customer(String name, String surname, String phoneNum, String email, int discountRate, boolean isActive) {
 		this.name = name;
 		this.surname = surname;
 		this.phoneNum = phoneNum;
 		this.email = email;
-		this.isActive = isActive;
 		this.discountRate = discountRate;
+		this.isActive = isActive;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -93,4 +90,5 @@ public class Customer {
 		return "Customer [id=" + id + ", name=" + name + ", surname=" + surname + ", phoneNum=" + phoneNum + ", email="
 				+ email + ", isActive=" + isActive + ", discountRate=" + discountRate + "]";
 	}
+
 }
