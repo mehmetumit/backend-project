@@ -21,12 +21,6 @@ public class StockDetailsDAOImpl implements StockDetailsDAO {
     }
 
     @Override
-    public int save(StockDetails obj) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
     public int insert(StockDetails obj) throws SQLException {
         // TODO Auto-generated method stub
         return 0;

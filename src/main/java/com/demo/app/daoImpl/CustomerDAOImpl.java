@@ -33,12 +33,6 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public int save(Customer obj) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
     public int update(Customer obj) throws SQLException {
         // TODO Auto-generated method stub
         return 0;

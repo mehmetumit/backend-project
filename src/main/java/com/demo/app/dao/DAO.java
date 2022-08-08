@@ -4,11 +4,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface DAO<T> {
+	// CRUD operations
 	T get(long id) throws SQLException;
 
 	List<T> getAll() throws SQLException;
-
-	int save(T obj) throws SQLException;
 
 	int insert(T obj) throws SQLException;
 

@@ -6,24 +6,36 @@ import java.util.List;
 import com.demo.app.dao.SupplierDAO;
 import com.demo.app.models.Supplier;
 
-public interface SupplierDAOImpl extends SupplierDAO{
+public class SupplierDAOImpl implements SupplierDAO {
 
     @Override
-    int delete(Supplier obj) throws SQLException;
+    public Supplier get(long id) throws SQLException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
     @Override
-    Supplier get(long id) throws SQLException;
+    public List<Supplier> getAll() throws SQLException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
     @Override
-    List<Supplier> getAll() throws SQLException;
+    public int insert(Supplier obj) throws SQLException {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 
     @Override
-    int insert(Supplier obj) throws SQLException;
+    public int update(Supplier obj) throws SQLException {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 
     @Override
-    int save(Supplier obj) throws SQLException;
-
-    @Override
-    int update(Supplier obj) throws SQLException;
+    public int delete(Supplier obj) throws SQLException {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 
 }

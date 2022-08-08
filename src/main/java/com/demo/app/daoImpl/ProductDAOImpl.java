@@ -6,7 +6,7 @@ import java.util.List;
 import com.demo.app.dao.ProductDAO;
 import com.demo.app.models.Product;
 
-public class ProductDAOImpl implements ProductDAO{
+public class ProductDAOImpl implements ProductDAO {
 
     @Override
     public int delete(Product obj) throws SQLException {
@@ -33,16 +33,9 @@ public class ProductDAOImpl implements ProductDAO{
     }
 
     @Override
-    public int save(Product obj) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
     public int update(Product obj) throws SQLException {
         // TODO Auto-generated method stub
         return 0;
     }
-
 
 }

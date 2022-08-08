@@ -6,7 +6,7 @@ import java.util.List;
 import com.demo.app.dao.InvoiceDAO;
 import com.demo.app.models.Invoice;
 
-public class InvoiceDAOImpl implements InvoiceDAO{
+public class InvoiceDAOImpl implements InvoiceDAO {
 
     @Override
     public int delete(Invoice obj) throws SQLException {
@@ -33,16 +33,9 @@ public class InvoiceDAOImpl implements InvoiceDAO{
     }
 
     @Override
-    public int save(Invoice obj) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
     public int update(Invoice obj) throws SQLException {
         // TODO Auto-generated method stub
         return 0;
     }
-
 
 }

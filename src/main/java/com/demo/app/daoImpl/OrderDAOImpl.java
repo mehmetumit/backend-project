@@ -6,7 +6,7 @@ import java.util.List;
 import com.demo.app.dao.OrderDAO;
 import com.demo.app.models.Order;
 
-public class OrderDAOImpl implements OrderDAO{
+public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public int delete(Order obj) throws SQLException {
@@ -33,16 +33,9 @@ public class OrderDAOImpl implements OrderDAO{
     }
 
     @Override
-    public int save(Order obj) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
     public int update(Order obj) throws SQLException {
         // TODO Auto-generated method stub
         return 0;
     }
-
 
 }

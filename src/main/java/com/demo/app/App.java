@@ -30,6 +30,14 @@ class App {
 			category = categoryDAO.get(id);
 			System.out.println("After update id=" + id);
 			System.out.println(category);
+			// Delete one
+			categoryDAO.delete(category);
+			System.out.println("After delete id=" + id);
+			// Get all
+			catList = categoryDAO.getAll();
+			for (Category cat : catList) {
+				System.out.println(cat);
+			}
 
 		} catch (Exception ex) {
 			Logger logger = Logger.getLogger(App.class.getName());

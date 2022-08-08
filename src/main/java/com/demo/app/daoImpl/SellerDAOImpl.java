@@ -33,16 +33,9 @@ public class SellerDAOImpl implements SellerDAO {
     }
 
     @Override
-    public int save(Seller obj) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
     public int update(Seller obj) throws SQLException {
         // TODO Auto-generated method stub
         return 0;
     }
-
 
 }

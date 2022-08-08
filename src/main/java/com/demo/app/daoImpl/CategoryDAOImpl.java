@@ -15,8 +15,19 @@ import com.demo.app.models.Category;
 public class CategoryDAOImpl implements CategoryDAO {
 
     @Override
-    public int delete(Category obj) throws SQLException {
-        return 0;
+    public int delete(Category category) throws SQLException {
+        Connection conn = DatabaseController.getConnection();
+        String query = "DELETE FROM category WHERE category_id = ?";
+        PreparedStatement ps = conn.prepareStatement(query);
+
+        ps.setLong(1, category.getId());
+
+        int result = ps.executeUpdate();
+
+        // We no longer need them
+        DatabaseController.closePreparedStatement(ps);
+        DatabaseController.closeConnection(conn);
+        return result;
     }
 
     // Get category object from database with id
@@ -57,6 +68,11 @@ public class CategoryDAOImpl implements CategoryDAO {
             allCategories.add(new Category(rs.getLong(1), rs.getString(2)));
         }
 
+        // We no longer need them
+        DatabaseController.closeStatement(st);
+        DatabaseController.closeResultSet(rs);
+        DatabaseController.closeConnection(conn);
+
         return allCategories;
     }
 
@@ -74,16 +90,11 @@ public class CategoryDAOImpl implements CategoryDAO {
 
         int result = ps.executeUpdate();
 
+        // We no longer need them
         DatabaseController.closePreparedStatement(ps);
         DatabaseController.closeConnection(conn);
 
         return result;
-    }
-
-    @Override
-    public int save(Category category) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
     }
 
     @Override
@@ -100,6 +111,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 
         int result = ps.executeUpdate();
 
+        // We no longer need them
         DatabaseController.closePreparedStatement(ps);
         DatabaseController.closeConnection(conn);
 
