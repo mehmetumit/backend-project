@@ -10,6 +10,11 @@ public class Category {
 		this.name = name;
 	}
 
+	public Category(String name) {
+		super();
+		this.name = name;
+	}
+
 	public long getId() {
 		return id;
 	}

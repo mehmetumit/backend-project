@@ -1,4 +1,5 @@
 package com.demo.app.models;
+
 public class Customer {
 	private int id;
 	private String name;
@@ -12,6 +13,17 @@ public class Customer {
 			int discountRate) {
 		super();
 		this.id = id;
+		this.name = name;
+		this.surname = surname;
+		this.phoneNum = phoneNum;
+		this.email = email;
+		this.isActive = isActive;
+		this.discountRate = discountRate;
+	}
+
+	public Customer(String name, String surname, String phoneNum, String email, boolean isActive,
+			int discountRate) {
+		super();
 		this.name = name;
 		this.surname = surname;
 		this.phoneNum = phoneNum;

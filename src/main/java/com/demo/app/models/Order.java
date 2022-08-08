@@ -1,4 +1,5 @@
 package com.demo.app.models;
+
 import java.security.Timestamp;
 
 public class Order {
@@ -9,6 +10,12 @@ public class Order {
 	public Order(long id, long customerId, Timestamp timestamp) {
 		super();
 		this.id = id;
+		this.customerId = customerId;
+		this.timestamp = timestamp;
+	}
+
+	public Order(long customerId, Timestamp timestamp) {
+		super();
 		this.customerId = customerId;
 		this.timestamp = timestamp;
 	}

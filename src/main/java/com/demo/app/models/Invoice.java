@@ -1,4 +1,5 @@
 package com.demo.app.models;
+
 import java.sql.Timestamp;
 
 public class Invoice {
@@ -17,6 +18,20 @@ public class Invoice {
 			double subTotal, double discount, int taxRate, double totalTax, double totalPrice) {
 		super();
 		this.id = id;
+		this.orderId = orderId;
+		this.sellerId = sellerId;
+		this.invoiceTimestamp = invoiceTimestamp;
+		this.dueTimestamp = dueTimestamp;
+		this.subTotal = subTotal;
+		this.discount = discount;
+		this.taxRate = taxRate;
+		this.totalTax = totalTax;
+		this.totalPrice = totalPrice;
+	}
+
+	public Invoice(long orderId, long sellerId, Timestamp invoiceTimestamp, Timestamp dueTimestamp,
+			double subTotal, double discount, int taxRate, double totalTax, double totalPrice) {
+		super();
 		this.orderId = orderId;
 		this.sellerId = sellerId;
 		this.invoiceTimestamp = invoiceTimestamp;
