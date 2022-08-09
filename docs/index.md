@@ -48,4 +48,9 @@ mvn clean compile exec:java
 
 ![dbeaver](docs/dbeaver5.png)
 
+---
+
+## Software Architecture
+
+![architecture](docs/architecture.png)
 
