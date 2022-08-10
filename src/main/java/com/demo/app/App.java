@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.demo.app.dao.CustomerDAO;
-import com.demo.app.daoImpl.CustomerDAOImpl;
+import com.demo.app.repository.dao.CustomerDAO;
+import com.demo.app.repository.daoImpl.CustomerDAOImpl;
 
 class App {
 
