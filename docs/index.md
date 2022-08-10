@@ -50,7 +50,14 @@ mvn clean compile exec:java
 
 ---
 
-## Software Architecture
+
+# ER Diagram
+
+![architecture](docs/ER.png)
+
+---
+
+# Software Architecture
 
 ![architecture](docs/architecture.png)
 
