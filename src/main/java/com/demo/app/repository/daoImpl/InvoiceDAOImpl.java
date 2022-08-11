@@ -1,18 +1,13 @@
 package com.demo.app.repository.daoImpl;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.List;
 
 import com.demo.app.repository.dao.InvoiceDAO;
 import com.demo.app.models.entities.Invoice;
 
 public class InvoiceDAOImpl implements InvoiceDAO {
-
-    @Override
-    public int delete(Invoice obj) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
-    }
 
     @Override
     public Invoice findById(long id) throws SQLException {
@@ -39,7 +34,49 @@ public class InvoiceDAOImpl implements InvoiceDAO {
     }
 
     @Override
-    public Invoice findByName(String name) throws SQLException {
+    public int delete(long id) throws SQLException {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public List<Invoice> findByInvoiceTimestamp(Timestamp invoiceTimestamp) throws SQLException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public List<Invoice> findByDueTimestamp(Timestamp dueTimestamp) throws SQLException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public List<Invoice> findBySubTotal(double subTotal) throws SQLException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public List<Invoice> findByDiscount(double discount) throws SQLException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public List<Invoice> findByTaxRate(int taxRate) throws SQLException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public List<Invoice> findByTotalTax(double totalTax) throws SQLException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public List<Invoice> findByTotalPrice(double totalPrice) throws SQLException {
         // TODO Auto-generated method stub
         return null;
     }

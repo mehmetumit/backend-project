@@ -9,12 +9,6 @@ import com.demo.app.models.entities.OrderDetails;
 public class OrderDetailsDAOImpl implements OrderDetailsDAO {
 
     @Override
-    public int delete(OrderDetails obj) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
     public OrderDetails findById(long id) throws SQLException {
         // TODO Auto-generated method stub
         return null;
@@ -39,7 +33,13 @@ public class OrderDetailsDAOImpl implements OrderDetailsDAO {
     }
 
     @Override
-    public OrderDetails findByName(String name) throws SQLException {
+    public int delete(long id) throws SQLException {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public List<OrderDetails> findByQuantity(int quantity) throws SQLException {
         // TODO Auto-generated method stub
         return null;
     }

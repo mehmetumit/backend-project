@@ -9,12 +9,6 @@ import com.demo.app.models.entities.Seller;
 public class SellerDAOImpl implements SellerDAO {
 
     @Override
-    public int delete(Seller obj) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
     public Seller findById(long id) throws SQLException {
         // TODO Auto-generated method stub
         return null;
@@ -39,9 +33,38 @@ public class SellerDAOImpl implements SellerDAO {
     }
 
     @Override
-    public Seller findByName(String name) throws SQLException {
+    public int delete(long id) throws SQLException {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public Seller findByAddress(String address) throws SQLException {
         // TODO Auto-generated method stub
         return null;
     }
 
+    @Override
+    public Seller findByPhoneNum(String phoneNum) throws SQLException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Seller findByEmail(String email) throws SQLException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Seller findByFax(String fax) throws SQLException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public List<Seller> findByActive(boolean isActive) throws SQLException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

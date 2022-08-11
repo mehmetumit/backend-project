@@ -37,4 +37,10 @@ public class StockDetailsDAOImpl implements StockDetailsDAO {
         // TODO Auto-generated method stub
         return 0;
     }
+
+    @Override
+    public List<StockDetails> findByQuantity(int quantity) throws SQLException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

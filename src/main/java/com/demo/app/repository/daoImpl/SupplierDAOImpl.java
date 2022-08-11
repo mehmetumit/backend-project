@@ -33,15 +33,26 @@ public class SupplierDAOImpl implements SupplierDAO {
     }
 
     @Override
-    public int delete(Supplier obj) throws SQLException {
+    public int delete(long id) throws SQLException {
         // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
-    public Supplier findByName(String name) throws SQLException {
+    public Supplier findByAddress(String address) throws SQLException {
         // TODO Auto-generated method stub
         return null;
     }
 
+    @Override
+    public Supplier findByPhoneNum(String phoneNum) throws SQLException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public List<Supplier> findByActive(boolean isActive) throws SQLException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }
