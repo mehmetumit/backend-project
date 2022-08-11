@@ -11,35 +11,35 @@ import com.demo.app.models.entities.Customer;
 public interface CustomerService extends Service<CustomerDTO, Customer> {
 
 	@Override
-	int add(CustomerDTO dto);
+	public int add(CustomerDTO dto);
 
 	@Override
-	int delete(long id);
+	public int delete(long id);
 
 	@Override
-	List<CustomerDTO> getAll();
+	public List<CustomerDTO> getAll();
 
 	@Override
-	CustomerDTO getById(long id);
+	public CustomerDTO getById(long id);
 
 	@Override
-	CustomerDTO toDTO(Customer entity);
+	public CustomerDTO toDTO(Customer entity);
 
 	@Override
-	Customer toEntity(CustomerDTO dto);
+	public Customer toEntity(CustomerDTO dto);
 
 	@Override
-	int update(CustomerDTO dto);
+	public int update(CustomerDTO dto);
 
-	List<CustomerDTO> getByName(String name);
+	public List<CustomerDTO> getByName(String name);
 
-	List<CustomerDTO> getBySurname(String surname);
+	public List<CustomerDTO> getBySurname(String surname);
 
-	CustomerDTO getByPhoneNum(String phoneNum);
+	public CustomerDTO getByPhoneNum(String phoneNum);
 
-	CustomerDTO getByEmail(String email);
+	public CustomerDTO getByEmail(String email);
 
-	List<CustomerDTO> getByActive(boolean isActive);
+	public List<CustomerDTO> getByActive(boolean isActive);
 
-	List<CustomerDTO> getByDiscountRate(int discountRate);
+	public List<CustomerDTO> getByDiscountRate(int discountRate);
 }

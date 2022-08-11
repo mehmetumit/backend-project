@@ -3,17 +3,17 @@ package com.demo.app.services.abstracts;
 import java.util.List;
 
 public interface Service<DTO, Entity> {
-	DTO getById(long id);
+	public DTO getById(long id);
 
-	List<DTO> getAll();
+	public List<DTO> getAll();
 
-	int add(DTO dto);
+	public int add(DTO dto);
 
-	int update(DTO dto);
+	public int update(DTO dto);
 
-	int delete(long id);
+	public int delete(long id);
 
-	Entity toEntity(DTO dto);
+	public Entity toEntity(DTO dto);
 
-	DTO toDTO(Entity entity);
+	public DTO toDTO(Entity entity);
 }

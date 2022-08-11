@@ -6,5 +6,21 @@ import java.util.List;
 import com.demo.app.models.entities.OrderDetails;
 
 public interface OrderDetailsDAO extends DAO<OrderDetails> {
+	@Override
+	int delete(long id) throws SQLException;
+
+	@Override
+	OrderDetails findById(long id) throws SQLException;
+
+	@Override
+	List<OrderDetails> getAll() throws SQLException;
+
+	@Override
+	int insert(OrderDetails obj) throws SQLException;
+
+	@Override
+	int update(OrderDetails obj) throws SQLException;
+
 	public List<OrderDetails> findByQuantity(int quantity) throws SQLException;
+
 }
