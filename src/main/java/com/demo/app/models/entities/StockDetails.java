@@ -1,21 +1,27 @@
 package com.demo.app.models.entities;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "stock_details")
 public class StockDetails {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private long productId;
-	private long supplierId;
+	@Column(name = "quantity")
 	private long quantity;
 
-	public StockDetails(long id, long productId, long supplierId, long quantity) {
+	public StockDetails(long id, long quantity) {
 		this.id = id;
-		this.productId = productId;
-		this.supplierId = supplierId;
 		this.quantity = quantity;
 	}
 
-	public StockDetails(long productId, long supplierId, long quantity) {
-		this.productId = productId;
-		this.supplierId = supplierId;
+	public StockDetails(long quantity) {
 		this.quantity = quantity;
 	}
 
@@ -25,22 +31,6 @@ public class StockDetails {
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public long getProductId() {
-		return productId;
-	}
-
-	public void setProductId(long productId) {
-		this.productId = productId;
-	}
-
-	public long getSupplierId() {
-		return supplierId;
-	}
-
-	public void setSupplierId(long supplierId) {
-		this.supplierId = supplierId;
 	}
 
 	public long getQuantity() {
@@ -53,8 +43,7 @@ public class StockDetails {
 
 	@Override
 	public String toString() {
-		return "StockDetails [id=" + id + ", productId=" + productId + ", quantity=" + quantity + ", supplierId="
-				+ supplierId + "]";
+		return "StockDetails [id=" + id + ", quantity=" + quantity + "]";
 	}
 
 }

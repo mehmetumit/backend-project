@@ -1,18 +1,27 @@
 package com.demo.app.models.entities;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "order_details")
 public class OrderDetails {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private long orderId;
+	@Column(name = "quantity")
 	private long quantitiy;
 
-	public OrderDetails(long id, long orderId, long quantitiy) {
+	public OrderDetails(long id, long quantitiy) {
 		this.id = id;
-		this.orderId = orderId;
 		this.quantitiy = quantitiy;
 	}
 
-	public OrderDetails(long orderId, long quantitiy) {
-		this.orderId = orderId;
+	public OrderDetails(long quantitiy) {
 		this.quantitiy = quantitiy;
 	}
 
@@ -22,14 +31,6 @@ public class OrderDetails {
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public long getOrderId() {
-		return orderId;
-	}
-
-	public void setOrderId(long orderId) {
-		this.orderId = orderId;
 	}
 
 	public long getQuantitiy() {
@@ -42,7 +43,7 @@ public class OrderDetails {
 
 	@Override
 	public String toString() {
-		return "OrderDetails [id=" + id + ", orderId=" + orderId + ", quantitiy=" + quantitiy + "]";
+		return "OrderDetails [id=" + id + ", quantitiy=" + quantitiy + "]";
 	}
 
 }

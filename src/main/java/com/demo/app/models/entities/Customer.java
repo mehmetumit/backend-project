@@ -1,12 +1,39 @@
 package com.demo.app.models.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "customer")
 public class Customer {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "order_id", referencedColumnName = "id")
+	private List<Order> orders = new ArrayList<Order>();
+	@Column(name = "name")
 	private String name;
+	@Column(name = "surname")
 	private String surname;
+	@Column(name = "phone_num")
 	private String phoneNum;
+	@Column(name = "email")
 	private String email;
+	@Column(name = "discount_rate")
 	private int discountRate;
+	@Column(name = "is_active")
 	private boolean isActive;
 
 	public Customer(long id, String name, String surname, String phoneNum, String email, int discountRate,
@@ -85,10 +112,18 @@ public class Customer {
 		this.discountRate = discountRate;
 	}
 
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", name=" + name + ", surname=" + surname + ", phoneNum=" + phoneNum + ", email="
-				+ email + ", isActive=" + isActive + ", discountRate=" + discountRate + "]";
+		return "Customer [discountRate=" + discountRate + ", email=" + email + ", id=" + id + ", isActive=" + isActive
+				+ ", name=" + name + ", orders=" + orders + ", phoneNum=" + phoneNum + ", surname=" + surname + "]";
 	}
 
 }

@@ -2,32 +2,41 @@ package com.demo.app.models.entities;
 
 import java.sql.Timestamp;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "invoice")
 public class Invoice {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private long orderId;
-	private long sellerId;
+	// private long orderId;
+	// private long sellerId;
 
+	@Column(name = "invoiceTimeStamp")
 	private Timestamp invoiceTimestamp;
+	@Column(name = "dueTimeStamp")
 	private Timestamp dueTimestamp;
+	@Column(name = "subTotal")
 	private double subTotal;
+	@Column(name = "discount")
 	private double discount;
+	@Column(name = "taxRate")
 	private int taxRate;
+	@Column(name = "totalTax")
 	private double totalTax;
+	@Column(name = "totalPrice")
 	private double totalPrice;
 
-	public Invoice(long id, long orderId, long sellerId, Timestamp invoiceTimestamp, Timestamp dueTimestamp,
+	public Invoice(long id, Timestamp invoiceTimestamp, Timestamp dueTimestamp,
 			double subTotal, double discount, int taxRate, double totalTax, double totalPrice) {
 		super();
 		this.id = id;
-		this.orderId = orderId;
-		this.sellerId = sellerId;
 		this.invoiceTimestamp = invoiceTimestamp;
 		this.dueTimestamp = dueTimestamp;
 		this.subTotal = subTotal;
@@ -37,11 +46,9 @@ public class Invoice {
 		this.totalPrice = totalPrice;
 	}
 
-	public Invoice(long orderId, long sellerId, Timestamp invoiceTimestamp, Timestamp dueTimestamp,
+	public Invoice(Timestamp invoiceTimestamp, Timestamp dueTimestamp,
 			double subTotal, double discount, int taxRate, double totalTax, double totalPrice) {
 		super();
-		this.orderId = orderId;
-		this.sellerId = sellerId;
 		this.invoiceTimestamp = invoiceTimestamp;
 		this.dueTimestamp = dueTimestamp;
 		this.subTotal = subTotal;
@@ -57,22 +64,6 @@ public class Invoice {
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public long getOrderId() {
-		return orderId;
-	}
-
-	public void setOrderId(long orderId) {
-		this.orderId = orderId;
-	}
-
-	public long getSellerId() {
-		return sellerId;
-	}
-
-	public void setSellerId(long sellerId) {
-		this.sellerId = sellerId;
 	}
 
 	public Timestamp getInvoiceTimestamp() {
@@ -133,9 +124,9 @@ public class Invoice {
 
 	@Override
 	public String toString() {
-		return "Invoice [id=" + id + ", orderId=" + orderId + ", sellerId=" + sellerId + ", invoiceTimestamp="
-				+ invoiceTimestamp + ", dueTimestamp=" + dueTimestamp + ", subTotal=" + subTotal + ", discount="
-				+ discount + ", taxRate=" + taxRate + ", totalTax=" + totalTax + ", totalPrice=" + totalPrice + "]";
+		return "Invoice [discount=" + discount + ", dueTimestamp=" + dueTimestamp + ", id=" + id + ", invoiceTimestamp="
+				+ invoiceTimestamp + ", subTotal=" + subTotal + ", taxRate=" + taxRate + ", totalPrice=" + totalPrice
+				+ ", totalTax=" + totalTax + "]";
 	}
 
 }
