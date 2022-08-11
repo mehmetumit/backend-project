@@ -31,7 +31,7 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public Customer getById(long id) throws SQLException {
+    public Customer findById(long id) throws SQLException {
         Connection conn = DatabaseService.getConnection();
         String query = "SELECT * FROM customer WHERE customer_id = " + id;
 
@@ -58,7 +58,7 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public List<Customer> getAll() throws SQLException {
+    public List<Customer> findAll() throws SQLException {
         Connection conn = DatabaseService.getConnection();
         String query = "SELECT * FROM customer";
 
@@ -119,7 +119,7 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public Customer getByName(String name) throws SQLException {
+    public Customer findByName(String name) throws SQLException {
         // TODO Auto-generated method stub
         return null;
     }

@@ -15,7 +15,7 @@ public class SellerDAOImpl implements SellerDAO {
     }
 
     @Override
-    public Seller getById(long id) throws SQLException {
+    public Seller findById(long id) throws SQLException {
         // TODO Auto-generated method stub
         return null;
     }
@@ -39,7 +39,7 @@ public class SellerDAOImpl implements SellerDAO {
     }
 
     @Override
-    public Seller getByName(String name) throws SQLException {
+    public Seller findByName(String name) throws SQLException {
         // TODO Auto-generated method stub
         return null;
     }

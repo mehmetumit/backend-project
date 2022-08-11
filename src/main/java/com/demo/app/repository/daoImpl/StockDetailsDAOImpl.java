@@ -9,7 +9,7 @@ import com.demo.app.models.entities.StockDetails;
 public class StockDetailsDAOImpl implements StockDetailsDAO {
 
     @Override
-    public StockDetails getById(long id) throws SQLException {
+    public StockDetails findById(long id) throws SQLException {
         // TODO Auto-generated method stub
         return null;
     }
@@ -33,14 +33,8 @@ public class StockDetailsDAOImpl implements StockDetailsDAO {
     }
 
     @Override
-    public int delete(StockDetails obj) throws SQLException {
+    public int delete(long id) throws SQLException {
         // TODO Auto-generated method stub
         return 0;
-    }
-
-    @Override
-    public StockDetails getByName(String name) throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
     }
 }

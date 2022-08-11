@@ -9,7 +9,7 @@ import com.demo.app.models.entities.Supplier;
 public class SupplierDAOImpl implements SupplierDAO {
 
     @Override
-    public Supplier getById(long id) throws SQLException {
+    public Supplier findById(long id) throws SQLException {
         // TODO Auto-generated method stub
         return null;
     }
@@ -39,7 +39,7 @@ public class SupplierDAOImpl implements SupplierDAO {
     }
 
     @Override
-    public Supplier getByName(String name) throws SQLException {
+    public Supplier findByName(String name) throws SQLException {
         // TODO Auto-generated method stub
         return null;
     }

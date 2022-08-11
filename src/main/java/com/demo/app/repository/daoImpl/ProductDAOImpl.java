@@ -15,7 +15,7 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public Product getById(long id) throws SQLException {
+    public Product findById(long id) throws SQLException {
         // TODO Auto-generated method stub
         return null;
     }
@@ -39,7 +39,7 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public Product getByName(String name) throws SQLException {
+    public Product findByName(String name) throws SQLException {
         // TODO Auto-generated method stub
         return null;
     }

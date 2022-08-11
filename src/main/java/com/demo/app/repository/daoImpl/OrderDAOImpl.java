@@ -15,7 +15,7 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
-    public Order getById(long id) throws SQLException {
+    public Order findById(long id) throws SQLException {
         // TODO Auto-generated method stub
         return null;
     }
@@ -39,7 +39,7 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
-    public Order getByName(String name) throws SQLException {
+    public Order findByName(String name) throws SQLException {
         // TODO Auto-generated method stub
         return null;
     }

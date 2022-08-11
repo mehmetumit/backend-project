@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface DAO<T> {
 	// CRUD operations
-	T getById(long id) throws SQLException;
+	T findById(long id) throws SQLException;
 
 	List<T> getAll() throws SQLException;
 
@@ -13,6 +13,6 @@ public interface DAO<T> {
 
 	int update(T obj) throws SQLException;
 
-	int delete(T obj) throws SQLException;
+	int delete(long id) throws SQLException;
 
 }

@@ -13,6 +13,7 @@ import com.demo.app.repository.dao.CategoryDAO;
 import com.demo.app.models.entities.Category;
 
 import jakarta.persistence.EntityManager;
+import com.demo.app.services.implementations.DatabaseServiceImpl;
 
 public class CategoryDAOImpl implements CategoryDAO {
     // private final EntityManager entityManager;
@@ -35,10 +36,10 @@ public class CategoryDAOImpl implements CategoryDAO {
 
     // Get category object from database with id
     @Override
-    public Category getById(long id) throws SQLException {
+    public Category findById(long id) throws SQLException {
         String query = "SELECT * FROM category where category_id = " + id;
 
-        Connection conn = DatabaseService.getConnection();
+        Connection conn = DatabaseService.findConnection();
         Statement st = conn.createStatement();
 
         ResultSet rs = st.executeQuery(query);
@@ -122,7 +123,7 @@ public class CategoryDAOImpl implements CategoryDAO {
     }
 
     @Override
-    public Category getByName(String name) throws SQLException {
+    public Category findByName(String name) throws SQLException {
 
         return null;
     }

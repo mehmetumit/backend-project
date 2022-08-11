@@ -15,7 +15,7 @@ public class InvoiceDAOImpl implements InvoiceDAO {
     }
 
     @Override
-    public Invoice getById(long id) throws SQLException {
+    public Invoice findById(long id) throws SQLException {
         // TODO Auto-generated method stub
         return null;
     }
@@ -39,7 +39,7 @@ public class InvoiceDAOImpl implements InvoiceDAO {
     }
 
     @Override
-    public Invoice getByName(String name) throws SQLException {
+    public Invoice findByName(String name) throws SQLException {
         // TODO Auto-generated method stub
         return null;
     }
