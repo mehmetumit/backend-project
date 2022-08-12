@@ -30,8 +30,6 @@ public class DatabaseEngine {
 
 	private DatabaseEngine() {
 		initDatabase();
-		Customer customer = new Customer("DemoName", "demo surname", "5345323459", "demo@demo.com", 20, true);
-
 	}
 
 	private static void initDatabase() {
@@ -53,13 +51,41 @@ public class DatabaseEngine {
 		sessionFactory = configuration.buildSessionFactory();
 	}
 
-	public static void saveToDatabase(Object obj) {
+	// Insert object to database
+	public void persist(Object obj) {
 		// Session is lightweight
 		session = sessionFactory.openSession();
 		session.beginTransaction();
+		// persist is jpa specification, save is not
 		session.persist(obj);
-		session.getTransaction().commit();
+		commitTransaction();
 		session.close();
+	}
+
+	// Update object from database
+	public void merge(Object obj) {
+		session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		session.merge(obj);
+
+		commitTransaction();
+		session.close();
+
+	}
+
+	public void delete(Object obj) {
+		session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		session.remove(obj);
+
+		commitTransaction();
+		session.close();
+	}
+
+	private void commitTransaction() {
+		session.getTransaction().commit();
 	}
 
 }
