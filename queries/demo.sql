@@ -11,66 +11,62 @@ CREATE DOMAIN PHONE as CHAR(10)
 	CHECK (	VALUE ~ '^\d+$');
 CREATE DOMAIN EMAIL AS VARCHAR(254)
   CHECK ( VALUE ~ '^[a-zA-Z0-9.!#$%&''*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$' );
-CREATE TABLE IF NOT EXISTS "customer" (
-	customer_id serial PRIMARY KEY,
-	customer_name VARCHAR(100) NOT NULL,
+CREATE TABLE "customer" (
+	id serial PRIMARY KEY,
+	name VARCHAR(100) NOT NULL,
 	surname VARCHAR(100) NOT NULL,
 	phone_num PHONE NOT NULL,
 	email EMAIL NOT NULL,
 	discount_rate SMALLINT CHECK(discount_rate > 0) NOT NULL,
 	is_active BOOL DEFAULT TRUE
 );
-CREATE TABLE IF NOT EXISTS "order"(
-	order_id SERIAL PRIMARY KEY,
-	customer_id INT REFERENCES customer NOT NULL,
+CREATE TABLE "order"(
+	id SERIAL PRIMARY KEY,
+	customer_id INT REFERENCES customer(id) NOT NULL,
 	order_timestamp TIMESTAMP NOT NULL
 );
-CREATE TABLE IF NOT EXISTS "orderDetails"(
-	order_details_id SERIAL PRIMARY KEY,
-	order_id INT REFERENCES "order" NOT NULL,
+CREATE TABLE "order_detail"(
+	id SERIAL PRIMARY KEY,
+	order_id INT REFERENCES "order"(id) NOT NULL,
 	quantity INT CHECK(quantity > 0) DEFAULT 0
 );
-CREATE TABLE IF NOT EXISTS "category"(
-	category_id SERIAL PRIMARY KEY,
-	category_name VARCHAR(255) NOT NULL
-);
-CREATE TABLE IF NOT EXISTS "product"(
-	product_id SERIAL PRIMARY KEY,
-	order_details INT REFERENCES "orderDetails" NOT NULL,
-	category_id INT REFERENCES "category" NOT NULL,
-	product_name VARCHAR(255) NOT NULL,
-	unit_price MONEY NOT NULL,
+CREATE TABLE "product"(
+	id SERIAL PRIMARY KEY,
+	order_detail_id INT REFERENCES order_detail(id) NOT NULL,
+	category_name VARCHAR(255) NOT NULL,
+	name VARCHAR(255) NOT NULL,
+	unit_price MONEY DEFAULT 0 NOT NULL,
 	is_active BOOL DEFAULT TRUE NOT NULL
 );
-CREATE TABLE IF NOT EXISTS "supplier"(
-	supplier_id SERIAL PRIMARY KEY,
-	address VARCHAR(255),
+CREATE TABLE "supplier"(
+	id SERIAL PRIMARY KEY,
+	address VARCHAR(255) NOT NULL,
 	phone_num PHONE NOT NULL,
 	is_active BOOL DEFAULT TRUE NOT NULL
 );
-CREATE TABLE IF NOT EXISTS "stockDetails"(
-	stock_id SERIAL PRIMARY KEY,
-	product_id INT REFERENCES "product",
-	supplier_id INT REFERENCES "supplier",
-	quantity INT CHECK(quantity > 0)
+CREATE TABLE "stock_details"(
+	id SERIAL PRIMARY KEY,
+	product_id INT REFERENCES product(id) NOT NULL,
+	supplier_id INT REFERENCES supplier(id) NOT NULL,
+	quantity INT CHECK(quantity >= 0) DEFAULT 0
 );
-CREATE TABLE IF NOT EXISTS "seller"(
-	seller_id SERIAL PRIMARY KEY,
+CREATE TABLE "seller"(
+	id SERIAL PRIMARY KEY,
 	address VARCHAR(255),
 	phone_num PHONE NOT NULL,
 	email_addr EMAIL NOT NULL,
 	fax VARCHAR(255) DEFAULT '' NOT NULL,
 	is_active BOOL DEFAULT TRUE NOT NULL
 );
-CREATE TABLE IF NOT EXISTS "invoice"(
-	invoice_id SERIAL PRIMARY KEY,
-	order_id INT REFERENCES "order" NOT NULL,
-	seller_id INT REFERENCES "seller" NOT NULL,
+CREATE TABLE "invoice"(
+	id SERIAL PRIMARY KEY,
+	order_id INT REFERENCES "order"(id) NOT NULL,
+	seller_id INT REFERENCES seller(id) NOT NULL,
 	invoice_timestamp TIMESTAMP NOT NULL,
 	due_timestamp TIMESTAMP NOT NULL,
-	sub_total MONEY NOT NULL,
+	sub_total MONEY DEFAULT 0 NOT NULL,
 	discount MONEY DEFAULT 0 NOT NULL,
-	tax_rate SMALLINT DEFAULT 0 CHECK (tax_rate > 0) NOT NULL,
-	total_tax MONEY DEFAULT 0,
-	total_price MONEY 
+	tax_rate SMALLINT DEFAULT 0 CHECK (tax_rate >= 0) NOT NULL,
+	total_tax MONEY GENERATED ALWAYS AS (sub_total * tax_rate / 100) STORED,
+	total_price MONEY GENERATED ALWAYS AS (sub_total - discount + sub_total * tax_rate / 100) STORED
 );
