@@ -19,11 +19,12 @@ import jakarta.persistence.Table;
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "customer_id")
 	private long id;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "order_id", referencedColumnName = "id")
+	@JoinColumn(name = "order_id", referencedColumnName = "customer_id")
 	private List<Order> orders = new ArrayList<Order>();
-	@Column(name = "name")
+	@Column(name = "customer_name")
 	private String name;
 	@Column(name = "surname")
 	private String surname;

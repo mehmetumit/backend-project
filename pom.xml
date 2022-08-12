@@ -34,10 +34,17 @@
         <!--<artifactId>hibernate-core</artifactId>-->
         <!--<version>6.1.2.Final</version>-->
     <!--</dependency>-->
+    <!--JPA-->
+    <!--<dependency>-->
+        <!--<groupId>jakarta.persistence</groupId>-->
+        <!--<artifactId>jakarta.persistence-api</artifactId>-->
+        <!--<version>3.1.0</version>-->
+    <!--</dependency>-->
+    <!--JPA implementation provider -->
     <dependency>
-        <groupId>jakarta.persistence</groupId>
-        <artifactId>jakarta.persistence-api</artifactId>
-        <version>3.1.0</version>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-core</artifactId>
+        <version>6.1.2.Final</version>
     </dependency>
   </dependencies>
 

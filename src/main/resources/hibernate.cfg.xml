@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+	<!--url-->
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:54320/demodb</property>
+	<!--username-->
+    <property name="hibernate.connection.username">demo</property>
+	<!--password-->
+    <property name="hibernate.connection.password">demo1234</property>
+    <!--postgresql driver-->
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <!--show queries-->
+    <property name="hibernate.show_sql">true</property>
+    </session-factory>
+</hibernate-configuration>
