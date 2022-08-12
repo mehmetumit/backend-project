@@ -12,38 +12,38 @@ import jakarta.persistence.Table;
 public class OrderDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private int id;
 	@Column(name = "quantity")
-	private long quantitiy;
+	private int quantity;
 
-	public OrderDetails(long id, long quantitiy) {
+	public OrderDetails(int id, int quantity) {
 		this.id = id;
-		this.quantitiy = quantitiy;
+		this.quantity = quantity;
 	}
 
-	public OrderDetails(long quantitiy) {
-		this.quantitiy = quantitiy;
+	public OrderDetails(int quantity) {
+		this.quantity = quantity;
 	}
 
 	public long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public long getQuantitiy() {
-		return quantitiy;
+	public int getQuantitiy() {
+		return quantity;
 	}
 
-	public void setQuantitiy(long quantitiy) {
-		this.quantitiy = quantitiy;
+	public void setQuantitiy(int quantity) {
+		this.quantity = quantity;
 	}
 
 	@Override
 	public String toString() {
-		return "OrderDetails [id=" + id + ", quantitiy=" + quantitiy + "]";
+		return "OrderDetails [id=" + id + ", quantity=" + quantity + "]";
 	}
 
 }

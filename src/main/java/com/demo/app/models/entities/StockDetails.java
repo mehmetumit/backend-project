@@ -12,32 +12,32 @@ import jakarta.persistence.Table;
 public class StockDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private int id;
 	@Column(name = "quantity")
-	private long quantity;
+	private int quantity;
 
-	public StockDetails(long id, long quantity) {
+	public StockDetails(int id, int quantity) {
 		this.id = id;
 		this.quantity = quantity;
 	}
 
-	public StockDetails(long quantity) {
+	public StockDetails(int quantity) {
 		this.quantity = quantity;
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public long getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(long quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 

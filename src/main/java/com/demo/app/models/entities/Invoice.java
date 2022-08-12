@@ -14,26 +14,27 @@ import jakarta.persistence.Table;
 public class Invoice {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	@Column(name = "id")
+	private int id;
 	// private long orderId;
 	// private long sellerId;
 
-	@Column(name = "invoiceTimeStamp")
+	@Column(name = "invoice_timestamp")
 	private Timestamp invoiceTimestamp;
-	@Column(name = "dueTimeStamp")
+	@Column(name = "due_timestamp")
 	private Timestamp dueTimestamp;
-	@Column(name = "subTotal")
+	@Column(name = "sub_total")
 	private double subTotal;
 	@Column(name = "discount")
 	private double discount;
-	@Column(name = "taxRate")
+	@Column(name = "tax_rate")
 	private int taxRate;
-	@Column(name = "totalTax")
+	@Column(name = "total_tax")
 	private double totalTax;
-	@Column(name = "totalPrice")
+	@Column(name = "total_price")
 	private double totalPrice;
 
-	public Invoice(long id, Timestamp invoiceTimestamp, Timestamp dueTimestamp,
+	public Invoice(int id, Timestamp invoiceTimestamp, Timestamp dueTimestamp,
 			double subTotal, double discount, int taxRate, double totalTax, double totalPrice) {
 		super();
 		this.id = id;
@@ -62,7 +63,7 @@ public class Invoice {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

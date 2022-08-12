@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private int id;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "product_id", referencedColumnName = "id")
 	private StockDetails stockDetails;
@@ -29,27 +29,40 @@ public class Product {
 	@Column(name = "is_active")
 	private boolean isActive;
 
-	public Product(long id, String name, double unitPrice, boolean isActive) {
-		super();
+	public Product(int id, StockDetails stockDetails, String categoryName, String name, double unitPrice,
+			boolean isActive) {
 		this.id = id;
+		this.stockDetails = stockDetails;
+		this.categoryName = categoryName;
 		this.name = name;
 		this.unitPrice = unitPrice;
 		this.isActive = isActive;
 	}
 
-	public Product(long orderDetails, long categoryId, String name, double unitPrice, boolean isActive) {
-		super();
+	public Product(StockDetails stockDetails, String categoryName, String name, double unitPrice,
+			boolean isActive) {
+		this.id = id;
+		this.stockDetails = stockDetails;
+		this.categoryName = categoryName;
 		this.name = name;
 		this.unitPrice = unitPrice;
 		this.isActive = isActive;
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
+	}
+
+	public StockDetails getStockDetails() {
+		return stockDetails;
+	}
+
+	public void setStockDetails(StockDetails stockDetails) {
+		this.stockDetails = stockDetails;
 	}
 
 	public String getCategoryName() {
@@ -82,14 +95,6 @@ public class Product {
 
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
-	}
-
-	public StockDetails getStockDetails() {
-		return stockDetails;
-	}
-
-	public void setStockDetails(StockDetails stockDetails) {
-		this.stockDetails = stockDetails;
 	}
 
 	@Override

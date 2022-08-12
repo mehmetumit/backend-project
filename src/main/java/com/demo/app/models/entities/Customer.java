@@ -19,12 +19,12 @@ import jakarta.persistence.Table;
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "customer_id")
-	private long id;
+	@Column(name = "id")
+	private int id;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "order_id", referencedColumnName = "customer_id")
+	@JoinColumn(name = "order_id", referencedColumnName = "id")
 	private List<Order> orders = new ArrayList<Order>();
-	@Column(name = "customer_name")
+	@Column(name = "name")
 	private String name;
 	@Column(name = "surname")
 	private String surname;
@@ -37,7 +37,7 @@ public class Customer {
 	@Column(name = "is_active")
 	private boolean isActive;
 
-	public Customer(long id, String name, String surname, String phoneNum, String email, int discountRate,
+	public Customer(int id, String name, String surname, String phoneNum, String email, int discountRate,
 			boolean isActive) {
 		this.id = id;
 		this.name = name;
@@ -61,7 +61,7 @@ public class Customer {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

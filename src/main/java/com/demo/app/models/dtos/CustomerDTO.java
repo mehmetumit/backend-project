@@ -1,5 +1,10 @@
 package com.demo.app.models.dtos;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.demo.app.models.entities.Order;
+
 public class CustomerDTO {
 	private String name;
 	private String surname;
@@ -7,6 +12,7 @@ public class CustomerDTO {
 	private String email;
 	private boolean isActive;
 	private double discountRate;
+	private List<Order> orders = new ArrayList<Order>();
 
 	public String getName() {
 		return name;
@@ -56,9 +62,18 @@ public class CustomerDTO {
 		this.discountRate = discountRate;
 	}
 
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+
 	@Override
 	public String toString() {
 		return "CustomerDTO [discountRate=" + discountRate + ", email=" + email + ", isActive=" + isActive + ", name="
-				+ name + ", phoneNum=" + phoneNum + ", surname=" + surname + "]";
+				+ name + ", orders=" + orders + ", phoneNum=" + phoneNum + ", surname=" + surname + "]";
 	}
+
 }

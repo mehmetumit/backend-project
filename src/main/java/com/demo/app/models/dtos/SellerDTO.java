@@ -1,5 +1,10 @@
 package com.demo.app.models.dtos;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.demo.app.models.entities.Invoice;
+
 /**
  * SellerDTO
  */
@@ -9,6 +14,7 @@ public class SellerDTO {
 	private String email;
 	private String fax;
 	private boolean isActive;
+	private List<Invoice> invoices = new ArrayList<Invoice>();
 
 	public String getAddress() {
 		return address;
@@ -50,10 +56,18 @@ public class SellerDTO {
 		this.isActive = isActive;
 	}
 
+	public List<Invoice> getInvoices() {
+		return invoices;
+	}
+
+	public void setInvoices(List<Invoice> invoices) {
+		this.invoices = invoices;
+	}
+
 	@Override
 	public String toString() {
-		return "SellerDTO [address=" + address + ", email=" + email + ", fax=" + fax + ", isActive=" + isActive
-				+ ", phoneNum=" + phoneNum + "]";
+		return "SellerDTO [address=" + address + ", email=" + email + ", fax=" + fax + ", invoices=" + invoices
+				+ ", isActive=" + isActive + ", phoneNum=" + phoneNum + "]";
 	}
 
 }

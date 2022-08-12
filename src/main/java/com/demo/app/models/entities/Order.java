@@ -21,7 +21,7 @@ import jakarta.persistence.Table;
 public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private int id;
 
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "order_id", referencedColumnName = "id")
@@ -34,7 +34,7 @@ public class Order {
 	@Column(name = "timestamp")
 	private Timestamp timestamp;
 
-	public Order(long id, Timestamp timestamp) {
+	public Order(int id, Timestamp timestamp) {
 		super();
 		this.id = id;
 		this.timestamp = timestamp;
@@ -49,7 +49,7 @@ public class Order {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
