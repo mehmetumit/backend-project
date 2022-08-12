@@ -7,10 +7,10 @@ import com.demo.app.models.entities.Customer;
 
 public interface CustomerDAO extends DAO<Customer> {
 	@Override
-	int delete(long id) throws SQLException;
+	int delete(int id) throws SQLException;
 
 	@Override
-	Customer findById(long id) throws SQLException;
+	Customer findById(int id) throws SQLException;
 
 	@Override
 	List<Customer> getAll() throws SQLException;

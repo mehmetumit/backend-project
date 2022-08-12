@@ -7,10 +7,10 @@ import com.demo.app.models.entities.Seller;
 
 public interface SellerDAO extends DAO<Seller> {
 	@Override
-	int delete(long id) throws SQLException;
+	int delete(int id) throws SQLException;
 
 	@Override
-	Seller findById(long id) throws SQLException;
+	Seller findById(int id) throws SQLException;
 
 	@Override
 	List<Seller> getAll() throws SQLException;

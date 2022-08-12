@@ -7,10 +7,10 @@ import com.demo.app.models.entities.Product;
 
 public interface ProductDAO extends DAO<Product> {
 	@Override
-	int delete(long id) throws SQLException;
+	int delete(int id) throws SQLException;
 
 	@Override
-	Product findById(long id) throws SQLException;
+	Product findById(int id) throws SQLException;
 
 	@Override
 	List<Product> getAll() throws SQLException;
@@ -23,7 +23,7 @@ public interface ProductDAO extends DAO<Product> {
 
 	public Product findByName(String name) throws SQLException;
 
-	public List<Product> findByCategory(String category) throws SQLException;
+	public List<Product> findByCategory(String categoryName) throws SQLException;
 
 	public List<Product> findByUnitPrice(double unitPrice) throws SQLException;
 

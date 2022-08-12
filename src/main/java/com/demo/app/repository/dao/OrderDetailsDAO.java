@@ -7,10 +7,10 @@ import com.demo.app.models.entities.OrderDetails;
 
 public interface OrderDetailsDAO extends DAO<OrderDetails> {
 	@Override
-	int delete(long id) throws SQLException;
+	int delete(int id) throws SQLException;
 
 	@Override
-	OrderDetails findById(long id) throws SQLException;
+	OrderDetails findById(int id) throws SQLException;
 
 	@Override
 	List<OrderDetails> getAll() throws SQLException;

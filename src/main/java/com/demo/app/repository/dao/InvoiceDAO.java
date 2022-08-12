@@ -8,10 +8,10 @@ import com.demo.app.models.entities.Invoice;
 
 public interface InvoiceDAO extends DAO<Invoice> {
 	@Override
-	int delete(long id) throws SQLException;
+	int delete(int id) throws SQLException;
 
 	@Override
-	Invoice findById(long id) throws SQLException;
+	Invoice findById(int id) throws SQLException;
 
 	@Override
 	List<Invoice> getAll() throws SQLException;

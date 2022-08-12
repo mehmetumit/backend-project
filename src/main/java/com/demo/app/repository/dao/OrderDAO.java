@@ -8,10 +8,10 @@ import com.demo.app.models.entities.Order;
 
 public interface OrderDAO extends DAO<Order> {
 	@Override
-	int delete(long id) throws SQLException;
+	int delete(int id) throws SQLException;
 
 	@Override
-	Order findById(long id) throws SQLException;
+	Order findById(int id) throws SQLException;
 
 	@Override
 	List<Order> getAll() throws SQLException;

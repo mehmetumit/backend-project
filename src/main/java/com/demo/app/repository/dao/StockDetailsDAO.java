@@ -8,10 +8,10 @@ import com.demo.app.models.entities.StockDetails;
 public interface StockDetailsDAO extends DAO<StockDetails> {
 
     @Override
-    int delete(long id) throws SQLException;
+    int delete(int id) throws SQLException;
 
     @Override
-    StockDetails findById(long id) throws SQLException;
+    StockDetails findById(int id) throws SQLException;
 
     @Override
     List<StockDetails> getAll() throws SQLException;
