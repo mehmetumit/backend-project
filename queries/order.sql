@@ -1,0 +1,14 @@
+INSERT INTO "order"(customer_id, order_timestamp) VALUES(1, '2022-08-15 10:00:04');
+INSERT INTO "order"(customer_id, order_timestamp) VALUES(1, '2022-08-15 09:00:04');
+INSERT INTO "order"(customer_id, order_timestamp) VALUES(1, '2022-08-15 11:00:04');
+INSERT INTO "order"(customer_id, order_timestamp) VALUES(1, '2022-08-15 12:00:04');
+INSERT INTO "order"(customer_id, order_timestamp) VALUES(1, '2022-08-15 13:00:04');
+INSERT INTO "order"(customer_id, order_timestamp) VALUES(2, '2022-08-15 10:00:04');
+INSERT INTO "order"(customer_id, order_timestamp) VALUES(2, '2022-08-15 09:00:04');
+INSERT INTO "order"(customer_id, order_timestamp) VALUES(2, '2022-08-15 11:00:04');
+INSERT INTO "order"(customer_id, order_timestamp) VALUES(2, '2022-08-15 12:00:04');
+INSERT INTO "order"(customer_id, order_timestamp) VALUES(2, '2022-08-15 13:00:04');
+INSERT INTO "order"(customer_id, order_timestamp) VALUES(3, '2022-08-15 12:00:04');
+INSERT INTO "order"(customer_id, order_timestamp) VALUES(3, '2022-08-15 13:00:04');
+INSERT INTO "order"(customer_id, order_timestamp) VALUES(4, '2022-08-15 10:00:04');
+INSERT INTO "order"(customer_id, order_timestamp) VALUES(4, '2022-08-15 09:00:04');
