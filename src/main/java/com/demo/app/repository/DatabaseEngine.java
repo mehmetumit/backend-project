@@ -16,26 +16,29 @@ import org.hibernate.cfg.Configuration;
 /**
  * DatabaseEngine
  */
-// Singleton
 public class DatabaseEngine {
 	private static DatabaseEngine databaseEngine = null;
 	private static Configuration configuration = null;
 	private static SessionFactory sessionFactory = null;
 	private static Session session = null;
+	// XML configuration file which exists in resources folder
 	private static String configFileName = "hibernate.cfg.xml";
 
 	public static DatabaseEngine getEngine() {
 		return (databaseEngine == null) ? new DatabaseEngine() : databaseEngine;
 	}
 
+	// Singleton
 	private DatabaseEngine() {
 		initDatabase();
 	}
 
+	// Load database configurations and build session factory
 	private static void initDatabase() {
 		configuration = new Configuration();
 		configuration.configure(configFileName);
 
+		// Add entities
 		configuration.addAnnotatedClass(Customer.class);
 		configuration.addAnnotatedClass(Order.class);
 		configuration.addAnnotatedClass(Invoice.class);
@@ -45,10 +48,32 @@ public class DatabaseEngine {
 		configuration.addAnnotatedClass(StockDetails.class);
 		configuration.addAnnotatedClass(Supplier.class);
 
-		// SessionFactory is heavy weight object(because of applying properties), it
+		// SessionFactory is heavy weight object(loading configuration takes time), it
 		// consumes time to create.
-		// Because of that we should crate one time for per application.
+		// Because of that we should create one for per application.
 		sessionFactory = configuration.buildSessionFactory();
+	}
+
+	// Open new session with session factory
+	public Session openSession() {
+		return sessionFactory.openSession();
+	}
+
+	// Get current session with session factory
+	public Session getCurrentSession() {
+		return sessionFactory.getCurrentSession();
+	}
+
+	// Find entity object with given entity class and id
+	public <T> T findById(Class<T> entityClass, int id) {
+		session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		T entity = (T) session.getReference(entityClass.getClass(), id);
+
+		session.close();
+
+		return entity;
 	}
 
 	// Insert object to database
@@ -68,12 +93,12 @@ public class DatabaseEngine {
 		session.beginTransaction();
 
 		session.merge(obj);
-
 		commitTransaction();
 		session.close();
 
 	}
 
+	// Delete object from database
 	public void delete(Object obj) {
 		session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -84,6 +109,7 @@ public class DatabaseEngine {
 		session.close();
 	}
 
+	// Commit changes
 	private void commitTransaction() {
 		session.getTransaction().commit();
 	}
