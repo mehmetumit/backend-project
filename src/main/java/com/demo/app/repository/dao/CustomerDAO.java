@@ -4,10 +4,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.demo.app.models.entities.Customer;
+import com.demo.app.models.entities.Order;
 
 public interface CustomerDAO extends DAO<Customer> {
+
 	@Override
-	int delete(int id) throws SQLException;
+	void delete(int id) throws SQLException;
 
 	@Override
 	Customer findById(int id) throws SQLException;
@@ -16,10 +18,10 @@ public interface CustomerDAO extends DAO<Customer> {
 	List<Customer> getAll() throws SQLException;
 
 	@Override
-	int insert(Customer obj) throws SQLException;
+	void insert(Customer obj) throws SQLException;
 
 	@Override
-	int update(Customer obj) throws SQLException;
+	void update(Customer obj) throws SQLException;
 
 	public List<Customer> findByName(String name) throws SQLException;
 
@@ -33,4 +35,5 @@ public interface CustomerDAO extends DAO<Customer> {
 
 	public List<Customer> findByDiscountRate(int discountRate) throws SQLException;
 
+	public List<Order> findCustomerOrdersById(int id) throws SQLException;
 }

@@ -4,15 +4,17 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface DAO<T> {
+	String getEntityName();
+
 	// CRUD operations
 	T findById(int id) throws SQLException;
 
 	List<T> getAll() throws SQLException;
 
-	int insert(T obj) throws SQLException;
+	void insert(T obj) throws SQLException;
 
-	int update(T obj) throws SQLException;
+	void update(T obj) throws SQLException;
 
-	int delete(int id) throws SQLException;
+	void delete(int id) throws SQLException;
 
 }

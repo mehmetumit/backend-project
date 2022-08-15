@@ -16,8 +16,6 @@ public class Invoice {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-	// private long orderId;
-	// private long sellerId;
 
 	@Column(name = "invoice_timestamp")
 	private Timestamp invoiceTimestamp;

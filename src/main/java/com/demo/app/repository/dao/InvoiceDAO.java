@@ -7,8 +7,9 @@ import java.util.List;
 import com.demo.app.models.entities.Invoice;
 
 public interface InvoiceDAO extends DAO<Invoice> {
+
 	@Override
-	int delete(int id) throws SQLException;
+	void delete(int id) throws SQLException;
 
 	@Override
 	Invoice findById(int id) throws SQLException;
@@ -17,10 +18,10 @@ public interface InvoiceDAO extends DAO<Invoice> {
 	List<Invoice> getAll() throws SQLException;
 
 	@Override
-	int insert(Invoice obj) throws SQLException;
+	void insert(Invoice obj) throws SQLException;
 
 	@Override
-	int update(Invoice obj) throws SQLException;
+	void update(Invoice obj) throws SQLException;
 
 	public List<Invoice> findByInvoiceTimestamp(Timestamp invoiceTimestamp) throws SQLException;
 
