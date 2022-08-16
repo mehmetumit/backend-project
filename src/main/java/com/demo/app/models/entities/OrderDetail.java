@@ -37,16 +37,18 @@ public class OrderDetail {
 		return id;
 	}
 
-	public void setId(int id) {
+	public OrderDetail setId(int id) {
 		this.id = id;
+		return this;
 	}
 
 	public int getQuantitiy() {
 		return quantity;
 	}
 
-	public void setQuantitiy(int quantity) {
+	public OrderDetail setQuantitiy(int quantity) {
 		this.quantity = quantity;
+		return this;
 	}
 
 	@Override
