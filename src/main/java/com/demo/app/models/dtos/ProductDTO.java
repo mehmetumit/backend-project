@@ -16,40 +16,45 @@ public class ProductDTO {
 		return categoryName;
 	}
 
-	public void setCategoryName(String categoryName) {
+	public ProductDTO setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
+		return this;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	public ProductDTO setName(String name) {
 		this.name = name;
+		return this;
 	}
 
 	public StockDetail getStockDetail() {
 		return stockDetail;
 	}
 
-	public void setStockDetail(StockDetail stockDetail) {
+	public ProductDTO setStockDetail(StockDetail stockDetail) {
 		this.stockDetail = stockDetail;
+		return this;
 	}
 
 	public double getUnitPrice() {
 		return unitPrice;
 	}
 
-	public void setUnitPrice(double unitPrice) {
+	public ProductDTO setUnitPrice(double unitPrice) {
 		this.unitPrice = unitPrice;
+		return this;
 	}
 
 	public boolean isActive() {
 		return isActive;
 	}
 
-	public void setActive(boolean isActive) {
+	public ProductDTO setActive(boolean isActive) {
 		this.isActive = isActive;
+		return this;
 	}
 
 	@Override

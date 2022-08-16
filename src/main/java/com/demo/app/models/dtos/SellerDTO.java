@@ -20,48 +20,54 @@ public class SellerDTO {
 		return address;
 	}
 
-	public void setAddress(String address) {
+	public SellerDTO setAddress(String address) {
 		this.address = address;
+		return this;
 	}
 
 	public String getPhoneNum() {
 		return phoneNum;
 	}
 
-	public void setPhoneNum(String phoneNum) {
+	public SellerDTO setPhoneNum(String phoneNum) {
 		this.phoneNum = phoneNum;
+		return this;
 	}
 
 	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public SellerDTO setEmail(String email) {
 		this.email = email;
+		return this;
 	}
 
 	public String getFax() {
 		return fax;
 	}
 
-	public void setFax(String fax) {
+	public SellerDTO setFax(String fax) {
 		this.fax = fax;
+		return this;
 	}
 
 	public boolean isActive() {
 		return isActive;
 	}
 
-	public void setActive(boolean isActive) {
+	public SellerDTO setActive(boolean isActive) {
 		this.isActive = isActive;
+		return this;
 	}
 
 	public List<Invoice> getInvoices() {
 		return invoices;
 	}
 
-	public void setInvoices(List<Invoice> invoices) {
+	public SellerDTO setInvoices(List<Invoice> invoices) {
 		this.invoices = invoices;
+		return this;
 	}
 
 	@Override
