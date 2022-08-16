@@ -52,48 +52,54 @@ public class Product {
 		return id;
 	}
 
-	public void setId(int id) {
+	public Product setId(int id) {
 		this.id = id;
+		return this;
 	}
 
 	public StockDetail getStockDetails() {
 		return stockDetail;
 	}
 
-	public void setStockDetails(StockDetail stockDetails) {
+	public Product setStockDetails(StockDetail stockDetails) {
 		this.stockDetail = stockDetails;
+		return this;
 	}
 
 	public String getCategoryName() {
 		return categoryName;
 	}
 
-	public void setCategoryName(String categoryName) {
+	public Product setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
+		return this;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	public Product setName(String name) {
 		this.name = name;
+		return this;
 	}
 
 	public double getUnitPrice() {
 		return unitPrice;
 	}
 
-	public void setUnitPrice(double unitPrice) {
+	public Product setUnitPrice(double unitPrice) {
 		this.unitPrice = unitPrice;
+		return this;
 	}
 
 	public boolean isActive() {
 		return isActive;
 	}
 
-	public void setActive(boolean isActive) {
+	public Product setActive(boolean isActive) {
 		this.isActive = isActive;
+		return this;
 	}
 
 	@Override

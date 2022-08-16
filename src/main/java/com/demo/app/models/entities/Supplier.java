@@ -36,48 +36,54 @@ public class Supplier {
 		return id;
 	}
 
-	public void setId(int id) {
+	public Supplier setId(int id) {
 		this.id = id;
+		return this;
 	}
 
 	public List<StockDetail> getStockDetails() {
 		return stockDetails;
 	}
 
-	public void setStockDetails(List<StockDetail> stockDetails) {
+	public Supplier setStockDetails(List<StockDetail> stockDetails) {
 		this.stockDetails = stockDetails;
+		return this;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	public Supplier setName(String name) {
 		this.name = name;
+		return this;
 	}
 
 	public String getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
+	public Supplier setAddress(String address) {
 		this.address = address;
+		return this;
 	}
 
 	public String getPhoneNum() {
 		return phoneNum;
 	}
 
-	public void setPhoneNum(String phoneNum) {
+	public Supplier setPhoneNum(String phoneNum) {
 		this.phoneNum = phoneNum;
+		return this;
 	}
 
 	public boolean isActive() {
 		return isActive;
 	}
 
-	public void setActive(boolean isActive) {
+	public Supplier setActive(boolean isActive) {
 		this.isActive = isActive;
+		return this;
 	}
 
 }

@@ -61,60 +61,68 @@ public class Customer {
 		return id;
 	}
 
-	public void setId(int id) {
+	public Customer setId(int id) {
 		this.id = id;
+		return this;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	public Customer setName(String name) {
 		this.name = name;
+		return this;
 	}
 
 	public String getSurname() {
 		return surname;
 	}
 
-	public void setSurname(String surname) {
+	public Customer setSurname(String surname) {
 		this.surname = surname;
+		return this;
 	}
 
 	public String getPhoneNum() {
 		return phoneNum;
 	}
 
-	public void setPhoneNum(String phoneNum) {
+	public Customer setPhoneNum(String phoneNum) {
 		this.phoneNum = phoneNum;
+		return this;
 	}
 
 	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public Customer setEmail(String email) {
 		this.email = email;
+		return this;
 	}
 
 	public boolean isActive() {
 		return isActive;
 	}
 
-	public void setActive(boolean isActive) {
+	public Customer setActive(boolean isActive) {
 		this.isActive = isActive;
+		return this;
 	}
 
 	public int getDiscountRate() {
 		return discountRate;
 	}
 
-	public void setDiscountRate(int discountRate) {
+	public Customer setDiscountRate(int discountRate) {
 		this.discountRate = discountRate;
+		return this;
 	}
 
-	public void setOrders(List<Order> orders) {
+	public Customer setOrders(List<Order> orders) {
 		this.orders = orders;
+		return this;
 	}
 
 	public List<Order> getOrders() {

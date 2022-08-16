@@ -29,16 +29,18 @@ public class StockDetail {
 		return id;
 	}
 
-	public void setId(int id) {
+	public StockDetail setId(int id) {
 		this.id = id;
+		return this;
 	}
 
 	public int getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(int quantity) {
+	public StockDetail setQuantity(int quantity) {
 		this.quantity = quantity;
+		return this;
 	}
 
 	@Override

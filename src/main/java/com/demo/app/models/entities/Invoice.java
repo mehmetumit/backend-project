@@ -61,64 +61,72 @@ public class Invoice {
 		return id;
 	}
 
-	public void setId(int id) {
+	public Invoice setId(int id) {
 		this.id = id;
+		return this;
 	}
 
 	public Timestamp getInvoiceTimestamp() {
 		return invoiceTimestamp;
 	}
 
-	public void setInvoiceTimestamp(Timestamp invoiceTimestamp) {
+	public Invoice setInvoiceTimestamp(Timestamp invoiceTimestamp) {
 		this.invoiceTimestamp = invoiceTimestamp;
+		return this;
 	}
 
 	public Timestamp getDueTimestamp() {
 		return dueTimestamp;
 	}
 
-	public void setDueTimestamp(Timestamp dueTimestamp) {
+	public Invoice setDueTimestamp(Timestamp dueTimestamp) {
 		this.dueTimestamp = dueTimestamp;
+		return this;
 	}
 
 	public double getSubTotal() {
 		return subTotal;
 	}
 
-	public void setSubTotal(double subTotal) {
+	public Invoice setSubTotal(double subTotal) {
 		this.subTotal = subTotal;
+		return this;
 	}
 
 	public double getDiscount() {
 		return discount;
 	}
 
-	public void setDiscount(double discount) {
+	public Invoice setDiscount(double discount) {
 		this.discount = discount;
+		return this;
 	}
 
 	public int getTaxRate() {
 		return taxRate;
 	}
 
-	public void setTaxRate(int taxRate) {
+	public Invoice setTaxRate(int taxRate) {
 		this.taxRate = taxRate;
+		return this;
 	}
 
 	public double getTotalTax() {
 		return totalTax;
 	}
 
-	public void setTotalTax(double totalTax) {
+	public Invoice setTotalTax(double totalTax) {
 		this.totalTax = totalTax;
+		return this;
 	}
 
 	public double getTotalPrice() {
 		return totalPrice;
 	}
 
-	public void setTotalPrice(double totalPrice) {
+	public Invoice setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
+		return this;
 	}
 
 	@Override

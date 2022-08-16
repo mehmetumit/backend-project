@@ -49,32 +49,36 @@ public class Order {
 		return id;
 	}
 
-	public void setId(int id) {
+	public Order setId(int id) {
 		this.id = id;
+		return this;
 	}
 
 	public Timestamp getTimestamp() {
 		return timestamp;
 	}
 
-	public void setTimestamp(Timestamp timestamp) {
+	public Order setTimestamp(Timestamp timestamp) {
 		this.timestamp = timestamp;
+		return this;
 	}
 
 	public Invoice getInvoice() {
 		return invoice;
 	}
 
-	public void setInvoice(Invoice invoice) {
+	public Order setInvoice(Invoice invoice) {
 		this.invoice = invoice;
+		return this;
 	}
 
 	public List<OrderDetail> getOrderDetails() {
 		return orderDetails;
 	}
 
-	public void setOrderDetails(List<OrderDetail> orderDetails) {
+	public Order setOrderDetails(List<OrderDetail> orderDetails) {
 		this.orderDetails = orderDetails;
+		return this;
 	}
 
 	@Override
