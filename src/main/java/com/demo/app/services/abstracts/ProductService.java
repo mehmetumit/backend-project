@@ -14,13 +14,13 @@ public interface ProductService extends Service<ProductDTO, Product> {
 	public int add(ProductDTO dto);
 
 	@Override
-	public int delete(long id);
+	public int delete(int id);
 
 	@Override
 	public List<ProductDTO> getAll();
 
 	@Override
-	public ProductDTO getById(long id);
+	public ProductDTO getById(int id);
 
 	@Override
 	public ProductDTO toDTO(Product entity);
@@ -35,7 +35,7 @@ public interface ProductService extends Service<ProductDTO, Product> {
 
 	public Product getByCategory(String name);
 
-	public List<Product> getByUnitPrice(double unitPrice);
+	public List<ProductDTO> getByUnitPrice(double unitPrice);
 
-	public List<Product> getByActive(boolean isActive);
+	public List<ProductDTO> getByActive(boolean isActive);
 }

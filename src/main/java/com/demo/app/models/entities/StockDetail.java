@@ -25,6 +25,10 @@ public class StockDetail {
 		this.quantity = quantity;
 	}
 
+	public StockDetail() {
+
+	}
+
 	public int getId() {
 		return id;
 	}

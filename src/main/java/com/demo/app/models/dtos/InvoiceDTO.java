@@ -54,8 +54,9 @@ public class InvoiceDTO {
 		return taxRate;
 	}
 
-	public void setTaxRate(int taxRate) {
+	public InvoiceDTO setTaxRate(int taxRate) {
 		this.taxRate = taxRate;
+		return this;
 	}
 
 	public double getTotalTax() {

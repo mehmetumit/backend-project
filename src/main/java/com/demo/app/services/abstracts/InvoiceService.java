@@ -15,13 +15,13 @@ public interface InvoiceService extends Service<InvoiceDTO, Invoice> {
 	public int add(InvoiceDTO dto);
 
 	@Override
-	public int delete(long id);
+	public int delete(int id);
 
 	@Override
 	public List<InvoiceDTO> getAll();
 
 	@Override
-	public InvoiceDTO getById(long id);
+	public InvoiceDTO getById(int id);
 
 	@Override
 	public InvoiceDTO toDTO(Invoice entity);

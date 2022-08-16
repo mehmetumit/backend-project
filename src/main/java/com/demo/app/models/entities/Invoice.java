@@ -57,6 +57,9 @@ public class Invoice {
 		this.totalPrice = totalPrice;
 	}
 
+	public Invoice() {
+	}
+
 	public long getId() {
 		return id;
 	}

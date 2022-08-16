@@ -10,18 +10,17 @@ import com.demo.app.models.entities.Order;
  * OrderService
  */
 public interface OrderService extends Service<OrderDTO, Order> {
-
 	@Override
 	public int add(OrderDTO dto);
 
 	@Override
-	public int delete(long id);
+	public int delete(int id);
 
 	@Override
 	public List<OrderDTO> getAll();
 
 	@Override
-	public OrderDTO getById(long id);
+	public OrderDTO getById(int id);
 
 	@Override
 	public OrderDTO toDTO(Order entity);
@@ -32,6 +31,6 @@ public interface OrderService extends Service<OrderDTO, Order> {
 	@Override
 	public int update(OrderDTO dto);
 
-	public List<Order> getByTimestamp(Timestamp timestamp);
+	public List<OrderDTO> getByTimestamp(Timestamp timestamp);
 
 }

@@ -14,13 +14,13 @@ public interface SupplierService extends Service<SupplierDTO, Supplier> {
 	public int add(SupplierDTO dto);
 
 	@Override
-	public int delete(long id);
+	public int delete(int id);
 
 	@Override
 	public List<SupplierDTO> getAll();
 
 	@Override
-	public SupplierDTO getById(long id);
+	public SupplierDTO getById(int id);
 
 	@Override
 	public SupplierDTO toDTO(Supplier entity);
@@ -31,9 +31,11 @@ public interface SupplierService extends Service<SupplierDTO, Supplier> {
 	@Override
 	public int update(SupplierDTO dto);
 
-	public Supplier findByAddress(String address);
+	public SupplierDTO getByName(String name);
 
-	public Supplier findByPhoneNum(String phoneNum);
+	public SupplierDTO getByAddress(String address);
 
-	public List<Supplier> findByActive(boolean isActive);
+	public SupplierDTO getByPhoneNum(String phoneNum);
+
+	public List<SupplierDTO> findByActive(boolean isActive);
 }

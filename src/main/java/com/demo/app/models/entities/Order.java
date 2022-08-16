@@ -1,6 +1,6 @@
 package com.demo.app.models.entities;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class Order {
 	@JoinColumn(name = "order_id", referencedColumnName = "id")
 	private List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
 
-	@Column(name = "timestamp")
+	@Column(name = "order_timestamp")
 	private Timestamp timestamp;
 
 	public Order(int id, Timestamp timestamp) {
@@ -43,6 +43,10 @@ public class Order {
 	public Order(Timestamp timestamp) {
 		super();
 		this.timestamp = timestamp;
+	}
+
+	public Order() {
+
 	}
 
 	public long getId() {

@@ -57,6 +57,9 @@ public class Customer {
 		this.isActive = isActive;
 	}
 
+	public Customer() {
+	}
+
 	public long getId() {
 		return id;
 	}

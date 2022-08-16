@@ -32,6 +32,6 @@ public interface OrderDAO extends DAO<Order> {
 
 	// List<OrderDetail> findOrderOrderDetailsById(int id) throws SQLException;
 
-	Order findByTimestamp(Timestamp timestamp) throws SQLException;
+	List<Order> findByTimestamp(Timestamp timestamp) throws SQLException;
 
 }

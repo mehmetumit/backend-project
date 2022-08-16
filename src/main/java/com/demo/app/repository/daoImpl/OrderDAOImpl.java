@@ -52,14 +52,14 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
-    public Order findByTimestamp(Timestamp timestamp) throws SQLException {
+    public List<Order> findByTimestamp(Timestamp timestamp) throws SQLException {
         Session session = databaseEngine.openSession();
         String query = "from \"" + getEntityName() + "\" where timestamp = " + timestamp;
 
-        Order order = session.createQuery(query, Order.class).getSingleResult();
+        List<Order> orders = session.createQuery(query, Order.class).list();
         session.close();
 
-        return order;
+        return orders;
     }
 
     // @Override
