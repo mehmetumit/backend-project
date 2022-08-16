@@ -116,15 +116,16 @@ public class CustomerDAOImpl implements CustomerDAO {
         return customers;
     }
 
-    @Override
-    public List<Order> findCustomerOrdersById(int id) throws SQLException {
-        Session session = databaseEngine.getCurrentSession();
-        String query = "select ord from " + getEntityName() + " c left join c.orders ord where ord.customer_id = " + id;
+    // @Override
+    // public List<Order> findCustomerOrdersById(int id) throws SQLException {
+    // Session session = databaseEngine.getCurrentSession();
+    // String query = "select ord from " + getEntityName() + " c left join c.orders
+    // ord where ord.customerId = " + id;
 
-        List<Order> customerOrders = session.createQuery(query, Order.class).list();
-        session.close();
+    // List<Order> customerOrders = session.createQuery(query, Order.class).list();
+    // session.close();
 
-        return customerOrders;
-    }
+    // return customerOrders;
+    // }
 
 }

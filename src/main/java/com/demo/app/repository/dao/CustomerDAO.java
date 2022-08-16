@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.demo.app.models.entities.Customer;
-import com.demo.app.models.entities.Order;
 
 public interface CustomerDAO extends DAO<Customer> {
 
@@ -35,5 +34,5 @@ public interface CustomerDAO extends DAO<Customer> {
 
 	public List<Customer> findByDiscountRate(int discountRate) throws SQLException;
 
-	public List<Order> findCustomerOrdersById(int id) throws SQLException;
+	// public List<Order> findCustomerOrdersById(int id) throws SQLException;
 }

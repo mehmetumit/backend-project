@@ -1,6 +1,6 @@
 package com.demo.app.models.dtos;
 
-import com.demo.app.models.entities.StockDetails;
+import com.demo.app.models.entities.StockDetail;
 
 /**
  * ProductDTO
@@ -8,7 +8,7 @@ import com.demo.app.models.entities.StockDetails;
 public class ProductDTO {
 	private String categoryName;
 	private String name;
-	private StockDetails stockDetails;
+	private StockDetail stockDetail;
 	private double unitPrice;
 	private boolean isActive;
 
@@ -28,6 +28,14 @@ public class ProductDTO {
 		this.name = name;
 	}
 
+	public StockDetail getStockDetail() {
+		return stockDetail;
+	}
+
+	public void setStockDetail(StockDetail stockDetail) {
+		this.stockDetail = stockDetail;
+	}
+
 	public double getUnitPrice() {
 		return unitPrice;
 	}
@@ -44,18 +52,10 @@ public class ProductDTO {
 		this.isActive = isActive;
 	}
 
-	public StockDetails getStockDetails() {
-		return stockDetails;
-	}
-
-	public void setStockDetails(StockDetails stockDetails) {
-		this.stockDetails = stockDetails;
-	}
-
 	@Override
 	public String toString() {
 		return "ProductDTO [categoryName=" + categoryName + ", isActive=" + isActive + ", name=" + name
-				+ ", stockDetails=" + stockDetails + ", unitPrice=" + unitPrice + "]";
+				+ ", stockDetail=" + stockDetail + ", unitPrice=" + unitPrice + "]";
 	}
 
 }

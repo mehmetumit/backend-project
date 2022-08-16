@@ -1,9 +1,9 @@
 package com.demo.app.models.dtos;
 
 /**
- * StockDetailsDTO
+ * StockDetailDTO
  */
-public class StockDetailsDTO {
+public class StockDetailDTO {
 	private int quantity;
 
 	public int getQuantity() {

@@ -29,7 +29,7 @@ public class Order {
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "order_id", referencedColumnName = "id")
-	private List<OrderDetails> orderDetails = new ArrayList<OrderDetails>();
+	private List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
 
 	@Column(name = "timestamp")
 	private Timestamp timestamp;
@@ -69,11 +69,11 @@ public class Order {
 		this.invoice = invoice;
 	}
 
-	public List<OrderDetails> getOrderDetails() {
+	public List<OrderDetail> getOrderDetails() {
 		return orderDetails;
 	}
 
-	public void setOrderDetails(List<OrderDetails> orderDetails) {
+	public void setOrderDetails(List<OrderDetail> orderDetails) {
 		this.orderDetails = orderDetails;
 	}
 

@@ -22,7 +22,9 @@ public class Supplier {
 	private int id;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "supplier_id", referencedColumnName = "id")
-	List<StockDetails> stockDetails = new ArrayList<StockDetails>();
+	List<StockDetail> stockDetails = new ArrayList<StockDetail>();
+	@Column(name = "name")
+	private String name;
 	@Column(name = "address")
 	private String address;
 	@Column(name = "phone_num")
@@ -30,25 +32,28 @@ public class Supplier {
 	@Column(name = "is_active")
 	private boolean isActive;
 
-	public Supplier(int id, String address, String phoneNum, boolean isActive) {
-		this.id = id;
-		this.address = address;
-		this.phoneNum = phoneNum;
-		this.isActive = isActive;
-	}
-
-	public Supplier(String address, String phoneNum, boolean isActive) {
-		this.address = address;
-		this.phoneNum = phoneNum;
-		this.isActive = isActive;
-	}
-
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public List<StockDetail> getStockDetails() {
+		return stockDetails;
+	}
+
+	public void setStockDetails(List<StockDetail> stockDetails) {
+		this.stockDetails = stockDetails;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getAddress() {
@@ -73,20 +78,6 @@ public class Supplier {
 
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
-	}
-
-	public List<StockDetails> getStockDetails() {
-		return stockDetails;
-	}
-
-	public void setStockDetails(List<StockDetails> stockDetails) {
-		this.stockDetails = stockDetails;
-	}
-
-	@Override
-	public String toString() {
-		return "Supplier [address=" + address + ", id=" + id + ", isActive=" + isActive + ", phoneNum=" + phoneNum
-				+ ", stockDetails=" + stockDetails + "]";
 	}
 
 }

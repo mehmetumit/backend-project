@@ -56,6 +56,8 @@ public class InvoiceDAOImpl implements InvoiceDAO {
         String query = "from " + getEntityName() + " inv where inv.invoiceTimestamp = " + invoiceTimestamp;
 
         List<Invoice> invoices = session.createQuery(query, Invoice.class).list();
+        session.close();
+
         return invoices;
     }
 
@@ -65,6 +67,8 @@ public class InvoiceDAOImpl implements InvoiceDAO {
         String query = "from " + getEntityName() + " inv where inv.dueTimestamp = " + dueTimestamp;
 
         List<Invoice> invoices = session.createQuery(query, Invoice.class).list();
+        session.close();
+
         return invoices;
     }
 
@@ -74,6 +78,8 @@ public class InvoiceDAOImpl implements InvoiceDAO {
         String query = "from " + getEntityName() + " inv where inv.subTotal = " + subTotal;
 
         List<Invoice> invoices = session.createQuery(query, Invoice.class).list();
+        session.close();
+
         return invoices;
     }
 
@@ -83,6 +89,8 @@ public class InvoiceDAOImpl implements InvoiceDAO {
         String query = "from " + getEntityName() + " inv where inv.discount = " + discount;
 
         List<Invoice> invoices = session.createQuery(query, Invoice.class).list();
+        session.close();
+
         return invoices;
     }
 
@@ -92,6 +100,8 @@ public class InvoiceDAOImpl implements InvoiceDAO {
         String query = "from " + getEntityName() + " inv where inv.taxRate = " + taxRate;
 
         List<Invoice> invoices = session.createQuery(query, Invoice.class).list();
+        session.close();
+
         return invoices;
     }
 
@@ -101,6 +111,8 @@ public class InvoiceDAOImpl implements InvoiceDAO {
         String query = "from " + getEntityName() + " inv where inv.totalTax = " + totalTax;
 
         List<Invoice> invoices = session.createQuery(query, Invoice.class).list();
+        session.close();
+
         return invoices;
     }
 
@@ -110,6 +122,8 @@ public class InvoiceDAOImpl implements InvoiceDAO {
         String query = "from " + getEntityName() + " inv where inv.totalPrice = " + totalPrice;
 
         List<Invoice> invoices = session.createQuery(query, Invoice.class).list();
+        session.close();
+
         return invoices;
     }
 

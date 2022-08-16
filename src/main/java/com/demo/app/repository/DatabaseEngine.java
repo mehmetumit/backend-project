@@ -3,12 +3,11 @@ package com.demo.app.repository;
 import com.demo.app.models.entities.Customer;
 import com.demo.app.models.entities.Invoice;
 import com.demo.app.models.entities.Order;
-import com.demo.app.models.entities.OrderDetails;
+import com.demo.app.models.entities.OrderDetail;
 import com.demo.app.models.entities.Product;
 import com.demo.app.models.entities.Seller;
-import com.demo.app.models.entities.StockDetails;
+import com.demo.app.models.entities.StockDetail;
 import com.demo.app.models.entities.Supplier;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -43,9 +42,9 @@ public class DatabaseEngine {
 		configuration.addAnnotatedClass(Order.class);
 		configuration.addAnnotatedClass(Invoice.class);
 		configuration.addAnnotatedClass(Seller.class);
-		configuration.addAnnotatedClass(OrderDetails.class);
+		configuration.addAnnotatedClass(OrderDetail.class);
 		configuration.addAnnotatedClass(Product.class);
-		configuration.addAnnotatedClass(StockDetails.class);
+		configuration.addAnnotatedClass(StockDetail.class);
 		configuration.addAnnotatedClass(Supplier.class);
 
 		// SessionFactory is heavy weight object(loading configuration takes time), it

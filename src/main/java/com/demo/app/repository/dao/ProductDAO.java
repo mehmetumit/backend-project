@@ -4,10 +4,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.demo.app.models.entities.Product;
+import com.demo.app.models.entities.StockDetail;
 
 public interface ProductDAO extends DAO<Product> {
 	@Override
-	int delete(int id) throws SQLException;
+	void delete(int id) throws SQLException;
 
 	@Override
 	Product findById(int id) throws SQLException;
@@ -16,10 +17,10 @@ public interface ProductDAO extends DAO<Product> {
 	List<Product> getAll() throws SQLException;
 
 	@Override
-	int insert(Product obj) throws SQLException;
+	void insert(Product obj) throws SQLException;
 
 	@Override
-	int update(Product obj) throws SQLException;
+	void update(Product obj) throws SQLException;
 
 	public Product findByName(String name) throws SQLException;
 
@@ -29,4 +30,5 @@ public interface ProductDAO extends DAO<Product> {
 
 	public List<Product> findByActive(boolean isActive) throws SQLException;
 
+	// public StockDetail findProductStockDetailById(int id) throws SQLException;
 }

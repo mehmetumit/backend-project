@@ -19,7 +19,7 @@ public class Product {
 	private int id;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "product_id", referencedColumnName = "id")
-	private StockDetails stockDetails;
+	private StockDetail stockDetail;
 	@Column(name = "category_name")
 	private String categoryName;
 	@Column(name = "name")
@@ -29,20 +29,19 @@ public class Product {
 	@Column(name = "is_active")
 	private boolean isActive;
 
-	public Product(int id, StockDetails stockDetails, String categoryName, String name, double unitPrice,
+	public Product(int id, StockDetail stockDetail, String categoryName, String name, double unitPrice,
 			boolean isActive) {
 		this.id = id;
-		this.stockDetails = stockDetails;
+		this.stockDetail = stockDetail;
 		this.categoryName = categoryName;
 		this.name = name;
 		this.unitPrice = unitPrice;
 		this.isActive = isActive;
 	}
 
-	public Product(StockDetails stockDetails, String categoryName, String name, double unitPrice,
+	public Product(StockDetail stockDetail, String categoryName, String name, double unitPrice,
 			boolean isActive) {
-		this.id = id;
-		this.stockDetails = stockDetails;
+		this.stockDetail = stockDetail;
 		this.categoryName = categoryName;
 		this.name = name;
 		this.unitPrice = unitPrice;
@@ -57,12 +56,12 @@ public class Product {
 		this.id = id;
 	}
 
-	public StockDetails getStockDetails() {
-		return stockDetails;
+	public StockDetail getStockDetails() {
+		return stockDetail;
 	}
 
-	public void setStockDetails(StockDetails stockDetails) {
-		this.stockDetails = stockDetails;
+	public void setStockDetails(StockDetail stockDetails) {
+		this.stockDetail = stockDetails;
 	}
 
 	public String getCategoryName() {
@@ -100,7 +99,7 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [categoryName=" + categoryName + ", id=" + id + ", isActive=" + isActive + ", name=" + name
-				+ ", stockDetails=" + stockDetails + ", unitPrice=" + unitPrice + "]";
+				+ ", stockDetails=" + stockDetail + ", unitPrice=" + unitPrice + "]";
 	}
 
 }

@@ -4,11 +4,14 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 
+import com.demo.app.models.entities.Invoice;
 import com.demo.app.models.entities.Order;
+import com.demo.app.models.entities.OrderDetail;
 
 public interface OrderDAO extends DAO<Order> {
+
 	@Override
-	int delete(int id) throws SQLException;
+	void delete(int id) throws SQLException;
 
 	@Override
 	Order findById(int id) throws SQLException;
@@ -17,11 +20,18 @@ public interface OrderDAO extends DAO<Order> {
 	List<Order> getAll() throws SQLException;
 
 	@Override
-	int insert(Order obj) throws SQLException;
+	String getEntityName();
 
 	@Override
-	int update(Order obj) throws SQLException;
+	void insert(Order obj) throws SQLException;
 
-	public List<Order> findByTimestamp(Timestamp timestamp) throws SQLException;
+	@Override
+	void update(Order obj) throws SQLException;
+
+	// Invoice findOrderInvoiceById(int id) throws SQLException;
+
+	// List<OrderDetail> findOrderOrderDetailsById(int id) throws SQLException;
+
+	Order findByTimestamp(Timestamp timestamp) throws SQLException;
 
 }

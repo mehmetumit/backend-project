@@ -25,7 +25,7 @@ public class Seller {
 	private List<Invoice> invoices = new ArrayList<Invoice>();
 	@Column(name = "address")
 	private String address;
-	@Column(name = "phoe_num")
+	@Column(name = "phone_num")
 	private String phoneNum;
 	@Column(name = "email")
 	private String email;
