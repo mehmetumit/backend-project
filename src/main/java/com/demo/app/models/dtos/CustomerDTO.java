@@ -11,7 +11,7 @@ public class CustomerDTO {
 	private String phoneNum;
 	private String email;
 	private boolean isActive;
-	private double discountRate;
+	private int discountRate;
 	private List<Order> orders = new ArrayList<Order>();
 
 	public String getName() {
@@ -59,11 +59,11 @@ public class CustomerDTO {
 		return this;
 	}
 
-	public double getDiscountRate() {
+	public int getDiscountRate() {
 		return discountRate;
 	}
 
-	public CustomerDTO setDiscountRate(double discountRate) {
+	public CustomerDTO setDiscountRate(int discountRate) {
 		this.discountRate = discountRate;
 		return this;
 	}

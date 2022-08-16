@@ -14,13 +14,13 @@ public interface CustomerService extends Service<CustomerDTO, Customer> {
 	public int add(CustomerDTO dto);
 
 	@Override
-	public int delete(long id);
+	public int delete(int id);
 
 	@Override
 	public List<CustomerDTO> getAll();
 
 	@Override
-	public CustomerDTO getById(long id);
+	public CustomerDTO getById(int id);
 
 	@Override
 	public CustomerDTO toDTO(Customer entity);
@@ -35,9 +35,9 @@ public interface CustomerService extends Service<CustomerDTO, Customer> {
 
 	public List<CustomerDTO> getBySurname(String surname);
 
-	public CustomerDTO getByPhoneNum(String phoneNum);
+	public List<CustomerDTO> getByPhoneNum(String phoneNum);
 
-	public CustomerDTO getByEmail(String email);
+	public List<CustomerDTO> getByEmail(String email);
 
 	public List<CustomerDTO> getByActive(boolean isActive);
 

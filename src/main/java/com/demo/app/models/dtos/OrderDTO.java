@@ -12,7 +12,7 @@ import com.demo.app.models.entities.OrderDetail;
  */
 public class OrderDTO {
 	private Invoice invoice;
-	private Timestamp orderTimeStamp;
+	private Timestamp timestamp;
 	private List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
 
 	public Invoice getInvoice() {
@@ -24,12 +24,12 @@ public class OrderDTO {
 		return this;
 	}
 
-	public Timestamp getOrderTimeStamp() {
-		return orderTimeStamp;
+	public Timestamp getTimestamp() {
+		return timestamp;
 	}
 
-	public OrderDTO setOrderTimeStamp(Timestamp orderTimeStamp) {
-		this.orderTimeStamp = orderTimeStamp;
+	public OrderDTO setTimestamp(Timestamp timestamp) {
+		this.timestamp = timestamp;
 		return this;
 	}
 
@@ -44,8 +44,7 @@ public class OrderDTO {
 
 	@Override
 	public String toString() {
-		return "OrderDTO [invoice=" + invoice + ", orderDetails=" + orderDetails + ", orderTimeStamp=" + orderTimeStamp
-				+ "]";
+		return "OrderDTO [invoice=" + invoice + ", orderDetails=" + orderDetails + ", timestamp=" + timestamp + "]";
 	}
 
 }

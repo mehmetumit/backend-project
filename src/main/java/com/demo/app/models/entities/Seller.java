@@ -51,6 +51,10 @@ public class Seller {
 		this.isActive = isActive;
 	}
 
+	public Seller() {
+
+	}
+
 	public long getId() {
 		return id;
 	}

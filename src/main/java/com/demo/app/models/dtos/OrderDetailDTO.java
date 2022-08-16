@@ -1,18 +1,13 @@
 package com.demo.app.models.dtos;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.demo.app.models.entities.Invoice;
-import com.demo.app.models.entities.OrderDetail;
+import com.demo.app.models.entities.Product;
 
 /**
  * OrderDetailDTO
  */
 public class OrderDetailDTO {
 	private int quantity;
-	private Invoice invoice;
-	private List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
+	private Product product;
 
 	public int getQuantity() {
 		return quantity;
@@ -23,28 +18,18 @@ public class OrderDetailDTO {
 		return this;
 	}
 
-	public Invoice getInvoice() {
-		return invoice;
+	public Product getProduct() {
+		return product;
 	}
 
-	public OrderDetailDTO setInvoice(Invoice invoice) {
-		this.invoice = invoice;
-		return this;
-	}
-
-	public List<OrderDetail> getOrderDetail() {
-		return orderDetails;
-	}
-
-	public OrderDetailDTO setOrderDetails(List<OrderDetail> orderDetails) {
-		this.orderDetails = orderDetails;
+	public OrderDetailDTO setProduct(Product product) {
+		this.product = product;
 		return this;
 	}
 
 	@Override
 	public String toString() {
-		return "OrderDetailDTO [invoice=" + invoice + ", orderDetails=" + orderDetails + ", quantity=" + quantity
-				+ "]";
+		return "OrderDetailDTO [product=" + product + ", quantity=" + quantity + "]";
 	}
 
 }

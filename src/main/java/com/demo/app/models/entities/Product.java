@@ -48,6 +48,10 @@ public class Product {
 		this.isActive = isActive;
 	}
 
+	public Product() {
+
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -57,11 +61,11 @@ public class Product {
 		return this;
 	}
 
-	public StockDetail getStockDetails() {
+	public StockDetail getStockDetail() {
 		return stockDetail;
 	}
 
-	public Product setStockDetails(StockDetail stockDetails) {
+	public Product setStockDetail(StockDetail stockDetails) {
 		this.stockDetail = stockDetails;
 		return this;
 	}

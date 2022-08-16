@@ -14,13 +14,13 @@ public interface SellerService extends Service<SellerDTO, Seller> {
 	public int add(SellerDTO dto);
 
 	@Override
-	public int delete(long id);
+	public int delete(int id);
 
 	@Override
 	public List<SellerDTO> getAll();
 
 	@Override
-	public SellerDTO getById(long id);
+	public SellerDTO getById(int id);
 
 	@Override
 	public SellerDTO toDTO(Seller entity);
@@ -31,13 +31,15 @@ public interface SellerService extends Service<SellerDTO, Seller> {
 	@Override
 	public int update(SellerDTO dto);
 
-	public Seller getByAddress(String address);
+	public SellerDTO getByName(String name);
 
-	public Seller getByPhoneNum(String phoneNum);
+	public SellerDTO getByAddress(String address);
 
-	public Seller getByEmail(String email);
+	public SellerDTO getByPhoneNum(String phoneNum);
 
-	public Seller getByFax(String fax);
+	public SellerDTO getByEmail(String email);
 
-	public List<Seller> getByActive(boolean isActive);
+	public SellerDTO getByFax(String fax);
+
+	public List<SellerDTO> getByActive(boolean isActive);
 }
