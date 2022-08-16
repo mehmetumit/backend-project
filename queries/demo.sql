@@ -35,16 +35,17 @@ CREATE TABLE "product"(
 	order_detail_id INT REFERENCES order_detail(id) NOT NULL,
 	category_name VARCHAR(255) NOT NULL,
 	name VARCHAR(255) NOT NULL,
-	unit_price MONEY DEFAULT 0 NOT NULL,
+	unit_price NUMERIC(12,2) DEFAULT 0 NOT NULL,
 	is_active BOOL DEFAULT TRUE NOT NULL
 );
 CREATE TABLE "supplier"(
 	id SERIAL PRIMARY KEY,
+	name VARCHAR(255) NOT NULL,
 	address VARCHAR(255) NOT NULL,
 	phone_num PHONE NOT NULL,
 	is_active BOOL DEFAULT TRUE NOT NULL
 );
-CREATE TABLE "stock_details"(
+CREATE TABLE "stock_detail"(
 	id SERIAL PRIMARY KEY,
 	product_id INT REFERENCES product(id) NOT NULL,
 	supplier_id INT REFERENCES supplier(id) NOT NULL,
@@ -52,7 +53,8 @@ CREATE TABLE "stock_details"(
 );
 CREATE TABLE "seller"(
 	id SERIAL PRIMARY KEY,
-	address VARCHAR(255),
+	name VARCHAR(255) NOT NULL,
+	address VARCHAR(255) NOT NULL,
 	phone_num PHONE NOT NULL,
 	email_addr EMAIL NOT NULL,
 	fax VARCHAR(255) DEFAULT '' NOT NULL,
@@ -70,3 +72,18 @@ CREATE TABLE "invoice"(
 	total_tax MONEY GENERATED ALWAYS AS (sub_total * tax_rate / 100) STORED,
 	total_price MONEY GENERATED ALWAYS AS (sub_total - discount + sub_total * tax_rate / 100) STORED
 );
+CREATE OR REPLACE FUNCTION calculate_sub_total()
+	RETURNS trigger
+	LANGUAGE plpgsql AS
+$$
+BEGIN
+	NEW.sub_total := (select (unit_price * quantity) from "order" left join order_detail on "order".id = order_detail.order_id left join product on order_detail.id = product.order_detail_id where "order".id = NEW.id);
+	RETURN NEW;
+END;
+$$;
+		
+CREATE TRIGGER invoice_insert_trigger
+	BEFORE INSERT
+	ON "invoice"
+	FOR EACH ROW
+	EXECUTE PROCEDURE calculate_sub_total();

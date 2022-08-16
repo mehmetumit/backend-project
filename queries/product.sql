@@ -1,0 +1,11 @@
+INSERT INTO product(order_detail_id, category_name, name, unit_price, is_active) VALUES(1, 'Yoğurt', 'Kova Yoğurt 2000g', 36.95, true );
+INSERT INTO product(order_detail_id, category_name, name, unit_price, is_active) VALUES(2, 'Peynir', 'Kaşar Peyniri 400g', 48.95, false );
+INSERT INTO product(order_detail_id, category_name, name, unit_price, is_active) VALUES(3, 'Yoğurt', 'Kaymaklı Tava Yoğurt 1000g', 29.95, true );
+INSERT INTO product(order_detail_id, category_name, name, unit_price, is_active) VALUES(4, 'Yoğurt', 'Efsane Yoğurt 350g', 12.95, true );
+INSERT INTO product(order_detail_id, category_name, name, unit_price, is_active) VALUES(5, 'Yoğurt', 'Süzme Yoğurt 250g', 25.95, false );
+INSERT INTO product(order_detail_id, category_name, name, unit_price, is_active) VALUES(6, 'Ayran', 'Eker Ayran 1000ml', 13.95, true );
+INSERT INTO product(order_detail_id, category_name, name, unit_price, is_active) VALUES(7, 'Kefir', 'Ananaslı Kefir 200ml', 6.95, true );
+INSERT INTO product(order_detail_id, category_name, name, unit_price, is_active) VALUES(8, 'Tatlı', 'Keşkül 150g', 9.95, true );
+INSERT INTO product(order_detail_id, category_name, name, unit_price, is_active) VALUES(9, 'Fırsat Paketleri', 'Sakızlı Muhallebi 6x150g', 49.75, true );
+INSERT INTO product(order_detail_id, category_name, name, unit_price, is_active) VALUES(10, 'Tatlı', 'Antep Fıstıklı Sütlü Çikolatalı Tatlı', 9.95, true );
+INSERT INTO product(order_detail_id, category_name, name, unit_price, is_active) VALUES(11, 'Tatlı', 'Hoşmerim 150g', 9.95, true );
