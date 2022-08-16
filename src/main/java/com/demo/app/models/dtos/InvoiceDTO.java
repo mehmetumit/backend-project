@@ -18,32 +18,36 @@ public class InvoiceDTO {
 		return invoiceTimestamp;
 	}
 
-	public void setInvoiceTimestamp(Timestamp invoiceTimestamp) {
+	public InvoiceDTO setInvoiceTimestamp(Timestamp invoiceTimestamp) {
 		this.invoiceTimestamp = invoiceTimestamp;
+		return this;
 	}
 
 	public Timestamp getDueTimestamp() {
 		return dueTimestamp;
 	}
 
-	public void setDueTimestamp(Timestamp dueTimestamp) {
+	public InvoiceDTO setDueTimestamp(Timestamp dueTimestamp) {
 		this.dueTimestamp = dueTimestamp;
+		return this;
 	}
 
 	public double getSubTotal() {
 		return subTotal;
 	}
 
-	public void setSubTotal(double subTotal) {
+	public InvoiceDTO setSubTotal(double subTotal) {
 		this.subTotal = subTotal;
+		return this;
 	}
 
 	public double getDiscount() {
 		return discount;
 	}
 
-	public void setDiscount(double discount) {
+	public InvoiceDTO setDiscount(double discount) {
 		this.discount = discount;
+		return this;
 	}
 
 	public int getTaxRate() {
@@ -58,16 +62,18 @@ public class InvoiceDTO {
 		return totalTax;
 	}
 
-	public void setTotalTax(double totalTax) {
+	public InvoiceDTO setTotalTax(double totalTax) {
 		this.totalTax = totalTax;
+		return this;
 	}
 
 	public double getTotalPrice() {
 		return totalPrice;
 	}
 
-	public void setTotalPrice(double totalPrice) {
+	public InvoiceDTO setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
+		return this;
 	}
 
 	@Override

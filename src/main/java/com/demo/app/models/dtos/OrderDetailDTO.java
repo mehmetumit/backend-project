@@ -18,29 +18,32 @@ public class OrderDetailDTO {
 		return quantity;
 	}
 
-	public void setQuantity(int quantity) {
+	public OrderDetailDTO setQuantity(int quantity) {
 		this.quantity = quantity;
+		return this;
 	}
 
 	public Invoice getInvoice() {
 		return invoice;
 	}
 
-	public void setInvoice(Invoice invoice) {
+	public OrderDetailDTO setInvoice(Invoice invoice) {
 		this.invoice = invoice;
+		return this;
 	}
 
 	public List<OrderDetail> getOrderDetail() {
 		return orderDetails;
 	}
 
-	public void setOrderDetails(List<OrderDetail> orderDetails) {
+	public OrderDetailDTO setOrderDetails(List<OrderDetail> orderDetails) {
 		this.orderDetails = orderDetails;
+		return this;
 	}
 
 	@Override
 	public String toString() {
-		return "OrderDetailsDTO [invoice=" + invoice + ", orderDetails=" + orderDetails + ", quantity=" + quantity
+		return "OrderDetailDTO [invoice=" + invoice + ", orderDetails=" + orderDetails + ", quantity=" + quantity
 				+ "]";
 	}
 

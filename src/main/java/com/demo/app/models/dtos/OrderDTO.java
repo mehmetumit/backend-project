@@ -19,24 +19,27 @@ public class OrderDTO {
 		return invoice;
 	}
 
-	public void setInvoice(Invoice invoice) {
+	public OrderDTO setInvoice(Invoice invoice) {
 		this.invoice = invoice;
+		return this;
 	}
 
 	public Timestamp getOrderTimeStamp() {
 		return orderTimeStamp;
 	}
 
-	public void setOrderTimeStamp(Timestamp orderTimeStamp) {
+	public OrderDTO setOrderTimeStamp(Timestamp orderTimeStamp) {
 		this.orderTimeStamp = orderTimeStamp;
+		return this;
 	}
 
 	public List<OrderDetail> getOrderDetails() {
 		return orderDetails;
 	}
 
-	public void setOrderDetails(List<OrderDetail> orderDetails) {
+	public OrderDTO setOrderDetails(List<OrderDetail> orderDetails) {
 		this.orderDetails = orderDetails;
+		return this;
 	}
 
 	@Override

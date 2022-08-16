@@ -18,56 +18,63 @@ public class CustomerDTO {
 		return name;
 	}
 
-	public void setName(String name) {
+	public CustomerDTO setName(String name) {
 		this.name = name;
+		return this;
 	}
 
 	public String getSurname() {
 		return surname;
 	}
 
-	public void setSurname(String surname) {
+	public CustomerDTO setSurname(String surname) {
 		this.surname = surname;
+		return this;
 	}
 
 	public String getPhoneNum() {
 		return phoneNum;
 	}
 
-	public void setPhoneNum(String phoneNum) {
+	public CustomerDTO setPhoneNum(String phoneNum) {
 		this.phoneNum = phoneNum;
+		return this;
 	}
 
 	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public CustomerDTO setEmail(String email) {
 		this.email = email;
+		return this;
 	}
 
 	public boolean isActive() {
 		return isActive;
 	}
 
-	public void setActive(boolean isActive) {
+	public CustomerDTO setActive(boolean isActive) {
 		this.isActive = isActive;
+		return this;
 	}
 
 	public double getDiscountRate() {
 		return discountRate;
 	}
 
-	public void setDiscountRate(double discountRate) {
+	public CustomerDTO setDiscountRate(double discountRate) {
 		this.discountRate = discountRate;
+		return this;
 	}
 
 	public List<Order> getOrders() {
 		return orders;
 	}
 
-	public void setOrders(List<Order> orders) {
+	public CustomerDTO setOrders(List<Order> orders) {
 		this.orders = orders;
+		return this;
 	}
 
 	@Override

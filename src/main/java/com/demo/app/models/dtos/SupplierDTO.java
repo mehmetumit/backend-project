@@ -18,32 +18,36 @@ public class SupplierDTO {
 		return address;
 	}
 
-	public void setAddress(String address) {
+	public SupplierDTO setAddress(String address) {
 		this.address = address;
+		return this;
 	}
 
 	public String getPhoneNum() {
 		return phoneNum;
 	}
 
-	public void setPhoneNum(String phoneNum) {
+	public SupplierDTO setPhoneNum(String phoneNum) {
 		this.phoneNum = phoneNum;
+		return this;
 	}
 
 	public boolean isActive() {
 		return isActive;
 	}
 
-	public void setActive(boolean isActive) {
+	public SupplierDTO setActive(boolean isActive) {
 		this.isActive = isActive;
+		return this;
 	}
 
 	public List<StockDetail> getStockDetails() {
 		return stockDetails;
 	}
 
-	public void setStockDetails(List<StockDetail> stockDetails) {
+	public SupplierDTO setStockDetails(List<StockDetail> stockDetails) {
 		this.stockDetails = stockDetails;
+		return this;
 	}
 
 	@Override

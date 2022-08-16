@@ -10,8 +10,9 @@ public class StockDetailDTO {
 		return quantity;
 	}
 
-	public void setQuantity(int quantity) {
+	public StockDetailDTO setQuantity(int quantity) {
 		this.quantity = quantity;
+		return this;
 	}
 
 	@Override
