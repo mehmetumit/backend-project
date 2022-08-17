@@ -14,8 +14,13 @@ import org.hibernate.mapping.List;
 class App {
 
 	public static void main(String[] args) {
+		DatabaseEngine dbEngine = DatabaseEngine.getEngine();
 		CustomerServiceImpl customerService = new CustomerServiceImpl();
 		customerService.getAll().forEach(c -> System.out.println(c));
-
+		dbEngine.closeDB();
+		// Fix mvn exec plugin thread issue
+		// Also we can add "<cleanupDaemonThreads>false</cleanupDaemonThreads>"" option
+		// to fix the issue instead of System.exit(0)
+		System.exit(0);
 	}
 }

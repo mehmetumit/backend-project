@@ -58,6 +58,10 @@ public class DatabaseEngine {
 		return sessionFactory.openSession();
 	}
 
+	public void closeDB() {
+		sessionFactory.close();
+	}
+
 	// Get current session with session factory
 	public Session getCurrentSession() {
 		return sessionFactory.getCurrentSession();
