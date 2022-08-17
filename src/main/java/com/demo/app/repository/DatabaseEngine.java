@@ -72,7 +72,7 @@ public class DatabaseEngine {
 		session = sessionFactory.openSession();
 		session.beginTransaction();
 
-		T entity = (T) session.getReference(entityClass.getClass(), id);
+		T entity = (T) session.getReference(entityClass, id);
 
 		session.close();
 
