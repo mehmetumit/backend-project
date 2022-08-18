@@ -18,6 +18,7 @@
   </properties>
 
   <dependencies>
+    <!--Can be useful in future-->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -29,22 +30,23 @@
         <artifactId>postgresql</artifactId>
         <version>42.4.0</version>
     </dependency>
-    <!--<dependency>-->
-        <!--<groupId>org.hibernate.orm</groupId>-->
-        <!--<artifactId>hibernate-core</artifactId>-->
-        <!--<version>6.1.2.Final</version>-->
-    <!--</dependency>-->
-    <!--JPA-->
-    <!--<dependency>-->
-        <!--<groupId>jakarta.persistence</groupId>-->
-        <!--<artifactId>jakarta.persistence-api</artifactId>-->
-        <!--<version>3.1.0</version>-->
-    <!--</dependency>-->
     <!--JPA implementation provider -->
     <dependency>
         <groupId>org.hibernate</groupId>
         <artifactId>hibernate-core</artifactId>
         <version>6.1.2.Final</version>
+    </dependency>
+    <!--RESTEasy-->
+    <dependency>
+        <groupId>org.jboss.resteasy</groupId>
+        <artifactId>resteasy-jaxrs</artifactId>
+        <version>3.15.3.Final</version>
+    </dependency>
+    <!--RESTEasy client-->
+    <dependency>
+        <groupId>org.jboss.resteasy</groupId>
+        <artifactId>resteasy-client</artifactId>
+        <version>6.1.0.Final</version>
     </dependency>
   </dependencies>
 
@@ -102,4 +104,6 @@
       </plugins>
     </pluginManagement>
   </build>
+  <!--Web app-->
+  <packaging>war</packaging>
 </project>
