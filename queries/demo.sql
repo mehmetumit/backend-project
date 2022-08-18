@@ -66,8 +66,8 @@ CREATE TABLE "invoice"(
 	seller_id INT REFERENCES seller(id) NOT NULL,
 	invoice_timestamp TIMESTAMP NOT NULL,
 	due_timestamp TIMESTAMP NOT NULL,
-	sub_total NUMERIC(12,2) DEFAULT 0 CHECK (sub_total >= 0) NOT NULL,
-	discount NUMERIC(12,2) DEFAULT 0 CHECK (discount >= 0) NOT NULL,
+	sub_total NUMERIC(12,2) DEFAULT 0 NOT NULL,
+	discount NUMERIC(12,2) DEFAULT 0 NOT NULL,
 	tax_rate SMALLINT DEFAULT 0 CHECK (tax_rate >= 0) NOT NULL,
 	total_tax NUMERIC(12,2) GENERATED ALWAYS AS (sub_total * tax_rate / 100) STORED,
 	total_price NUMERIC(12,2) GENERATED ALWAYS AS (sub_total - discount + sub_total * tax_rate / 100) STORED
@@ -77,8 +77,8 @@ CREATE OR REPLACE FUNCTION calculate_sub_total()
 	LANGUAGE plpgsql AS
 $$
 BEGIN
-	NEW.sub_total := (select (unit_price * quantity) from "order" left join order_detail on "order".id = order_detail.order_id left join product on order_detail.id = product.order_detail_id where "order".id = NEW.id);
-	RETURN NEW.sub_total;
+	NEW.sub_total := (select SUM(unit_price * quantity) from "order" left join order_detail on "order".id = order_detail.order_id left join product on order_detail.id = product.order_detail_id where "order".id = NEW.order_id);
+	RETURN NEW;
 END;
 $$;
 		

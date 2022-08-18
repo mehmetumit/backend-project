@@ -1,5 +1,5 @@
 INSERT INTO invoice(order_id, seller_id, invoice_timestamp, due_timestamp, discount, tax_rate) VALUES(1, 1,  '2022-08-15 11:10:14',  '2022-09-16 19:00:00', 10, 8  );
-INSERT INTO invoice(order_id, seller_id, invoice_timestamp, due_timestamp, discount, tax_rate) VALUES(1, 1,  '2022-08-15 11:10:14',  '2022-09-16 15:00:00', 10, 8  );
+INSERT INTO invoice(order_id, seller_id, invoice_timestamp, due_timestamp, discount, tax_rate) VALUES(1, 4,  '2022-08-15 11:10:14',  '2022-09-16 15:00:00', 10, 8  );
 INSERT INTO invoice(order_id, seller_id, invoice_timestamp, due_timestamp, discount, tax_rate) VALUES(1, 2,  '2022-08-15 11:10:14',  '2022-09-16 12:00:00', 10, 8  );
 INSERT INTO invoice(order_id, seller_id, invoice_timestamp, due_timestamp, discount, tax_rate) VALUES(1, 3,  '2022-08-15 11:10:14',  '2022-09-16 13:00:00', 10, 8  );
 INSERT INTO invoice(order_id, seller_id, invoice_timestamp, due_timestamp, discount, tax_rate) VALUES(2, 1,  '2022-08-15 11:10:53',  '2023-09-16 16:00:00', 10, 8  );
