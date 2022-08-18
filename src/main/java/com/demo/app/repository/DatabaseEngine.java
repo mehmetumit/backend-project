@@ -27,6 +27,12 @@ public class DatabaseEngine {
 		return (databaseEngine == null) ? new DatabaseEngine() : databaseEngine;
 	}
 
+	@Override
+	protected void finalize() throws Throwable {
+		// TODO Auto-generated method stub
+		super.finalize();
+	}
+
 	// Singleton
 	private DatabaseEngine() {
 		initDatabase();
@@ -73,9 +79,9 @@ public class DatabaseEngine {
 		session.beginTransaction();
 
 		T entity = (T) session.getReference(entityClass, id);
-
-		session.close();
-
+		// commitTransaction();
+		// System.out.println(((Customer) entity).getId());
+		// session.close();
 		return entity;
 	}
 

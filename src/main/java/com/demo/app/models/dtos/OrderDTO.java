@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.demo.app.models.entities.Invoice;
-import com.demo.app.models.entities.OrderDetail;
 
 /**
  * OrderDTO
@@ -13,7 +12,7 @@ import com.demo.app.models.entities.OrderDetail;
 public class OrderDTO {
 	private Invoice invoice;
 	private Timestamp timestamp;
-	private List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
+	private List<OrderDetailDTO> orderDetails = new ArrayList<OrderDetailDTO>();
 
 	public Invoice getInvoice() {
 		return invoice;
@@ -33,11 +32,11 @@ public class OrderDTO {
 		return this;
 	}
 
-	public List<OrderDetail> getOrderDetails() {
+	public List<OrderDetailDTO> getOrderDetails() {
 		return orderDetails;
 	}
 
-	public OrderDTO setOrderDetails(List<OrderDetail> orderDetails) {
+	public OrderDTO setOrderDetails(List<OrderDetailDTO> orderDetails) {
 		this.orderDetails = orderDetails;
 		return this;
 	}

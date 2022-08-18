@@ -1,13 +1,11 @@
 package com.demo.app.models.dtos;
 
-import com.demo.app.models.entities.Product;
-
 /**
  * OrderDetailDTO
  */
 public class OrderDetailDTO {
 	private int quantity;
-	private Product product;
+	private ProductDTO product;
 
 	public int getQuantity() {
 		return quantity;
@@ -18,11 +16,11 @@ public class OrderDetailDTO {
 		return this;
 	}
 
-	public Product getProduct() {
+	public ProductDTO getProduct() {
 		return product;
 	}
 
-	public OrderDetailDTO setProduct(Product product) {
+	public OrderDetailDTO setProduct(ProductDTO product) {
 		this.product = product;
 		return this;
 	}

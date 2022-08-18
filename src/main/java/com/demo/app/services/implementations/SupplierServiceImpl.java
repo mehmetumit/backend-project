@@ -8,13 +8,15 @@ import com.demo.app.models.dtos.SupplierDTO;
 import com.demo.app.models.entities.Supplier;
 import com.demo.app.repository.dao.SupplierDAO;
 import com.demo.app.repository.daoImpl.SupplierDAOImpl;
+import com.demo.app.services.abstracts.StockDetailService;
 import com.demo.app.services.abstracts.SupplierService;
 
 /**
  * SupplierServiceImpl
  */
 public class SupplierServiceImpl implements SupplierService {
-	SupplierDAO supplierDAO = new SupplierDAOImpl();
+	private static SupplierDAO supplierDAO = new SupplierDAOImpl();
+	private static StockDetailService stockDetailService = new StockDetailServiceImpl();
 
 	@Override
 	public int add(SupplierDTO dto) {
@@ -67,7 +69,10 @@ public class SupplierServiceImpl implements SupplierService {
 				.setAddress(entity.getAddress())
 				.setPhoneNum(entity.getPhoneNum())
 				.setActive(entity.isActive())
-				.setStockDetails(entity.getStockDetails());
+				.setStockDetails(entity.getStockDetails()
+						.stream()
+						.map(s -> stockDetailService.toDTO(s))
+						.collect(Collectors.toList()));
 	}
 
 	@Override
@@ -76,7 +81,10 @@ public class SupplierServiceImpl implements SupplierService {
 				.setAddress(dto.getAddress())
 				.setPhoneNum(dto.getPhoneNum())
 				.setActive(dto.isActive())
-				.setStockDetails(dto.getStockDetails());
+				.setStockDetails(dto.getStockDetails()
+						.stream()
+						.map(s -> stockDetailService.toEntity(s))
+						.collect(Collectors.toList()));
 	}
 
 	@Override

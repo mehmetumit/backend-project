@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import com.demo.app.models.dtos.CustomerDTO;
 import com.demo.app.models.entities.Customer;
+import com.demo.app.repository.DatabaseEngine;
 import com.demo.app.repository.dao.CustomerDAO;
 import com.demo.app.repository.daoImpl.CustomerDAOImpl;
 import com.demo.app.services.abstracts.CustomerService;
@@ -62,6 +63,8 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public CustomerDTO toDTO(Customer entity) {
+		DatabaseEngine databaseEngine = DatabaseEngine.getEngine();
+		databaseEngine.openSession();
 		return new CustomerDTO()
 				.setName(entity.getName())
 				.setSurname(entity.getSurname())

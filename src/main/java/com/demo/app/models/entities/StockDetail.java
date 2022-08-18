@@ -1,5 +1,7 @@
 package com.demo.app.models.entities;
 
+import org.hibernate.annotations.Proxy;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "stock_detail")
+@Proxy(lazy = false)
 public class StockDetail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -14,7 +14,7 @@ public class SellerDTO {
 	private String email;
 	private String fax;
 	private boolean isActive;
-	private List<Invoice> invoices = new ArrayList<Invoice>();
+	private List<InvoiceDTO> invoices = new ArrayList<InvoiceDTO>();
 
 	public String getAddress() {
 		return address;
@@ -61,11 +61,11 @@ public class SellerDTO {
 		return this;
 	}
 
-	public List<Invoice> getInvoices() {
+	public List<InvoiceDTO> getInvoices() {
 		return invoices;
 	}
 
-	public SellerDTO setInvoices(List<Invoice> invoices) {
+	public SellerDTO setInvoices(List<InvoiceDTO> invoices) {
 		this.invoices = invoices;
 		return this;
 	}

@@ -3,13 +3,11 @@ package com.demo.app.models.dtos;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.demo.app.models.entities.StockDetail;
-
 /**
  * SupplierDTO
  */
 public class SupplierDTO {
-	List<StockDetail> stockDetails = new ArrayList<StockDetail>();
+	List<StockDetailDTO> stockDetails = new ArrayList<StockDetailDTO>();
 	private String address;
 	private String phoneNum;
 	private boolean isActive;
@@ -41,11 +39,11 @@ public class SupplierDTO {
 		return this;
 	}
 
-	public List<StockDetail> getStockDetails() {
+	public List<StockDetailDTO> getStockDetails() {
 		return stockDetails;
 	}
 
-	public SupplierDTO setStockDetails(List<StockDetail> stockDetails) {
+	public SupplierDTO setStockDetails(List<StockDetailDTO> stockDetails) {
 		this.stockDetails = stockDetails;
 		return this;
 	}

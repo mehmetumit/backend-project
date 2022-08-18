@@ -3,8 +3,6 @@ package com.demo.app.models.dtos;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.demo.app.models.entities.Order;
-
 public class CustomerDTO {
 	private String name;
 	private String surname;
@@ -12,7 +10,7 @@ public class CustomerDTO {
 	private String email;
 	private boolean isActive;
 	private int discountRate;
-	private List<Order> orders = new ArrayList<Order>();
+	private List<OrderDTO> orders = new ArrayList<OrderDTO>();
 
 	public String getName() {
 		return name;
@@ -68,11 +66,11 @@ public class CustomerDTO {
 		return this;
 	}
 
-	public List<Order> getOrders() {
+	public List<OrderDTO> getOrders() {
 		return orders;
 	}
 
-	public CustomerDTO setOrders(List<Order> orders) {
+	public CustomerDTO setOrders(List<OrderDTO> orders) {
 		this.orders = orders;
 		return this;
 	}

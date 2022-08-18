@@ -20,7 +20,8 @@ public class OrderDetail {
 	@Column(name = "quantity")
 	private int quantity;
 
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	// @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	// @JoinColumn(name = "order_detail_id", referencedColumnName = "id")
 	@JoinColumn(name = "id", referencedColumnName = "order_detail_id")
 	private Product product;

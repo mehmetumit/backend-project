@@ -1,5 +1,7 @@
 package com.demo.app.models.entities;
 
+import org.hibernate.annotations.Proxy;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,11 +15,13 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "product")
+@Proxy(lazy = false)
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	// @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	// @JoinColumn(name = "product_id", referencedColumnName = "id")
 	@JoinColumn(name = "id", referencedColumnName = "product_id")
 	private StockDetail stockDetail;

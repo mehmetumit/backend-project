@@ -3,6 +3,8 @@ package com.demo.app.models.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.annotations.Proxy;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,6 +18,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "supplier")
+@Proxy(lazy = false)
 public class Supplier {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

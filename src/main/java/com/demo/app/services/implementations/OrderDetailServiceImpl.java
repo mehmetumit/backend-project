@@ -9,12 +9,14 @@ import com.demo.app.models.entities.OrderDetail;
 import com.demo.app.repository.daoImpl.OrderDetailDAOImpl;
 import com.demo.app.repository.dao.OrderDetailDAO;
 import com.demo.app.services.abstracts.OrderDetailService;
+import com.demo.app.services.abstracts.ProductService;
 
 /**
  * OrderDetailServiceImpl
  */
 public class OrderDetailServiceImpl implements OrderDetailService {
 	private static OrderDetailDAO orderDetailDAO = new OrderDetailDAOImpl();
+	private static ProductService productService = new ProductServiceImpl();
 
 	@Override
 	public int add(OrderDetailDTO dto) {
@@ -65,14 +67,14 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 	public OrderDetailDTO toDTO(OrderDetail entity) {
 		return new OrderDetailDTO()
 				.setQuantity(entity.getQuantitiy())
-				.setProduct(entity.getProduct());
+				.setProduct(productService.toDTO(entity.getProduct()));
 	}
 
 	@Override
 	public OrderDetail toEntity(OrderDetailDTO dto) {
 		return new OrderDetail()
 				.setQuantity(dto.getQuantity())
-				.setProduct(dto.getProduct());
+				.setProduct(productService.toEntity(dto.getProduct()));
 	}
 
 	@Override

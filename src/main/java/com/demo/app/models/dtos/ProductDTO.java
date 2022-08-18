@@ -1,14 +1,12 @@
 package com.demo.app.models.dtos;
 
-import com.demo.app.models.entities.StockDetail;
-
 /**
  * ProductDTO
  */
 public class ProductDTO {
 	private String categoryName;
 	private String name;
-	private StockDetail stockDetail;
+	private StockDetailDTO stockDetail;
 	private double unitPrice;
 	private boolean isActive;
 
@@ -30,11 +28,11 @@ public class ProductDTO {
 		return this;
 	}
 
-	public StockDetail getStockDetail() {
+	public StockDetailDTO getStockDetail() {
 		return stockDetail;
 	}
 
-	public ProductDTO setStockDetail(StockDetail stockDetail) {
+	public ProductDTO setStockDetail(StockDetailDTO stockDetail) {
 		this.stockDetail = stockDetail;
 		return this;
 	}
