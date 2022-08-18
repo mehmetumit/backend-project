@@ -78,7 +78,7 @@ public class CustomerDTO {
 	@Override
 	public String toString() {
 		return "CustomerDTO [discountRate=" + discountRate + ", email=" + email + ", isActive=" + isActive + ", name="
-				+ name + ", orders=" + orders + ", phoneNum=" + phoneNum + ", surname=" + surname + "]";
+				+ name + ", orders=" + orders + ", phoneNum=" + phoneNum + ", surname=" + surname + "]\n";
 	}
 
 }

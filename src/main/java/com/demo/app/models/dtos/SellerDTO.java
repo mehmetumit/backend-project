@@ -73,7 +73,7 @@ public class SellerDTO {
 	@Override
 	public String toString() {
 		return "SellerDTO [address=" + address + ", email=" + email + ", fax=" + fax + ", invoices=" + invoices
-				+ ", isActive=" + isActive + ", phoneNum=" + phoneNum + "]";
+				+ ", isActive=" + isActive + ", phoneNum=" + phoneNum + "]\n";
 	}
 
 }

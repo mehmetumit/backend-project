@@ -89,4 +89,10 @@ public class Supplier {
 		return this;
 	}
 
+	@Override
+	public String toString() {
+		return "Supplier [address=" + address + ", id=" + id + ", isActive=" + isActive + ", name=" + name
+				+ ", phoneNum=" + phoneNum + ", stockDetails=" + stockDetails + "]\n";
+	}
+
 }

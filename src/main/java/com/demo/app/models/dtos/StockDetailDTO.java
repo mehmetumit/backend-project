@@ -17,7 +17,7 @@ public class StockDetailDTO {
 
 	@Override
 	public String toString() {
-		return "StockDetailsDTO [quantity=" + quantity + "]";
+		return "StockDetailDTO [quantity=" + quantity + "]\n";
 	}
 
 }

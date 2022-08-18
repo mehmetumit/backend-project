@@ -124,7 +124,7 @@ public class Seller {
 	@Override
 	public String toString() {
 		return "Seller [address=" + address + ", email=" + email + ", fax=" + fax + ", id=" + id + ", invoices="
-				+ invoices + ", isActive=" + isActive + ", phoneNum=" + phoneNum + "]";
+				+ invoices + ", isActive=" + isActive + ", phoneNum=" + phoneNum + "]\n";
 	}
 
 }

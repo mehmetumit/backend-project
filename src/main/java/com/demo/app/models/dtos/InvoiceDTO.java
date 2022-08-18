@@ -81,7 +81,7 @@ public class InvoiceDTO {
 	public String toString() {
 		return "InvoiceDTO [discount=" + discount + ", dueTimestamp=" + dueTimestamp + ", invoiceTimestamp="
 				+ invoiceTimestamp + ", subTotal=" + subTotal + ", taxRate=" + taxRate + ", totalPrice=" + totalPrice
-				+ ", totalTax=" + totalTax + "]";
+				+ ", totalTax=" + totalTax + "]\n";
 	}
 
 }

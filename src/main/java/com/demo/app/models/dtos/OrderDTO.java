@@ -43,7 +43,7 @@ public class OrderDTO {
 
 	@Override
 	public String toString() {
-		return "OrderDTO [invoice=" + invoice + ", orderDetails=" + orderDetails + ", timestamp=" + timestamp + "]";
+		return "OrderDTO [invoice=" + invoice + ", orderDetails=" + orderDetails + ", timestamp=" + timestamp + "]\n";
 	}
 
 }

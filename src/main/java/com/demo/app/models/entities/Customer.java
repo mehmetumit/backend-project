@@ -139,7 +139,7 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer [discountRate=" + discountRate + ", email=" + email + ", id=" + id + ", isActive=" + isActive
-				+ ", name=" + name + ", orders=" + orders + ", phoneNum=" + phoneNum + ", surname=" + surname + "]";
+				+ ", name=" + name + ", orders=" + orders + ", phoneNum=" + phoneNum + ", surname=" + surname + "]\n";
 	}
 
 }

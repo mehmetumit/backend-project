@@ -29,8 +29,8 @@ public class DatabaseEngine {
 
 	@Override
 	protected void finalize() throws Throwable {
-		// TODO Auto-generated method stub
-		super.finalize();
+		this.closeDB();
+		System.out.println("\nDB clossed!\n");
 	}
 
 	// Singleton

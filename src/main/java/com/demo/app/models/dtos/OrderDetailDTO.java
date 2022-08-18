@@ -27,7 +27,7 @@ public class OrderDetailDTO {
 
 	@Override
 	public String toString() {
-		return "OrderDetailDTO [product=" + product + ", quantity=" + quantity + "]";
+		return "OrderDetailDTO [product=" + product + ", quantity=" + quantity + "]\n";
 	}
 
 }

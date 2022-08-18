@@ -4,8 +4,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.annotations.Proxy;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,7 +18,6 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "\"order\"")
-@Proxy(lazy = false)
 public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,8 +26,8 @@ public class Order {
 
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "id", referencedColumnName = "order_id")
-	// @JoinColumn(name = "order_id", referencedColumnName = "id")
 	private Invoice invoice;
+	// @JoinColumn(name = "order_id", referencedColumnName = "id")
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "order_id", referencedColumnName = "id")
@@ -93,7 +90,7 @@ public class Order {
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", invoice=" + invoice + ", orderDetails=" + orderDetails + ", timestamp="
-				+ timestamp + "]";
+				+ timestamp + "]\n";
 	}
 
 }

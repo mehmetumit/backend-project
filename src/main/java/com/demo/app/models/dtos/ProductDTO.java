@@ -58,7 +58,7 @@ public class ProductDTO {
 	@Override
 	public String toString() {
 		return "ProductDTO [categoryName=" + categoryName + ", isActive=" + isActive + ", name=" + name
-				+ ", stockDetail=" + stockDetail + ", unitPrice=" + unitPrice + "]";
+				+ ", stockDetail=" + stockDetail + ", unitPrice=" + unitPrice + "]\n";
 	}
 
 }

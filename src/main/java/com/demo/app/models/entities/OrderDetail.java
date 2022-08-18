@@ -57,11 +57,6 @@ public class OrderDetail {
 		return this;
 	}
 
-	@Override
-	public String toString() {
-		return "OrderDetails [id=" + id + ", quantity=" + quantity + "]";
-	}
-
 	public int getQuantity() {
 		return quantity;
 	}
@@ -78,6 +73,11 @@ public class OrderDetail {
 	public OrderDetail setProduct(Product product) {
 		this.product = product;
 		return this;
+	}
+
+	@Override
+	public String toString() {
+		return "OrderDetail [id=" + id + ", product=" + product + ", quantity=" + quantity + "]\n";
 	}
 
 }

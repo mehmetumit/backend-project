@@ -52,7 +52,7 @@ public class StockDetail {
 
 	@Override
 	public String toString() {
-		return "StockDetails [id=" + id + ", quantity=" + quantity + "]";
+		return "StockDetails [id=" + id + ", quantity=" + quantity + "]\n";
 	}
 
 }

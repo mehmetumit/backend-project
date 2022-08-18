@@ -51,7 +51,7 @@ public class SupplierDTO {
 	@Override
 	public String toString() {
 		return "SupplierDTO [address=" + address + ", isActive=" + isActive + ", phoneNum=" + phoneNum
-				+ ", stockDetails=" + stockDetails + "]";
+				+ ", stockDetails=" + stockDetails + "]\n";
 	}
 
 }

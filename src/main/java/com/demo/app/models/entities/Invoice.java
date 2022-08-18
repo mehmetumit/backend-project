@@ -139,7 +139,7 @@ public class Invoice {
 	public String toString() {
 		return "Invoice [discount=" + discount + ", dueTimestamp=" + dueTimestamp + ", id=" + id + ", invoiceTimestamp="
 				+ invoiceTimestamp + ", subTotal=" + subTotal + ", taxRate=" + taxRate + ", totalPrice=" + totalPrice
-				+ ", totalTax=" + totalTax + "]";
+				+ ", totalTax=" + totalTax + "]\n";
 	}
 
 }

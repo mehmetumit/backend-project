@@ -70,8 +70,8 @@ public class Product {
 		return stockDetail;
 	}
 
-	public Product setStockDetail(StockDetail stockDetails) {
-		this.stockDetail = stockDetails;
+	public Product setStockDetail(StockDetail stockDetail) {
+		this.stockDetail = stockDetail;
 		return this;
 	}
 
@@ -114,7 +114,7 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [categoryName=" + categoryName + ", id=" + id + ", isActive=" + isActive + ", name=" + name
-				+ ", stockDetails=" + stockDetail + ", unitPrice=" + unitPrice + "]";
+				+ ", stockDetail=" + stockDetail + ", unitPrice=" + unitPrice + "]\n";
 	}
 
 }
