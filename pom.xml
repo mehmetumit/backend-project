@@ -6,9 +6,8 @@
 
   <groupId>com.demo.app</groupId>
   <artifactId>backend-project</artifactId>
-  <version>1.0-SNAPSHOT</version>
-
-  <name>backend_project</name>
+  <version>1.0</version>
+  <name>backend-project</name>
   <url>http://github.com/mehmetumit/backend-project</url>
 
   <properties>
@@ -42,6 +41,31 @@
         <artifactId>resteasy-jaxrs</artifactId>
         <version>3.15.3.Final</version>
     </dependency>
+    <dependency>
+        <groupId>org.jboss.resteasy</groupId>
+        <artifactId>resteasy-servlet-initializer</artifactId>
+        <version>6.1.0.Final</version>
+    </dependency>
+    <dependency>
+        <groupId>org.jboss.resteasy</groupId>
+        <artifactId>resteasy-jackson-provider</artifactId>
+        <version>3.15.3.Final</version>
+    </dependency>
+
+    <dependency>
+        <groupId>jakarta.servlet</groupId>
+        <artifactId>jakarta.servlet-api</artifactId>
+        <version>6.0.0</version>
+        <scope>provided</scope>
+    </dependency>
+
+  <!--<dependency>-->
+      <!--<groupId>javax.servlet</groupId>-->
+      <!--<artifactId>javax.servlet-api</artifactId>-->
+      <!--<version>4.0.1</version>-->
+      <!--<scope>provided</scope>-->
+  <!--</dependency>-->
+
     <!--RESTEasy client-->
     <dependency>
         <groupId>org.jboss.resteasy</groupId>
@@ -51,6 +75,7 @@
   </dependencies>
 
   <build>
+  <finalName>${project.name}</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
@@ -62,6 +87,18 @@
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.0.2</version>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>3.3.2</version>
+            <configuration>
+              <!--<warName>${project.name}</warName>-->
+              <!--<failOnMissingWebXml>false</failOnMissingWebXml>-->
+              <outputDirectory>
+                /home/dymos/Downloads/Tomcat/apache-tomcat-9.0.65/webapps/
+              </outputDirectory>
+            </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
@@ -101,6 +138,14 @@
                     <cleanupDaemonThreads>false</cleanupDaemonThreads>
                 </configuration>
         </plugin>
+              <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <port>8080</port>
+                </configuration>
+            </plugin>
       </plugins>
     </pluginManagement>
   </build>
