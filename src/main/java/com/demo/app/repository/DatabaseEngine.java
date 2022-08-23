@@ -27,12 +27,6 @@ public class DatabaseEngine {
 		return (databaseEngine == null) ? new DatabaseEngine() : databaseEngine;
 	}
 
-	@Override
-	protected void finalize() throws Throwable {
-		this.closeDB();
-		System.out.println("\nDB clossed!\n");
-	}
-
 	// Singleton
 	private DatabaseEngine() {
 		initDatabase();

@@ -10,12 +10,14 @@ import com.demo.app.repository.DatabaseEngine;
 import com.demo.app.repository.dao.CustomerDAO;
 import com.demo.app.repository.daoImpl.CustomerDAOImpl;
 import com.demo.app.services.abstracts.CustomerService;
+import com.demo.app.services.abstracts.OrderService;
 
 /**
  * CustomerServiceImpl
  */
 public class CustomerServiceImpl implements CustomerService {
 	private static CustomerDAO customerDAO = new CustomerDAOImpl();
+	private static OrderService orderService = new OrderServiceImpl();
 
 	@Override
 	public int add(CustomerDTO dto) {
@@ -71,7 +73,11 @@ public class CustomerServiceImpl implements CustomerService {
 				.setPhoneNum(entity.getPhoneNum())
 				.setEmail(entity.getEmail())
 				.setActive(entity.isActive())
-				.setDiscountRate(entity.getDiscountRate());
+				.setDiscountRate(entity.getDiscountRate())
+				.setOrders(entity.getOrders()
+						.stream()
+						.map(order -> orderService.toDTO(order))
+						.collect(Collectors.toList()));
 	}
 
 	@Override
@@ -82,7 +88,11 @@ public class CustomerServiceImpl implements CustomerService {
 				.setPhoneNum(dto.getPhoneNum())
 				.setEmail(dto.getEmail())
 				.setActive(dto.isActive())
-				.setDiscountRate(dto.getDiscountRate());
+				.setDiscountRate(dto.getDiscountRate())
+				.setOrders(dto.getOrders()
+						.stream()
+						.map(order -> orderService.toEntity(order))
+						.collect(Collectors.toList()));
 	}
 
 	@Override

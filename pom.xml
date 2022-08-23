@@ -17,12 +17,6 @@
   </properties>
 
   <dependencies>
-    <!--<dependency>-->
-        <!--<groupId>jakarta.servlet</groupId>-->
-        <!--<artifactId>jakarta.servlet-api</artifactId>-->
-        <!--<version>6.0.0</version>-->
-        <!--<scope>provided</scope>-->
-    <!--</dependency>-->
     <!--Can be useful in future-->
     <dependency>
       <groupId>junit</groupId>
@@ -57,10 +51,16 @@
         <artifactId>resteasy-jackson-provider</artifactId>
         <version>3.15.3.Final</version>
     </dependency>
+    <!--<dependency>-->
+        <!--<groupId>javax.servlet</groupId>-->
+        <!--<artifactId>javax.servlet-api</artifactId>-->
+        <!--<version>4.0.1</version>-->
+        <!--<scope>provided</scope>-->
+    <!--</dependency>-->
     <dependency>
-        <groupId>javax.servlet</groupId>
-        <artifactId>javax.servlet-api</artifactId>
-        <version>4.0.1</version>
+        <groupId>jakarta.servlet</groupId>
+        <artifactId>jakarta.servlet-api</artifactId>
+        <version>6.0.0</version>
         <scope>provided</scope>
     </dependency>
 
@@ -73,7 +73,8 @@
   </dependencies>
 
   <build>
-  <finalName>${project.name}</finalName>
+  <!--We don't need to type final name in url endpoint-->
+  <finalName>ROOT</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
