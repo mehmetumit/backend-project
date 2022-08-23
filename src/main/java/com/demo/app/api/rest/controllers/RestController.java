@@ -1,5 +1,6 @@
 package com.demo.app.api.rest.controllers;
 
+import com.demo.app.api.rest.controllers.CustomerController;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,7 +10,7 @@ import javax.ws.rs.core.Application;
 /**
  * RestController
  */
-// @ApplicationPath("/rest")
+@ApplicationPath("/rest")
 public class RestController extends Application {
 	private Set<Object> singletons = new HashSet<Object>();
 
