@@ -23,16 +23,16 @@ services:
       - ./target/webapps/:${WEB_APPS_PATH}:rw
       - ./data/tomcat_data/conf/:/usr/local/tomcat/conf/:rw
       - ./data/tomcat_data/logs/:/usr/local/tomcat/logs/:rw
-  pgadmin:
-    image: dpage/pgadmin4:latest
-    container_name: pgadmin_container
-    restart: always
-    ports:
-      - ${PGADMIN_PORT_OUT}:${PGADMIN_PORT_IN}
-    #We can use 'env_file: .env' too
-    environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
-      PGADMIN_LISTEN_PORT: ${PGADMIN_LISTEN_PORT}
-    #volumes:
-    #- ./data/pgadmin_data:/var/lib/pgadmin:z
+  #pgadmin:
+  #image: dpage/pgadmin4:latest
+  #container_name: pgadmin_container
+  #restart: always
+  #ports:
+  #- ${PGADMIN_PORT_OUT}:${PGADMIN_PORT_IN}
+  ##We can use 'env_file: .env' too
+  #environment:
+  #PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+  #PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+  #PGADMIN_LISTEN_PORT: ${PGADMIN_LISTEN_PORT}
+  ##volumes:
+  ##- ./data/pgadmin_data:/var/lib/pgadmin:z
