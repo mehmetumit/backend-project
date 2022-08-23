@@ -29,7 +29,7 @@ public interface CustomerService extends Service<CustomerDTO, Customer> {
 	public Customer toEntity(CustomerDTO dto);
 
 	@Override
-	public int update(CustomerDTO dto);
+	public int update(int id, CustomerDTO dto);
 
 	public List<CustomerDTO> getByName(String name);
 

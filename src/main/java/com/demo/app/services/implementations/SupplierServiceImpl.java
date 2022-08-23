@@ -88,9 +88,9 @@ public class SupplierServiceImpl implements SupplierService {
 	}
 
 	@Override
-	public int update(SupplierDTO dto) {
+	public int update(int id, SupplierDTO dto) {
 		try {
-			supplierDAO.update(toEntity(dto));
+			supplierDAO.update(toEntity(dto).setId(id));
 			return 1;
 		} catch (SQLException e) {
 			System.out.println("Supplier update failed!");

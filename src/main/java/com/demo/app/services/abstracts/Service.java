@@ -9,7 +9,7 @@ public interface Service<DTO, Entity> {
 
 	public int add(DTO dto);
 
-	public int update(DTO dto);
+	public int update(int id, DTO dto);
 
 	public int delete(int id);
 

@@ -29,7 +29,7 @@ public interface ProductService extends Service<ProductDTO, Product> {
 	public Product toEntity(ProductDTO dto);
 
 	@Override
-	public int update(ProductDTO dto);
+	public int update(int id, ProductDTO dto);
 
 	public Product getByName(String name);
 

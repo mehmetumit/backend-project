@@ -3,9 +3,6 @@ package com.demo.app.models.dtos;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
 public class CustomerDTO {
 	private String name;
 	private String surname;

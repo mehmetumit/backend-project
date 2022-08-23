@@ -88,9 +88,9 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public int update(OrderDTO dto) {
+	public int update(int id, OrderDTO dto) {
 		try {
-			orderDAO.update(toEntity(dto));
+			orderDAO.update(toEntity(dto).setId(id));
 			return 1;
 		} catch (SQLException e) {
 			System.out.println("Order update failed!");

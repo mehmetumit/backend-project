@@ -29,7 +29,7 @@ public interface SellerService extends Service<SellerDTO, Seller> {
 	public Seller toEntity(SellerDTO dto);
 
 	@Override
-	public int update(SellerDTO dto);
+	public int update(int id, SellerDTO dto);
 
 	public SellerDTO getByName(String name);
 

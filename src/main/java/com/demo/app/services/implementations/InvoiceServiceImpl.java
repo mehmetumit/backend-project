@@ -88,9 +88,9 @@ public class InvoiceServiceImpl implements InvoiceService {
 	}
 
 	@Override
-	public int update(InvoiceDTO dto) {
+	public int update(int id, InvoiceDTO dto) {
 		try {
-			invoiceDAO.update(toEntity(dto));
+			invoiceDAO.update(toEntity(dto).setId(id));
 			return 1;
 		} catch (SQLException e) {
 			System.out.println("Invoice getAll failed!");

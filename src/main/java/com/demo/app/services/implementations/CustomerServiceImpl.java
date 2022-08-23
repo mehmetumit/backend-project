@@ -96,9 +96,9 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public int update(CustomerDTO dto) {
+	public int update(int id, CustomerDTO dto) {
 		try {
-			customerDAO.update(toEntity(dto));
+			customerDAO.update(toEntity(dto).setId(id));
 			return 1;
 		} catch (SQLException e) {
 			System.out.println("Customer update failed!");

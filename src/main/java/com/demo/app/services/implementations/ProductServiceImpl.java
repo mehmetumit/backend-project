@@ -84,9 +84,9 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public int update(ProductDTO dto) {
+	public int update(int id, ProductDTO dto) {
 		try {
-			productDAO.update(toEntity(dto));
+			productDAO.update(toEntity(dto).setId(id));
 			return 1;
 		} catch (SQLException e) {
 			System.out.println("Product update failed!");

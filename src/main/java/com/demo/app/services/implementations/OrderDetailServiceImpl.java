@@ -78,9 +78,9 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 	}
 
 	@Override
-	public int update(OrderDetailDTO dto) {
+	public int update(int id, OrderDetailDTO dto) {
 		try {
-			orderDetailDAO.update(toEntity(dto));
+			orderDetailDAO.update(toEntity(dto).setId(id));
 			return 1;
 		} catch (SQLException e) {
 			System.out.println("OrderDetail update failed!");

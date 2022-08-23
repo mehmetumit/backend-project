@@ -29,7 +29,7 @@ public interface StockDetailService extends Service<StockDetailDTO, StockDetail>
 	StockDetail toEntity(StockDetailDTO dto);
 
 	@Override
-	int update(StockDetailDTO dto);
+	int update(int id, StockDetailDTO dto);
 
 	public List<StockDetailDTO> getByQuantity(int quantity);
 }

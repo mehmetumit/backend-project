@@ -82,9 +82,9 @@ public class SellerServiceImpl implements SellerService {
 	}
 
 	@Override
-	public int update(SellerDTO dto) {
+	public int update(int id, SellerDTO dto) {
 		try {
-			sellerDAO.update(toEntity(dto));
+			sellerDAO.update(toEntity(dto).setId(id));
 			return 1;
 		} catch (SQLException e) {
 			System.out.println("Seller update failed!");

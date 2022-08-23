@@ -29,7 +29,7 @@ public interface OrderService extends Service<OrderDTO, Order> {
 	public Order toEntity(OrderDTO dto);
 
 	@Override
-	public int update(OrderDTO dto);
+	public int update(int id, OrderDTO dto);
 
 	public List<OrderDTO> getByTimestamp(Timestamp timestamp);
 

@@ -30,7 +30,7 @@ public interface InvoiceService extends Service<InvoiceDTO, Invoice> {
 	public Invoice toEntity(InvoiceDTO dto);
 
 	@Override
-	public int update(InvoiceDTO dto);
+	public int update(int id, InvoiceDTO dto);
 
 	public List<InvoiceDTO> getByInvoiceTimestamp(Timestamp invoiceTimestamp);
 

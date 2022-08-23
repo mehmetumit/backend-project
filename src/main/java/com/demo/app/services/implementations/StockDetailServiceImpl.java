@@ -74,9 +74,9 @@ public class StockDetailServiceImpl implements StockDetailService {
 	}
 
 	@Override
-	public int update(StockDetailDTO dto) {
+	public int update(int id, StockDetailDTO dto) {
 		try {
-			stockDetailDAO.update(toEntity(dto));
+			stockDetailDAO.update(toEntity(dto).setId(id));
 			return 1;
 		} catch (SQLException e) {
 			System.out.println("StockDetail update failed!");

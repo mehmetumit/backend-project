@@ -28,7 +28,7 @@ public interface OrderDetailService extends Service<OrderDetailDTO, OrderDetail>
 	OrderDetail toEntity(OrderDetailDTO dto);
 
 	@Override
-	int update(OrderDetailDTO dto);
+	int update(int id, OrderDetailDTO dto);
 
 	public List<OrderDetailDTO> getByQuantity(int quantity);
 }
