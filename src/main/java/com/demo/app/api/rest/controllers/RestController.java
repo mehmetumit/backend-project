@@ -9,7 +9,7 @@ import javax.ws.rs.core.Application;
 /**
  * RestController
  */
-@ApplicationPath("/rest")
+// @ApplicationPath("/rest")
 public class RestController extends Application {
 	private Set<Object> singletons = new HashSet<Object>();
 

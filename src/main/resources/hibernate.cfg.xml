@@ -5,7 +5,8 @@
 <hibernate-configuration>
     <session-factory>
 	<!--url-->
-    <property name="hibernate.connection.url">jdbc:postgresql://localhost:54320/demodb</property>
+    <!--<property name="hibernate.connection.url">jdbc:postgresql://localhost:54320/demodb</property>-->
+    <property name="hibernate.connection.url">jdbc:postgresql://db_container:5432/demodb</property>
 	<!--username-->
     <property name="hibernate.connection.username">demo</property>
 	<!--password-->

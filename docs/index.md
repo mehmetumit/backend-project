@@ -6,7 +6,13 @@ Backend project with Java and PostgreSQL
 
 # Usage
 
-## Run postgresql and pgadmin containers
+## Install to war file
+
+```sh
+mvn install
+```
+
+## Run postgresql, pgadmin and tomcat containers
 
 ```sh
 docker-compose up
@@ -16,6 +22,12 @@ docker-compose up
 
 ```sh
 mvn clean compile exec:java
+```
+
+## Restart tomcat
+
+```sh
+docker restart tomcat_container
 ```
 
 ---

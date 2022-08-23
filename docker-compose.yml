@@ -14,6 +14,7 @@ services:
       - ./data/db_data:${PGDATA}
   web:
     image: tomcat:9.0.65-jre17-temurin-jammy
+    container_name: tomcat_container
     depends_on:
       - db
     ports:
@@ -33,5 +34,5 @@ services:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
       PGADMIN_LISTEN_PORT: ${PGADMIN_LISTEN_PORT}
-    volumes:
-      - ./data/pgadmin_data:/var/lib/pgadmin:rw
+    #volumes:
+    #- ./data/pgadmin_data:/var/lib/pgadmin:z
