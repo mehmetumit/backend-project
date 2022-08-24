@@ -10,6 +10,7 @@ import com.demo.app.models.entities.StockDetail;
 import com.demo.app.models.entities.Supplier;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 /**
@@ -69,10 +70,23 @@ public class DatabaseEngine {
 
 	// Find entity object with given entity class and id
 	public <T> T findById(Class<T> entityClass, int id) {
-		session = sessionFactory.openSession();
-		session.beginTransaction();
+		if (session == null || !session.isOpen())
+			session = sessionFactory.openSession();
+		if (!session.isJoinedToTransaction())
+			session.beginTransaction();
 
-		T entity = (T) session.getReference(entityClass, id);
+		Transaction transaction = session.getTransaction();
+		T entity = null;
+
+		try {
+			entity = (T) session.getReference(entityClass, id);
+		} catch (Exception ex) {
+			handleRollback(transaction);
+			ex.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
 		// commitTransaction();
 		// System.out.println(((Customer) entity).getId());
 		// session.close();
@@ -82,39 +96,82 @@ public class DatabaseEngine {
 	// Insert object to database
 	public void persist(Object obj) {
 		// Session is lightweight
-		session = sessionFactory.openSession();
-		session.beginTransaction();
-		// persist is jpa specification, save is not
-		session.persist(obj);
-		commitTransaction();
-		session.close();
+		if (session == null || !session.isOpen())
+			session = sessionFactory.openSession();
+		if (!session.isJoinedToTransaction())
+			session.beginTransaction();
+
+		Transaction transaction = session.getTransaction();
+
+		try {
+			// persist is jpa specification, save is not
+			session.persist(obj);
+		} catch (Exception ex) {
+			handleRollback(transaction);
+			ex.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		// commitTransaction();
 	}
 
 	// Update object from database
 	public void merge(Object obj) {
-		session = sessionFactory.openSession();
-		session.beginTransaction();
+		if (session == null || !session.isOpen())
+			session = sessionFactory.openSession();
+		if (!session.isJoinedToTransaction())
+			session.beginTransaction();
 
-		session.merge(obj);
-		commitTransaction();
-		session.close();
+		Transaction transaction = session.getTransaction();
+
+		try {
+			session.merge(obj);
+			transaction.commit();
+			// commitTransaction();
+		} catch (Exception ex) {
+			handleRollback(transaction);
+			ex.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
 
 	}
 
 	// Delete object from database
 	public void delete(Object obj) {
-		session = sessionFactory.openSession();
-		session.beginTransaction();
+		if (session == null || !session.isOpen())
+			session = sessionFactory.openSession();
+		if (!session.isJoinedToTransaction())
+			session.beginTransaction();
 
-		session.remove(obj);
+		Transaction transaction = session.getTransaction();
 
-		commitTransaction();
-		session.close();
+		try {
+			session.remove(obj);
+			transaction.commit();
+		} catch (Exception ex) {
+			handleRollback(transaction);
+		} finally {
+			if (session != null)
+				session.close();
+		}
+
+		// commitTransaction();
+	}
+
+	private void handleRollback(Transaction transaction) {
+		try {
+			transaction.rollback();
+		} catch (Exception rollbackEx) {
+			System.err.printf("Couldn't roll back transaction", rollbackEx);
+		}
 	}
 
 	// Commit changes
-	private void commitTransaction() {
-		session.getTransaction().commit();
-	}
+	// private void commitTransaction() {
+	// session.getTransaction().commit();
+	// }
 
 }

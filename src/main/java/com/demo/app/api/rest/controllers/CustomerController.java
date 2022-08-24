@@ -44,8 +44,11 @@ public class CustomerController {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response newCustomer(CustomerDTO customer) {
-		// int success = customerService.add(customer);
-		return Response.ok(customer).build();
+		boolean success = customerService.add(customer) == 1 ? true : false;
+		if (success)
+			return Response.ok(customer).build();
+		else
+			return Response.ok("Customer adding failed").build();
 	}
 
 	@PUT
@@ -53,15 +56,22 @@ public class CustomerController {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateCustomer(@PathParam("id") int id, CustomerDTO customer) {
-		// int success = customerService.update(id, customer);
-		return Response.ok(customer).build();
+		boolean success = customerService.update(id, customer) == 1 ? true : false;
+		if (success)
+			return Response.ok(customerService.getById(id)).build();
+		else
+			return Response.ok("Customer updating failed").build();
 	}
 
 	@DELETE
 	@Path("/{id}")
 	public Response deleteCustomer(@PathParam("id") int id) {
-		// int succes = customerService.delete(id);
-		return Response.ok("Customer " + id + "deleted").build();
+		boolean success = customerService.delete(id) == 1 ? true : false;
+		if (success)
+			return Response.ok("Customer " + id + " deleted").build();
+		else
+			return Response.ok("Customer deletion failed").build();
+
 	}
 
 }

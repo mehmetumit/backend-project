@@ -65,8 +65,6 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public CustomerDTO toDTO(Customer entity) {
-		DatabaseEngine databaseEngine = DatabaseEngine.getEngine();
-		databaseEngine.openSession();
 		return new CustomerDTO()
 				.setName(entity.getName())
 				.setSurname(entity.getSurname())
