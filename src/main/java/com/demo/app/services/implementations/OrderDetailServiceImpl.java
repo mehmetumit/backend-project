@@ -1,6 +1,5 @@
 package com.demo.app.services.implementations;
 
-import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,7 +22,7 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 		try {
 			orderDetailDAO.insert(toEntity(dto));
 			return 1;
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("OrderDetail add failed!");
 			return 0;
 		}
@@ -34,7 +33,7 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 		try {
 			orderDetailDAO.delete(id);
 			return 1;
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("OrderDetail delete failed!");
 			return 0;
 		}
@@ -47,7 +46,7 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 					.stream()
 					.map(o -> toDTO(o))
 					.collect(Collectors.toList());
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("OrderDetail getAll failed!");
 			return null;
 		}
@@ -57,7 +56,7 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 	public OrderDetailDTO getById(int id) {
 		try {
 			return toDTO(orderDetailDAO.findById(id));
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("OrderDetail getById failed!");
 			return null;
 		}
@@ -82,7 +81,7 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 		try {
 			orderDetailDAO.update(toEntity(dto).setId(id));
 			return 1;
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("OrderDetail update failed!");
 			return 0;
 		}
@@ -95,7 +94,7 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 					.stream()
 					.map(o -> toDTO(o))
 					.collect(Collectors.toList());
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("OrderDetail getByQuantity failed!");
 			return null;
 		}

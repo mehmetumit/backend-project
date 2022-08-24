@@ -1,6 +1,5 @@
 package com.demo.app.services.implementations;
 
-import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,7 +24,7 @@ public class OrderServiceImpl implements OrderService {
 		try {
 			orderDAO.insert(toEntity(dto));
 			return 1;
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Order add failed!");
 			return 0;
 		}
@@ -36,7 +35,7 @@ public class OrderServiceImpl implements OrderService {
 		try {
 			orderDAO.delete(id);
 			return 1;
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Order delete failed!");
 			return 0;
 		}
@@ -49,7 +48,7 @@ public class OrderServiceImpl implements OrderService {
 					.stream()
 					.map(o -> toDTO(o))
 					.collect(Collectors.toList());
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Order getAll failed!");
 			return null;
 		}
@@ -59,7 +58,7 @@ public class OrderServiceImpl implements OrderService {
 	public OrderDTO getById(int id) {
 		try {
 			return toDTO(orderDAO.findById(id));
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Order getById failed!");
 			return null;
 		}
@@ -92,7 +91,7 @@ public class OrderServiceImpl implements OrderService {
 		try {
 			orderDAO.update(toEntity(dto).setId(id));
 			return 1;
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Order update failed!");
 			return 0;
 		}
@@ -105,7 +104,7 @@ public class OrderServiceImpl implements OrderService {
 					.stream()
 					.map(o -> toDTO(o))
 					.collect(Collectors.toList());
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Order getByTimestamp failed!");
 			return null;
 		}

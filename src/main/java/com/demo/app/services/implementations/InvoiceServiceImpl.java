@@ -1,6 +1,5 @@
 package com.demo.app.services.implementations;
 
-import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,7 +22,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 		try {
 			invoiceDAO.insert(toEntity(dto));
 			return 1;
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Customer insertion failed!");
 			return 0;
 		}
@@ -34,7 +33,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 		try {
 			invoiceDAO.delete(id);
 			return 1;
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Customer deletion failed!");
 			return 0;
 		}
@@ -47,7 +46,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 					.stream()
 					.map(i -> toDTO(i))
 					.collect(Collectors.toList());
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Invoice getAll failed!");
 			return null;
 		}
@@ -57,7 +56,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 	public InvoiceDTO getById(int id) {
 		try {
 			return toDTO(invoiceDAO.findById(id));
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Invoice getById failed!");
 			return null;
 		}
@@ -92,7 +91,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 		try {
 			invoiceDAO.update(toEntity(dto).setId(id));
 			return 1;
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Invoice getAll failed!");
 			return 0;
 		}
@@ -105,7 +104,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 					.stream()
 					.map(inv -> toDTO(inv))
 					.collect(Collectors.toList());
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Invoice getByInvoiceTimestamp failed!");
 			return null;
 		}
@@ -118,7 +117,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 					.stream()
 					.map(inv -> toDTO(inv))
 					.collect(Collectors.toList());
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Invoice getByDueTimestamp failed!");
 			return null;
 		}
@@ -131,7 +130,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 					.stream()
 					.map(inv -> toDTO(inv))
 					.collect(Collectors.toList());
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Invoice getBySubtotal failed!");
 			return null;
 		}
@@ -144,7 +143,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 					.stream()
 					.map(inv -> toDTO(inv))
 					.collect(Collectors.toList());
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Invoice getByDiscount failed!");
 			return null;
 		}
@@ -157,7 +156,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 					.stream()
 					.map(inv -> toDTO(inv))
 					.collect(Collectors.toList());
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Invoice getByTaxRate failed!");
 			return null;
 		}
@@ -170,7 +169,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 					.stream()
 					.map(inv -> toDTO(inv))
 					.collect(Collectors.toList());
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Invoice getByTotalTax failed!");
 			return null;
 		}
@@ -183,7 +182,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 					.stream()
 					.map(inv -> toDTO(inv))
 					.collect(Collectors.toList());
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Invoice getByTotalPrice failed!");
 			return null;
 		}

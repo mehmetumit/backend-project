@@ -1,6 +1,5 @@
 package com.demo.app.services.implementations;
 
-import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +20,7 @@ public class StockDetailServiceImpl implements StockDetailService {
 		try {
 			stockDetailDAO.insert(toEntity(dto));
 			return 1;
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("StockDetail add failed!");
 			return 0;
 		}
@@ -32,7 +31,7 @@ public class StockDetailServiceImpl implements StockDetailService {
 		try {
 			stockDetailDAO.delete(id);
 			return 1;
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("StockDetail delete failed!");
 			return 0;
 		}
@@ -45,7 +44,7 @@ public class StockDetailServiceImpl implements StockDetailService {
 					.stream()
 					.map(s -> toDTO(s))
 					.collect(Collectors.toList());
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("StockDetail getAll failed!");
 			return null;
 		}
@@ -55,7 +54,7 @@ public class StockDetailServiceImpl implements StockDetailService {
 	public StockDetailDTO getById(int id) {
 		try {
 			return toDTO(stockDetailDAO.findById(id));
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("StockDetail getById failed!");
 			return null;
 		}
@@ -78,7 +77,7 @@ public class StockDetailServiceImpl implements StockDetailService {
 		try {
 			stockDetailDAO.update(toEntity(dto).setId(id));
 			return 1;
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("StockDetail update failed!");
 			return 0;
 		}
@@ -91,7 +90,7 @@ public class StockDetailServiceImpl implements StockDetailService {
 					.stream()
 					.map(s -> toDTO(s))
 					.collect(Collectors.toList());
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("StockDetail getByQuantity failed!");
 			return null;
 		}

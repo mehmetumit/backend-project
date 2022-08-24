@@ -1,6 +1,5 @@
 package com.demo.app.services.implementations;
 
-import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,7 +22,7 @@ public class ProductServiceImpl implements ProductService {
 		try {
 			productDAO.insert(toEntity(dto));
 			return 1;
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Product add failed!");
 			return 0;
 		}
@@ -34,7 +33,7 @@ public class ProductServiceImpl implements ProductService {
 		try {
 			productDAO.delete(id);
 			return 1;
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Product delete failed!");
 			return 0;
 		}
@@ -47,7 +46,7 @@ public class ProductServiceImpl implements ProductService {
 					.stream()
 					.map(p -> toDTO(p))
 					.collect(Collectors.toList());
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Product getAll failed!");
 			return null;
 		}
@@ -57,7 +56,7 @@ public class ProductServiceImpl implements ProductService {
 	public ProductDTO getById(int id) {
 		try {
 			return toDTO(productDAO.findById(id));
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Product getById failed!");
 			return null;
 		}
@@ -88,7 +87,7 @@ public class ProductServiceImpl implements ProductService {
 		try {
 			productDAO.update(toEntity(dto).setId(id));
 			return 1;
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Product update failed!");
 			return 0;
 		}
@@ -98,7 +97,7 @@ public class ProductServiceImpl implements ProductService {
 	public Product getByName(String name) {
 		try {
 			return productDAO.findByName(name);
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Product getByName failed!");
 			return null;
 		}
@@ -108,7 +107,7 @@ public class ProductServiceImpl implements ProductService {
 	public Product getByCategory(String name) {
 		try {
 			return productDAO.findByName(name);
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Product getByCategory failed!");
 			return null;
 		}
@@ -121,7 +120,7 @@ public class ProductServiceImpl implements ProductService {
 					.stream()
 					.map(p -> toDTO(p))
 					.collect(Collectors.toList());
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Product getByUnitPrice failed!");
 			return null;
 		}
@@ -134,7 +133,7 @@ public class ProductServiceImpl implements ProductService {
 					.stream()
 					.map(p -> toDTO(p))
 					.collect(Collectors.toList());
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Product getByActive failed!");
 			return null;
 		}

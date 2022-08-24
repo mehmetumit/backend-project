@@ -9,7 +9,6 @@ import com.demo.app.repository.dao.CustomerDAO;
 import org.hibernate.Session;
 
 import com.demo.app.models.entities.Customer;
-import com.demo.app.models.entities.Order;
 
 public class CustomerDAOImpl implements CustomerDAO {
     DatabaseEngine databaseEngine = DatabaseEngine.getEngine();

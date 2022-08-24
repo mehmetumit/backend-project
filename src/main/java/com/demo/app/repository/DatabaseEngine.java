@@ -1,5 +1,6 @@
 package com.demo.app.repository;
 
+import java.sql.SQLException;
 import com.demo.app.models.entities.Customer;
 import com.demo.app.models.entities.Invoice;
 import com.demo.app.models.entities.Order;
@@ -69,7 +70,7 @@ public class DatabaseEngine {
 	}
 
 	// Find entity object with given entity class and id
-	public <T> T findById(Class<T> entityClass, int id) {
+	public <T> T findById(Class<T> entityClass, int id) throws SQLException {
 		if (session == null || !session.isOpen())
 			session = sessionFactory.openSession();
 		if (!session.isJoinedToTransaction())
@@ -82,7 +83,8 @@ public class DatabaseEngine {
 			entity = (T) session.getReference(entityClass, id);
 		} catch (Exception ex) {
 			handleRollback(transaction);
-			ex.printStackTrace();
+			System.err.printf("Couldn't findById", ex);
+			throw ex;
 		} finally {
 			if (session != null)
 				session.close();
@@ -94,7 +96,7 @@ public class DatabaseEngine {
 	}
 
 	// Insert object to database
-	public void persist(Object obj) {
+	public void persist(Object obj) throws SQLException {
 		// Session is lightweight
 		if (session == null || !session.isOpen())
 			session = sessionFactory.openSession();
@@ -109,6 +111,7 @@ public class DatabaseEngine {
 		} catch (Exception ex) {
 			handleRollback(transaction);
 			ex.printStackTrace();
+			throw ex;
 		} finally {
 			if (session != null)
 				session.close();
@@ -117,7 +120,7 @@ public class DatabaseEngine {
 	}
 
 	// Update object from database
-	public void merge(Object obj) {
+	public void merge(Object obj) throws SQLException {
 		if (session == null || !session.isOpen())
 			session = sessionFactory.openSession();
 		if (!session.isJoinedToTransaction())
@@ -132,6 +135,7 @@ public class DatabaseEngine {
 		} catch (Exception ex) {
 			handleRollback(transaction);
 			ex.printStackTrace();
+			throw ex;
 		} finally {
 			if (session != null)
 				session.close();
@@ -140,7 +144,7 @@ public class DatabaseEngine {
 	}
 
 	// Delete object from database
-	public void delete(Object obj) {
+	public void delete(Object obj) throws SQLException {
 		if (session == null || !session.isOpen())
 			session = sessionFactory.openSession();
 		if (!session.isJoinedToTransaction())
@@ -153,6 +157,7 @@ public class DatabaseEngine {
 			transaction.commit();
 		} catch (Exception ex) {
 			handleRollback(transaction);
+			throw ex;
 		} finally {
 			if (session != null)
 				session.close();
