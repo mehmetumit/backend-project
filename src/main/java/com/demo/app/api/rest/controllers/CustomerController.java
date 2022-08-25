@@ -1,5 +1,7 @@
 package com.demo.app.api.rest.controllers;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -26,7 +28,11 @@ public class CustomerController {
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response all() {
-		return Response.ok(customerService.getAll()).build();
+		List<CustomerDTO> customers = customerService.getAll();
+		if (customers != null)
+			return Response.ok(customers).build();
+		else
+			return Response.status(Response.Status.NOT_FOUND).entity("Customers not found").build();
 	}
 
 	@GET
@@ -34,9 +40,13 @@ public class CustomerController {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response oneById(@PathParam("id") int id) {
-		return Response.ok(customerService.getById(id))
-				// .header(name, value)
-				.build();
+		CustomerDTO customer = customerService.getById(id);
+		if (customer != null)
+			return Response.ok(customer)
+					// .header(name, value)
+					.build();
+		else
+			return Response.status(Response.Status.NOT_FOUND).entity("Customer " + id + " not found").build();
 	}
 
 	@POST

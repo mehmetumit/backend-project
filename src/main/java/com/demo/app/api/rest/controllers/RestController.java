@@ -1,6 +1,5 @@
 package com.demo.app.api.rest.controllers;
 
-import com.demo.app.api.rest.controllers.CustomerController;
 import java.util.HashSet;
 import java.util.Set;
 
