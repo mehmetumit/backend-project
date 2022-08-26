@@ -1,6 +1,7 @@
 package com.demo.app.repository.dao;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 import com.demo.app.models.entities.StockDetail;
@@ -23,5 +24,8 @@ public interface StockDetailDAO extends DAO<StockDetail> {
     void update(StockDetail obj) throws SQLException;
 
     public List<StockDetail> findByQuantity(int quantity) throws SQLException;
+
+    @Override
+    public List<StockDetail> findAll(HashMap<String, Object> dataMap) throws SQLException;
 
 }

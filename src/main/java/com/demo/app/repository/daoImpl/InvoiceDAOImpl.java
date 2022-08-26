@@ -2,9 +2,11 @@ package com.demo.app.repository.daoImpl;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
 
 import com.demo.app.repository.DatabaseEngine;
+import com.demo.app.repository.QueryEngine;
 import com.demo.app.repository.dao.InvoiceDAO;
 
 import org.hibernate.Session;
@@ -122,6 +124,19 @@ public class InvoiceDAOImpl implements InvoiceDAO {
         String query = "from " + getEntityName() + " inv where inv.totalPrice = " + totalPrice;
 
         List<Invoice> invoices = session.createQuery(query, Invoice.class).list();
+        session.close();
+
+        return invoices;
+    }
+
+    @Override
+    public List<Invoice> findAll(HashMap<String, Object> dataMap) throws SQLException {
+        Session session = databaseEngine.openSession();
+
+        QueryEngine<Invoice> queryEngine = new QueryEngine<Invoice>();
+        String query = queryEngine.entityDataMapToQuery(dataMap, Invoice.class);
+        List<Invoice> invoices = session.createQuery(query, Invoice.class).list();
+
         session.close();
 
         return invoices;

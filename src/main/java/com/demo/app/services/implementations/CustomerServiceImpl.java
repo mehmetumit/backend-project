@@ -198,7 +198,6 @@ public class CustomerServiceImpl implements CustomerService {
 					.collect(Collectors.toList());
 		} catch (Exception e) {
 			System.out.println("Customer findAll failed!");
-			System.out.println(e);
 			return null;
 		}
 

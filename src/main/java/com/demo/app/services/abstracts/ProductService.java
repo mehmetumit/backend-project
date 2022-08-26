@@ -1,5 +1,6 @@
 package com.demo.app.services.abstracts;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.demo.app.models.dtos.ProductDTO;
@@ -38,4 +39,7 @@ public interface ProductService extends Service<ProductDTO, Product> {
 	public List<ProductDTO> getByUnitPrice(double unitPrice);
 
 	public List<ProductDTO> getByActive(boolean isActive);
+
+	@Override
+	public List<ProductDTO> findAll(HashMap<String, Object> dataMap);
 }

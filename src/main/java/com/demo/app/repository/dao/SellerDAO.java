@@ -1,9 +1,9 @@
 package com.demo.app.repository.dao;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
-import com.demo.app.models.entities.Invoice;
 import com.demo.app.models.entities.Seller;
 
 public interface SellerDAO extends DAO<Seller> {
@@ -33,6 +33,9 @@ public interface SellerDAO extends DAO<Seller> {
 	public Seller findByFax(String fax) throws SQLException;
 
 	public List<Seller> findByActive(boolean isActive) throws SQLException;
+
+	@Override
+	public List<Seller> findAll(HashMap<String, Object> dataMap) throws SQLException;
 
 	// public List<Invoice> findSellerInvoicesById(int id) throws SQLException;
 

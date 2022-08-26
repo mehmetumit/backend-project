@@ -2,11 +2,10 @@ package com.demo.app.repository.dao;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
 
-import com.demo.app.models.entities.Invoice;
 import com.demo.app.models.entities.Order;
-import com.demo.app.models.entities.OrderDetail;
 
 public interface OrderDAO extends DAO<Order> {
 
@@ -33,5 +32,8 @@ public interface OrderDAO extends DAO<Order> {
 	// List<OrderDetail> findOrderOrderDetailsById(int id) throws SQLException;
 
 	List<Order> findByTimestamp(Timestamp timestamp) throws SQLException;
+
+	@Override
+	List<Order> findAll(HashMap<String, Object> dataMap) throws SQLException;
 
 }

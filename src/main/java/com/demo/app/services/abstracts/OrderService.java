@@ -1,6 +1,7 @@
 package com.demo.app.services.abstracts;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
 
 import com.demo.app.models.dtos.OrderDTO;
@@ -32,5 +33,8 @@ public interface OrderService extends Service<OrderDTO, Order> {
 	public int update(int id, OrderDTO dto);
 
 	public List<OrderDTO> getByTimestamp(Timestamp timestamp);
+
+	@Override
+	public List<OrderDTO> findAll(HashMap<String, Object> dataMap);
 
 }

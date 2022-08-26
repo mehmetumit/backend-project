@@ -1,5 +1,6 @@
 package com.demo.app.services.abstracts;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.demo.app.models.dtos.SellerDTO;
@@ -42,4 +43,7 @@ public interface SellerService extends Service<SellerDTO, Seller> {
 	public SellerDTO getByFax(String fax);
 
 	public List<SellerDTO> getByActive(boolean isActive);
+
+	@Override
+	public List<SellerDTO> findAll(HashMap<String, Object> dataMap);
 }

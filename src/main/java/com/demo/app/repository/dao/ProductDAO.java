@@ -1,10 +1,10 @@
 package com.demo.app.repository.dao;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 import com.demo.app.models.entities.Product;
-import com.demo.app.models.entities.StockDetail;
 
 public interface ProductDAO extends DAO<Product> {
 	@Override
@@ -29,6 +29,9 @@ public interface ProductDAO extends DAO<Product> {
 	public List<Product> findByUnitPrice(double unitPrice) throws SQLException;
 
 	public List<Product> findByActive(boolean isActive) throws SQLException;
+
+	@Override
+	public List<Product> findAll(HashMap<String, Object> dataMap) throws SQLException;
 
 	// public StockDetail findProductStockDetailById(int id) throws SQLException;
 }

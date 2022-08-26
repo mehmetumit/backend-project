@@ -1,6 +1,7 @@
 package com.demo.app.services.implementations;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -186,6 +187,20 @@ public class InvoiceServiceImpl implements InvoiceService {
 			System.out.println("Invoice getByTotalPrice failed!");
 			return null;
 		}
+	}
+
+	@Override
+	public List<InvoiceDTO> findAll(HashMap<String, Object> dataMap) {
+		try {
+			return invoiceDAO.findAll(dataMap)
+					.stream()
+					.map(c -> toDTO(c))
+					.collect(Collectors.toList());
+		} catch (Exception e) {
+			System.out.println("Invoice findAll failed!");
+			return null;
+		}
+
 	}
 
 }

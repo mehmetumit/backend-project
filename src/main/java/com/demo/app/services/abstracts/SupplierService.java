@@ -1,5 +1,6 @@
 package com.demo.app.services.abstracts;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.demo.app.models.dtos.SupplierDTO;
@@ -38,4 +39,7 @@ public interface SupplierService extends Service<SupplierDTO, Supplier> {
 	public SupplierDTO getByPhoneNum(String phoneNum);
 
 	public List<SupplierDTO> findByActive(boolean isActive);
+
+	@Override
+	public List<SupplierDTO> findAll(HashMap<String, Object> dataMap);
 }

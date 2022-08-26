@@ -1,9 +1,11 @@
 package com.demo.app.repository.daoImpl;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 import com.demo.app.repository.DatabaseEngine;
+import com.demo.app.repository.QueryEngine;
 import com.demo.app.repository.dao.OrderDetailDAO;
 
 import org.hibernate.Session;
@@ -58,6 +60,19 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
         String query = "from " + getEntityName() + " where quantity = " + quantity;
 
         List<OrderDetail> orderDetails = session.createQuery(query, OrderDetail.class).list();
+        session.close();
+
+        return orderDetails;
+    }
+
+    @Override
+    public List<OrderDetail> findAll(HashMap<String, Object> dataMap) throws SQLException {
+        Session session = databaseEngine.openSession();
+
+        QueryEngine<OrderDetail> queryEngine = new QueryEngine<OrderDetail>();
+        String query = queryEngine.entityDataMapToQuery(dataMap, OrderDetail.class);
+        List<OrderDetail> orderDetails = session.createQuery(query, OrderDetail.class).list();
+
         session.close();
 
         return orderDetails;

@@ -1,9 +1,11 @@
 package com.demo.app.repository.daoImpl;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 import com.demo.app.repository.DatabaseEngine;
+import com.demo.app.repository.QueryEngine;
 import com.demo.app.repository.dao.ProductDAO;
 
 import org.hibernate.Session;
@@ -91,6 +93,19 @@ public class ProductDAOImpl implements ProductDAO {
         String query = "from " + getEntityName() + " where isActive = " + isActive;
 
         List<Product> products = session.createQuery(query, Product.class).list();
+        session.close();
+
+        return products;
+    }
+
+    @Override
+    public List<Product> findAll(HashMap<String, Object> dataMap) throws SQLException {
+        Session session = databaseEngine.openSession();
+
+        QueryEngine<Product> queryEngine = new QueryEngine<Product>();
+        String query = queryEngine.entityDataMapToQuery(dataMap, Product.class);
+        List<Product> products = session.createQuery(query, Product.class).list();
+
         session.close();
 
         return products;

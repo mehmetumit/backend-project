@@ -2,9 +2,11 @@ package com.demo.app.repository.daoImpl;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
 
 import com.demo.app.repository.DatabaseEngine;
+import com.demo.app.repository.QueryEngine;
 import com.demo.app.repository.dao.OrderDAO;
 
 import org.hibernate.Session;
@@ -57,6 +59,19 @@ public class OrderDAOImpl implements OrderDAO {
         String query = "from \"" + getEntityName() + "\" where timestamp = " + timestamp;
 
         List<Order> orders = session.createQuery(query, Order.class).list();
+        session.close();
+
+        return orders;
+    }
+
+    @Override
+    public List<Order> findAll(HashMap<String, Object> dataMap) throws SQLException {
+        Session session = databaseEngine.openSession();
+
+        QueryEngine<Order> queryEngine = new QueryEngine<Order>();
+        String query = queryEngine.entityDataMapToQuery(dataMap, Order.class);
+        List<Order> orders = session.createQuery(query, Order.class).list();
+
         session.close();
 
         return orders;

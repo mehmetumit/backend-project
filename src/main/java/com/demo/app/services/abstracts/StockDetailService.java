@@ -1,5 +1,6 @@
 package com.demo.app.services.abstracts;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.demo.app.models.dtos.StockDetailDTO;
@@ -32,4 +33,7 @@ public interface StockDetailService extends Service<StockDetailDTO, StockDetail>
 	int update(int id, StockDetailDTO dto);
 
 	public List<StockDetailDTO> getByQuantity(int quantity);
+
+	@Override
+	public List<StockDetailDTO> findAll(HashMap<String, Object> dataMap);
 }

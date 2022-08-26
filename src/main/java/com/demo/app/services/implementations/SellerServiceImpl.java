@@ -1,5 +1,6 @@
 package com.demo.app.services.implementations;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -152,6 +153,20 @@ public class SellerServiceImpl implements SellerService {
 			System.out.println("Seller getByActive failed!");
 			return null;
 		}
+	}
+
+	@Override
+	public List<SellerDTO> findAll(HashMap<String, Object> dataMap) {
+		try {
+			return sellerDAO.findAll(dataMap)
+					.stream()
+					.map(c -> toDTO(c))
+					.collect(Collectors.toList());
+		} catch (Exception e) {
+			System.out.println("Seller findAll failed!");
+			return null;
+		}
+
 	}
 
 }

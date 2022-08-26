@@ -1,5 +1,6 @@
 package com.demo.app.services.abstracts;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.demo.app.models.dtos.OrderDetailDTO;
@@ -29,6 +30,9 @@ public interface OrderDetailService extends Service<OrderDetailDTO, OrderDetail>
 
 	@Override
 	int update(int id, OrderDetailDTO dto);
+
+	@Override
+	public List<OrderDetailDTO> findAll(HashMap<String, Object> dataMap);
 
 	public List<OrderDetailDTO> getByQuantity(int quantity);
 }

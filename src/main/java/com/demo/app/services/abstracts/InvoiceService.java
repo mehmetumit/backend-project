@@ -1,6 +1,7 @@
 package com.demo.app.services.abstracts;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
 
 import com.demo.app.models.dtos.InvoiceDTO;
@@ -31,6 +32,9 @@ public interface InvoiceService extends Service<InvoiceDTO, Invoice> {
 
 	@Override
 	public int update(int id, InvoiceDTO dto);
+
+	@Override
+	public List<InvoiceDTO> findAll(HashMap<String, Object> dataMap);
 
 	public List<InvoiceDTO> getByInvoiceTimestamp(Timestamp invoiceTimestamp);
 

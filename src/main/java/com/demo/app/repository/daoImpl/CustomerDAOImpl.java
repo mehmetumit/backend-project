@@ -141,8 +141,6 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    // public List<Customer> findAll(String name, String surname, String phoneNum,
-    // String email, Boolean isActive, Integer discountRate) {
     public List<Customer> findAll(HashMap<String, Object> customerData) throws SQLException {
         Session session = databaseEngine.openSession();
 
@@ -154,12 +152,6 @@ public class CustomerDAOImpl implements CustomerDAO {
 
         return customers;
     }
-
-    // @Override
-    // public HashMap<String, Object> generateDataMap() {
-    // QueryEngine<Customer> queryEngine = new QueryEngine<Customer>();
-    // return queryEngine.generateEntityDataMap(Customer.class);
-    // }
 
     // @Override
     // public List<Order> findCustomerOrdersById(int id) throws SQLException {

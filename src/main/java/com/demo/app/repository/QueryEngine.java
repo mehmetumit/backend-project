@@ -14,23 +14,6 @@ import jakarta.persistence.Column;
  */
 public class QueryEngine<T> {
 
-	// public HashMap<String, Object> generateEntityDataMap(Class<T> entityClass) {
-	// ArrayList<String> columnNames = new ArrayList<>();
-	// HashMap<String, Object> dataMap = new HashMap<String, Object>();
-
-	// for (Method method : entityClass.getMethods()) {
-	// Column col = method.getAnnotation(Column.class);
-	// if (col != null)
-	// columnNames.add(col.name());
-	// }
-	//// Generates hash map with entity column names
-	// columnNames.forEach(cn -> {
-	// dataMap.put(cn, null);
-	// });
-
-	// return dataMap;
-	// }
-
 	public String entityDataMapToQuery(HashMap<String, Object> data, Class<T> entityClass) {
 
 		String query = "from " + entityClass.getSimpleName();

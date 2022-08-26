@@ -1,9 +1,11 @@
 package com.demo.app.repository.daoImpl;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 import com.demo.app.repository.DatabaseEngine;
+import com.demo.app.repository.QueryEngine;
 import com.demo.app.repository.dao.SupplierDAO;
 
 import org.hibernate.Session;
@@ -93,6 +95,19 @@ public class SupplierDAOImpl implements SupplierDAO {
         session.close();
 
         return supplier;
+    }
+
+    @Override
+    public List<Supplier> findAll(HashMap<String, Object> dataMap) throws SQLException {
+        Session session = databaseEngine.openSession();
+
+        QueryEngine<Supplier> queryEngine = new QueryEngine<Supplier>();
+        String query = queryEngine.entityDataMapToQuery(dataMap, Supplier.class);
+        List<Supplier> suppliers = session.createQuery(query, Supplier.class).list();
+
+        session.close();
+
+        return suppliers;
     }
 
 }

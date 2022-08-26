@@ -1,5 +1,6 @@
 package com.demo.app.services.implementations;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -98,6 +99,20 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 			System.out.println("OrderDetail getByQuantity failed!");
 			return null;
 		}
+	}
+
+	@Override
+	public List<OrderDetailDTO> findAll(HashMap<String, Object> dataMap) {
+		try {
+			return orderDetailDAO.findAll(dataMap)
+					.stream()
+					.map(c -> toDTO(c))
+					.collect(Collectors.toList());
+		} catch (Exception e) {
+			System.out.println("OrderDetail findAll failed!");
+			return null;
+		}
+
 	}
 
 }

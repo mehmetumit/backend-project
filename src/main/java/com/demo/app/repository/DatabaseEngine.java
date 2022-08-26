@@ -174,9 +174,4 @@ public class DatabaseEngine {
 		}
 	}
 
-	// Commit changes
-	// private void commitTransaction() {
-	// session.getTransaction().commit();
-	// }
-
 }

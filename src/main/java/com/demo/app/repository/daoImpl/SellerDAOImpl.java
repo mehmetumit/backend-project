@@ -1,6 +1,7 @@
 package com.demo.app.repository.daoImpl;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 import com.demo.app.repository.DatabaseEngine;
@@ -113,6 +114,19 @@ public class SellerDAOImpl implements SellerDAO {
         session.close();
 
         return sellers;
+    }
+
+    @Override
+    public List<Seller> findAll(HashMap<String, Object> dataMap) throws SQLException {
+        Session session = databaseEngine.openSession();
+
+        QueryEngine<Seller> queryEngine = new QueryEngine<Seller>();
+        String query = queryEngine.entityDataMapToQuery(dataMap, Seller.class);
+        List<OrderDetail> orderDetails = session.createQuery(query, Seller.class).list();
+
+        session.close();
+
+        return orderDetails;
     }
 
 }

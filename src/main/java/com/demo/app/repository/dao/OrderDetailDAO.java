@@ -1,10 +1,10 @@
 package com.demo.app.repository.dao;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 import com.demo.app.models.entities.OrderDetail;
-import com.demo.app.models.entities.Product;
 
 public interface OrderDetailDAO extends DAO<OrderDetail> {
 	@Override
@@ -23,6 +23,9 @@ public interface OrderDetailDAO extends DAO<OrderDetail> {
 	void update(OrderDetail obj) throws SQLException;
 
 	public List<OrderDetail> findByQuantity(int quantity) throws SQLException;
+
+	@Override
+	public List<OrderDetail> findAll(HashMap<String, Object> dataMap) throws SQLException;
 
 	// Product findOrderDetailProductById(int id) throws SQLException;
 

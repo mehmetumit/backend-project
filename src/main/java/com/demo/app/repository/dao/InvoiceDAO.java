@@ -2,6 +2,7 @@ package com.demo.app.repository.dao;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
 
 import com.demo.app.models.entities.Invoice;
@@ -36,5 +37,8 @@ public interface InvoiceDAO extends DAO<Invoice> {
 	public List<Invoice> findByTotalTax(double totalTax) throws SQLException;
 
 	public List<Invoice> findByTotalPrice(double totalPrice) throws SQLException;
+
+	@Override
+	public List<Invoice> findAll(HashMap<String, Object> dataMap) throws SQLException;
 
 }
