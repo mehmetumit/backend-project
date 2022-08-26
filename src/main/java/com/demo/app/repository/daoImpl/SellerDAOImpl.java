@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.demo.app.repository.DatabaseEngine;
+import com.demo.app.repository.QueryEngine;
 import com.demo.app.repository.dao.SellerDAO;
 
 import org.hibernate.Session;
@@ -122,11 +123,11 @@ public class SellerDAOImpl implements SellerDAO {
 
         QueryEngine<Seller> queryEngine = new QueryEngine<Seller>();
         String query = queryEngine.entityDataMapToQuery(dataMap, Seller.class);
-        List<OrderDetail> orderDetails = session.createQuery(query, Seller.class).list();
+        List<Seller> sellers = session.createQuery(query, Seller.class).list();
 
         session.close();
 
-        return orderDetails;
+        return sellers;
     }
 
 }

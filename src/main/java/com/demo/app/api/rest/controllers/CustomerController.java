@@ -16,7 +16,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.demo.app.models.dtos.CustomerDTO;
-import com.demo.app.repository.DatabaseEngine;
 import com.demo.app.services.abstracts.CustomerService;
 import com.demo.app.services.implementations.CustomerServiceImpl;
 
@@ -32,7 +31,7 @@ public class CustomerController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response all() {
 		List<CustomerDTO> customers = customerService.getAll();
-		if (customers != null)
+		if (customers != null && !customers.isEmpty())
 			return Response.ok(customers).build();
 		else
 			return Response.status(Response.Status.NOT_FOUND).entity("Customers not found").build();
@@ -57,7 +56,7 @@ public class CustomerController {
 		dataMap.put("discountRate", discountRate);
 
 		List<CustomerDTO> customers = customerService.findAll(dataMap);
-		if (customers != null && customers.size() != 0)
+		if (customers != null && !customers.isEmpty())
 			return Response.ok(customers).build();
 		else
 			return Response.status(Response.Status.NOT_FOUND).entity("Customers not found").build();
