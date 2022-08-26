@@ -10,7 +10,7 @@ public class SupplierDTO {
 	List<StockDetailDTO> stockDetails = new ArrayList<StockDetailDTO>();
 	private String address;
 	private String phoneNum;
-	private boolean isActive;
+	private Boolean isActive;
 
 	public String getAddress() {
 		return address;
@@ -30,11 +30,11 @@ public class SupplierDTO {
 		return this;
 	}
 
-	public boolean isActive() {
+	public Boolean isActive() {
 		return isActive;
 	}
 
-	public SupplierDTO setActive(boolean isActive) {
+	public SupplierDTO setActive(Boolean isActive) {
 		this.isActive = isActive;
 		return this;
 	}

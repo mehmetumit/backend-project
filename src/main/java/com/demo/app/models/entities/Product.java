@@ -30,12 +30,12 @@ public class Product {
 	@Column(name = "name")
 	private String name;
 	@Column(name = "unit_price")
-	private double unitPrice;
+	private Double unitPrice;
 	@Column(name = "is_active")
-	private boolean isActive;
+	private Boolean isActive;
 
-	public Product(int id, StockDetail stockDetail, String categoryName, String name, double unitPrice,
-			boolean isActive) {
+	public Product(int id, StockDetail stockDetail, String categoryName, String name, Double unitPrice,
+			Boolean isActive) {
 		this.id = id;
 		this.stockDetail = stockDetail;
 		this.categoryName = categoryName;
@@ -44,8 +44,8 @@ public class Product {
 		this.isActive = isActive;
 	}
 
-	public Product(StockDetail stockDetail, String categoryName, String name, double unitPrice,
-			boolean isActive) {
+	public Product(StockDetail stockDetail, String categoryName, String name, Double unitPrice,
+			Boolean isActive) {
 		this.stockDetail = stockDetail;
 		this.categoryName = categoryName;
 		this.name = name;
@@ -93,20 +93,20 @@ public class Product {
 		return this;
 	}
 
-	public double getUnitPrice() {
+	public Double getUnitPrice() {
 		return unitPrice;
 	}
 
-	public Product setUnitPrice(double unitPrice) {
+	public Product setUnitPrice(Double unitPrice) {
 		this.unitPrice = unitPrice;
 		return this;
 	}
 
-	public boolean isActive() {
+	public Boolean isActive() {
 		return isActive;
 	}
 
-	public Product setActive(boolean isActive) {
+	public Product setActive(Boolean isActive) {
 		this.isActive = isActive;
 		return this;
 	}

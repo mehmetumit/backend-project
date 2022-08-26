@@ -1,6 +1,7 @@
 package com.demo.app.repository.dao;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 public interface DAO<T> {
@@ -16,5 +17,7 @@ public interface DAO<T> {
 	void update(T obj) throws SQLException;
 
 	void delete(int id) throws SQLException;
+
+	List<T> findAll(HashMap<String, Object> dataMap) throws SQLException;
 
 }

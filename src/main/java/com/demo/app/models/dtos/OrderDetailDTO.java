@@ -4,14 +4,14 @@ package com.demo.app.models.dtos;
  * OrderDetailDTO
  */
 public class OrderDetailDTO {
-	private int quantity;
+	private Integer quantity;
 	private ProductDTO product;
 
-	public int getQuantity() {
+	public Integer getQuantity() {
 		return quantity;
 	}
 
-	public OrderDetailDTO setQuantity(int quantity) {
+	public OrderDetailDTO setQuantity(Integer quantity) {
 		this.quantity = quantity;
 		return this;
 	}

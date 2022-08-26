@@ -18,7 +18,7 @@ public class OrderDetail {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column(name = "quantity")
-	private int quantity;
+	private Integer quantity;
 
 	// @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -26,12 +26,12 @@ public class OrderDetail {
 	@JoinColumn(name = "id", referencedColumnName = "order_detail_id")
 	private Product product;
 
-	public OrderDetail(int id, int quantity) {
+	public OrderDetail(int id, Integer quantity) {
 		this.id = id;
 		this.quantity = quantity;
 	}
 
-	public OrderDetail(int quantity) {
+	public OrderDetail(Integer quantity) {
 		this.quantity = quantity;
 	}
 
@@ -39,7 +39,7 @@ public class OrderDetail {
 
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -48,11 +48,11 @@ public class OrderDetail {
 		return this;
 	}
 
-	public int getQuantitiy() {
+	public Integer getQuantitiy() {
 		return quantity;
 	}
 
-	public OrderDetail setQuantitiy(int quantity) {
+	public OrderDetail setQuantitiy(Integer quantity) {
 		this.quantity = quantity;
 		return this;
 	}
@@ -61,7 +61,7 @@ public class OrderDetail {
 		return quantity;
 	}
 
-	public OrderDetail setQuantity(int quantity) {
+	public OrderDetail setQuantity(Integer quantity) {
 		this.quantity = quantity;
 		return this;
 	}

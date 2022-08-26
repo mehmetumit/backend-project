@@ -44,7 +44,7 @@ public class Customer {
 	private Boolean isActive;
 
 	public Customer(int id, String name, String surname, String phoneNum, String email, int discountRate,
-			boolean isActive) {
+			Boolean isActive) {
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
@@ -54,7 +54,7 @@ public class Customer {
 		this.isActive = isActive;
 	}
 
-	public Customer(String name, String surname, String phoneNum, String email, int discountRate, boolean isActive) {
+	public Customer(String name, String surname, String phoneNum, String email, int discountRate, Boolean isActive) {
 		this.name = name;
 		this.surname = surname;
 		this.phoneNum = phoneNum;

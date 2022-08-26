@@ -17,14 +17,14 @@ public class StockDetail {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column(name = "quantity")
-	private int quantity;
+	private Integer quantity;
 
-	public StockDetail(int id, int quantity) {
+	public StockDetail(int id, Integer quantity) {
 		this.id = id;
 		this.quantity = quantity;
 	}
 
-	public StockDetail(int quantity) {
+	public StockDetail(Integer quantity) {
 		this.quantity = quantity;
 	}
 
@@ -36,16 +36,16 @@ public class StockDetail {
 		return id;
 	}
 
-	public StockDetail setId(int id) {
+	public StockDetail setId(Integer id) {
 		this.id = id;
 		return this;
 	}
 
-	public int getQuantity() {
+	public Integer getQuantity() {
 		return quantity;
 	}
 
-	public StockDetail setQuantity(int quantity) {
+	public StockDetail setQuantity(Integer quantity) {
 		this.quantity = quantity;
 		return this;
 	}

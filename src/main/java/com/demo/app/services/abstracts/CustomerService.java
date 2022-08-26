@@ -32,6 +32,9 @@ public interface CustomerService extends Service<CustomerDTO, Customer> {
 	@Override
 	public int update(int id, CustomerDTO dto);
 
+	@Override
+	public List<CustomerDTO> findAll(HashMap<String, Object> dataMap);
+
 	public List<CustomerDTO> getByName(String name);
 
 	public List<CustomerDTO> getBySurname(String surname);
@@ -43,7 +46,5 @@ public interface CustomerService extends Service<CustomerDTO, Customer> {
 	public List<CustomerDTO> getByActive(boolean isActive);
 
 	public List<CustomerDTO> getByDiscountRate(int discountRate);
-
-	public List<CustomerDTO> findAll(HashMap<String, Object> dataMap);
 
 }

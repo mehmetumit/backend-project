@@ -33,7 +33,7 @@ public class Supplier {
 	@Column(name = "phone_num")
 	private String phoneNum;
 	@Column(name = "is_active")
-	private boolean isActive;
+	private Boolean isActive;
 
 	public int getId() {
 		return id;
@@ -80,11 +80,11 @@ public class Supplier {
 		return this;
 	}
 
-	public boolean isActive() {
+	public Boolean isActive() {
 		return isActive;
 	}
 
-	public Supplier setActive(boolean isActive) {
+	public Supplier setActive(Boolean isActive) {
 		this.isActive = isActive;
 		return this;
 	}

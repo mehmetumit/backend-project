@@ -7,8 +7,8 @@ public class ProductDTO {
 	private String categoryName;
 	private String name;
 	private StockDetailDTO stockDetail;
-	private double unitPrice;
-	private boolean isActive;
+	private Double unitPrice;
+	private Boolean isActive;
 
 	public String getCategoryName() {
 		return categoryName;
@@ -37,20 +37,20 @@ public class ProductDTO {
 		return this;
 	}
 
-	public double getUnitPrice() {
+	public Double getUnitPrice() {
 		return unitPrice;
 	}
 
-	public ProductDTO setUnitPrice(double unitPrice) {
+	public ProductDTO setUnitPrice(Double unitPrice) {
 		this.unitPrice = unitPrice;
 		return this;
 	}
 
-	public boolean isActive() {
+	public Boolean isActive() {
 		return isActive;
 	}
 
-	public ProductDTO setActive(boolean isActive) {
+	public ProductDTO setActive(Boolean isActive) {
 		this.isActive = isActive;
 		return this;
 	}

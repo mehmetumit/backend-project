@@ -1,5 +1,6 @@
 package com.demo.app.services.abstracts;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface Service<DTO, Entity> {
@@ -16,4 +17,6 @@ public interface Service<DTO, Entity> {
 	public Entity toEntity(DTO dto);
 
 	public DTO toDTO(Entity entity);
+
+	public List<DTO> findAll(HashMap<String, Object> dataMap);
 }

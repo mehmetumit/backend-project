@@ -8,11 +8,11 @@ import java.sql.Timestamp;
 public class InvoiceDTO {
 	private Timestamp invoiceTimestamp;
 	private Timestamp dueTimestamp;
-	private double subTotal;
-	private double discount;
-	private int taxRate;
-	private double totalTax;
-	private double totalPrice;
+	private Double subTotal;
+	private Double discount;
+	private Integer taxRate;
+	private Double totalTax;
+	private Double totalPrice;
 
 	public Timestamp getInvoiceTimestamp() {
 		return invoiceTimestamp;
@@ -32,47 +32,47 @@ public class InvoiceDTO {
 		return this;
 	}
 
-	public double getSubTotal() {
+	public Double getSubTotal() {
 		return subTotal;
 	}
 
-	public InvoiceDTO setSubTotal(double subTotal) {
+	public InvoiceDTO setSubTotal(Double subTotal) {
 		this.subTotal = subTotal;
 		return this;
 	}
 
-	public double getDiscount() {
+	public Double getDiscount() {
 		return discount;
 	}
 
-	public InvoiceDTO setDiscount(double discount) {
+	public InvoiceDTO setDiscount(Double discount) {
 		this.discount = discount;
 		return this;
 	}
 
-	public int getTaxRate() {
+	public Integer getTaxRate() {
 		return taxRate;
 	}
 
-	public InvoiceDTO setTaxRate(int taxRate) {
+	public InvoiceDTO setTaxRate(Integer taxRate) {
 		this.taxRate = taxRate;
 		return this;
 	}
 
-	public double getTotalTax() {
+	public Double getTotalTax() {
 		return totalTax;
 	}
 
-	public InvoiceDTO setTotalTax(double totalTax) {
+	public InvoiceDTO setTotalTax(Double totalTax) {
 		this.totalTax = totalTax;
 		return this;
 	}
 
-	public double getTotalPrice() {
+	public Double getTotalPrice() {
 		return totalPrice;
 	}
 
-	public InvoiceDTO setTotalPrice(double totalPrice) {
+	public InvoiceDTO setTotalPrice(Double totalPrice) {
 		this.totalPrice = totalPrice;
 		return this;
 	}

@@ -35,9 +35,9 @@ public class Seller {
 	@Column(name = "fax")
 	private String fax;
 	@Column(name = "is_active")
-	private boolean isActive;
+	private Boolean isActive;
 
-	public Seller(int id, String address, String phoneNum, String email, String fax, boolean isActive) {
+	public Seller(int id, String address, String phoneNum, String email, String fax, Boolean isActive) {
 		this.id = id;
 		this.address = address;
 		this.phoneNum = phoneNum;
@@ -46,7 +46,7 @@ public class Seller {
 		this.isActive = isActive;
 	}
 
-	public Seller(String address, String phoneNum, String email, String fax, boolean isActive) {
+	public Seller(String address, String phoneNum, String email, String fax, Boolean isActive) {
 		this.address = address;
 		this.phoneNum = phoneNum;
 		this.email = email;
@@ -103,11 +103,11 @@ public class Seller {
 		return this;
 	}
 
-	public boolean isActive() {
+	public Boolean isActive() {
 		return isActive;
 	}
 
-	public Seller setActive(boolean isActive) {
+	public Seller setActive(Boolean isActive) {
 		this.isActive = isActive;
 		return this;
 	}

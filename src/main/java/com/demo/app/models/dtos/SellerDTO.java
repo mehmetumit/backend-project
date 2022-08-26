@@ -13,7 +13,7 @@ public class SellerDTO {
 	private String phoneNum;
 	private String email;
 	private String fax;
-	private boolean isActive;
+	private Boolean isActive;
 	private List<InvoiceDTO> invoices = new ArrayList<InvoiceDTO>();
 
 	public String getAddress() {
@@ -52,11 +52,11 @@ public class SellerDTO {
 		return this;
 	}
 
-	public boolean isActive() {
+	public Boolean isActive() {
 		return isActive;
 	}
 
-	public SellerDTO setActive(boolean isActive) {
+	public SellerDTO setActive(Boolean isActive) {
 		this.isActive = isActive;
 		return this;
 	}

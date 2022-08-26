@@ -23,7 +23,8 @@ public interface CustomerDAO extends DAO<Customer> {
 	@Override
 	void update(Customer obj) throws SQLException;
 
-	public List<Customer> findAll(HashMap<String, Object> customerData) throws SQLException;
+	@Override
+	List<Customer> findAll(HashMap<String, Object> dataMap) throws SQLException;
 
 	public List<Customer> findByName(String name) throws SQLException;
 
@@ -37,7 +38,4 @@ public interface CustomerDAO extends DAO<Customer> {
 
 	public List<Customer> findByDiscountRate(int discountRate) throws SQLException;
 
-	// public HashMap<String, Object> generateDataMap();
-
-	// public List<Order> findCustomerOrdersById(int id) throws SQLException;
 }

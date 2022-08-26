@@ -25,18 +25,18 @@ public class Invoice {
 	@Column(name = "due_timestamp")
 	private Timestamp dueTimestamp;
 	@Column(name = "sub_total")
-	private double subTotal;
+	private Double subTotal;
 	@Column(name = "discount")
-	private double discount;
+	private Double discount;
 	@Column(name = "tax_rate")
-	private int taxRate;
+	private Integer taxRate;
 	@Column(name = "total_tax")
-	private double totalTax;
+	private Double totalTax;
 	@Column(name = "total_price")
-	private double totalPrice;
+	private Double totalPrice;
 
 	public Invoice(int id, Timestamp invoiceTimestamp, Timestamp dueTimestamp,
-			double subTotal, double discount, int taxRate, double totalTax, double totalPrice) {
+			Double subTotal, Double discount, Integer taxRate, Double totalTax, Double totalPrice) {
 		super();
 		this.id = id;
 		this.invoiceTimestamp = invoiceTimestamp;
@@ -49,7 +49,7 @@ public class Invoice {
 	}
 
 	public Invoice(Timestamp invoiceTimestamp, Timestamp dueTimestamp,
-			double subTotal, double discount, int taxRate, double totalTax, double totalPrice) {
+			Double subTotal, Double discount, Integer taxRate, Double totalTax, Double totalPrice) {
 		super();
 		this.invoiceTimestamp = invoiceTimestamp;
 		this.dueTimestamp = dueTimestamp;
@@ -63,7 +63,7 @@ public class Invoice {
 	public Invoice() {
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -90,20 +90,20 @@ public class Invoice {
 		return this;
 	}
 
-	public double getSubTotal() {
+	public Double getSubTotal() {
 		return subTotal;
 	}
 
-	public Invoice setSubTotal(double subTotal) {
+	public Invoice setSubTotal(Double subTotal) {
 		this.subTotal = subTotal;
 		return this;
 	}
 
-	public double getDiscount() {
+	public Double getDiscount() {
 		return discount;
 	}
 
-	public Invoice setDiscount(double discount) {
+	public Invoice setDiscount(Double discount) {
 		this.discount = discount;
 		return this;
 	}
@@ -112,25 +112,25 @@ public class Invoice {
 		return taxRate;
 	}
 
-	public Invoice setTaxRate(int taxRate) {
+	public Invoice setTaxRate(Integer taxRate) {
 		this.taxRate = taxRate;
 		return this;
 	}
 
-	public double getTotalTax() {
+	public Double getTotalTax() {
 		return totalTax;
 	}
 
-	public Invoice setTotalTax(double totalTax) {
+	public Invoice setTotalTax(Double totalTax) {
 		this.totalTax = totalTax;
 		return this;
 	}
 
-	public double getTotalPrice() {
+	public Double getTotalPrice() {
 		return totalPrice;
 	}
 
-	public Invoice setTotalPrice(double totalPrice) {
+	public Invoice setTotalPrice(Double totalPrice) {
 		this.totalPrice = totalPrice;
 		return this;
 	}

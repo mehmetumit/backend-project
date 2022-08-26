@@ -4,13 +4,13 @@ package com.demo.app.models.dtos;
  * StockDetailDTO
  */
 public class StockDetailDTO {
-	private int quantity;
+	private Integer quantity;
 
-	public int getQuantity() {
+	public Integer getQuantity() {
 		return quantity;
 	}
 
-	public StockDetailDTO setQuantity(int quantity) {
+	public StockDetailDTO setQuantity(Integer quantity) {
 		this.quantity = quantity;
 		return this;
 	}
