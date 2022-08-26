@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import com.demo.app.repository.DatabaseEngine;
 import com.demo.app.repository.QueryEngine;
@@ -49,6 +50,24 @@ public class InvoiceDAOImpl implements InvoiceDAO {
 
     @Override
     public void update(Invoice invoice) throws SQLException {
+        Invoice updatedInvoice = findById(invoice.getId());
+        System.out.println(updatedInvoice.getSubTotal());
+        updatedInvoice
+                .setInvoiceTimestamp(Objects.nonNull(invoice.getInvoiceTimestamp()) ? invoice.getInvoiceTimestamp()
+                        : updatedInvoice.getInvoiceTimestamp())
+                .setDueTimestamp(Objects.nonNull(invoice.getDueTimestamp()) ? invoice.getDueTimestamp()
+                        : updatedInvoice.getDueTimestamp())
+                .setSubTotal(Objects.nonNull(invoice.getSubTotal()) ? invoice.getSubTotal()
+                        : updatedInvoice.getSubTotal())
+                .setDiscount(Objects.nonNull(invoice.getDiscount()) ? invoice.getDiscount()
+                        : updatedInvoice.getDiscount())
+                .setTaxRate(Objects.nonNull(invoice.getTaxRate()) ? invoice.getTaxRate()
+                        : updatedInvoice.getTaxRate())
+                .setTotalTax(Objects.nonNull(invoice.getTotalTax()) ? invoice.getTotalTax()
+                        : updatedInvoice.getTotalTax())
+                .setTotalPrice(Objects.nonNull(invoice.getTotalPrice()) ? invoice.getTotalPrice()
+                        : updatedInvoice.getTotalPrice());
+
         databaseEngine.merge(invoice);
     }
 

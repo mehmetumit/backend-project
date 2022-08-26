@@ -24,15 +24,15 @@ public class Invoice {
 	private Timestamp invoiceTimestamp;
 	@Column(name = "due_timestamp")
 	private Timestamp dueTimestamp;
-	@Column(name = "sub_total")
+	@Column(name = "sub_total", insertable = false, updatable = false)
 	private Double subTotal;
 	@Column(name = "discount")
 	private Double discount;
 	@Column(name = "tax_rate")
 	private Integer taxRate;
-	@Column(name = "total_tax")
+	@Column(name = "total_tax", insertable = false, updatable = false)
 	private Double totalTax;
-	@Column(name = "total_price")
+	@Column(name = "total_price", insertable = false, updatable = false)
 	private Double totalPrice;
 
 	public Invoice(int id, Timestamp invoiceTimestamp, Timestamp dueTimestamp,

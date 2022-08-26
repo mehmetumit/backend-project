@@ -55,13 +55,12 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     @Override
     public void update(Customer customer) throws SQLException {
-        System.out.println("DISCOUNT RATE: " + Objects.nonNull(customer.getDiscountRate()));
         Customer updatedCustomer = findById(customer.getId());
-        updatedCustomer.setName(Objects.nonNull(customer.getName()) ? customer.getName()
-                : updatedCustomer.getName())
-                .setSurname(
-                        Objects.nonNull(customer.getSurname()) ? customer.getSurname()
-                                : updatedCustomer.getSurname())
+        updatedCustomer
+                .setName(Objects.nonNull(customer.getName()) ? customer.getName()
+                        : updatedCustomer.getName())
+                .setSurname(Objects.nonNull(customer.getSurname()) ? customer.getSurname()
+                        : updatedCustomer.getSurname())
                 .setPhoneNum(Objects.nonNull(customer.getPhoneNum()) ? customer.getPhoneNum()
                         : updatedCustomer.getPhoneNum())
                 .setEmail(Objects.nonNull(customer.getEmail()) ? customer.getEmail() : updatedCustomer.getEmail())

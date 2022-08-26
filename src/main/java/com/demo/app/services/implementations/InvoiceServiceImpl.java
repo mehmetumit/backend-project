@@ -24,7 +24,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 			invoiceDAO.insert(toEntity(dto));
 			return 1;
 		} catch (Exception e) {
-			System.out.println("Customer insertion failed!");
+			System.out.println("Invoice insertion failed!");
 			return 0;
 		}
 	}
@@ -35,7 +35,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 			invoiceDAO.delete(id);
 			return 1;
 		} catch (Exception e) {
-			System.out.println("Customer deletion failed!");
+			System.out.println("Invoice deletion failed!");
 			return 0;
 		}
 	}

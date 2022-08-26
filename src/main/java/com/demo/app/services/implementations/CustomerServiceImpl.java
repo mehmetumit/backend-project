@@ -100,7 +100,6 @@ public class CustomerServiceImpl implements CustomerService {
 			customerDAO.update(toEntity(dto).setId(id));
 			return 1;
 		} catch (Exception e) {
-			System.out.println(e);
 			System.out.println("Customer update failed!");
 			return 0;
 		}
