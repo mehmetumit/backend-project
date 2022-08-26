@@ -3,6 +3,7 @@ package com.demo.app.models.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.Proxy;
 
 import jakarta.persistence.CascadeType;
@@ -17,6 +18,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
+@DynamicUpdate
 @Table(name = "customer")
 @Proxy(lazy = false)
 public class Customer {
@@ -37,9 +39,9 @@ public class Customer {
 	@Column(name = "email")
 	private String email;
 	@Column(name = "discount_rate")
-	private int discountRate;
+	private Integer discountRate;
 	@Column(name = "is_active")
-	private boolean isActive;
+	private Boolean isActive;
 
 	public Customer(int id, String name, String surname, String phoneNum, String email, int discountRate,
 			boolean isActive) {
@@ -64,7 +66,7 @@ public class Customer {
 	public Customer() {
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -109,20 +111,20 @@ public class Customer {
 		return this;
 	}
 
-	public boolean isActive() {
+	public Boolean isActive() {
 		return isActive;
 	}
 
-	public Customer setActive(boolean isActive) {
+	public Customer setActive(Boolean isActive) {
 		this.isActive = isActive;
 		return this;
 	}
 
-	public int getDiscountRate() {
+	public Integer getDiscountRate() {
 		return discountRate;
 	}
 
-	public Customer setDiscountRate(int discountRate) {
+	public Customer setDiscountRate(Integer discountRate) {
 		this.discountRate = discountRate;
 		return this;
 	}

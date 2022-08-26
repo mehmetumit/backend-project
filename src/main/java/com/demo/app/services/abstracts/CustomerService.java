@@ -1,5 +1,6 @@
 package com.demo.app.services.abstracts;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.demo.app.models.dtos.CustomerDTO;
@@ -42,4 +43,7 @@ public interface CustomerService extends Service<CustomerDTO, Customer> {
 	public List<CustomerDTO> getByActive(boolean isActive);
 
 	public List<CustomerDTO> getByDiscountRate(int discountRate);
+
+	public List<CustomerDTO> findAll(HashMap<String, Object> dataMap);
+
 }

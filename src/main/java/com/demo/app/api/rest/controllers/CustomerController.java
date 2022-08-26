@@ -1,5 +1,6 @@
 package com.demo.app.api.rest.controllers;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -15,6 +16,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.demo.app.models.dtos.CustomerDTO;
+import com.demo.app.repository.DatabaseEngine;
 import com.demo.app.services.abstracts.CustomerService;
 import com.demo.app.services.implementations.CustomerServiceImpl;
 
@@ -37,11 +39,25 @@ public class CustomerController {
 	}
 
 	@GET
-	@Path("/get")
+	@Path("/q")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getBy(@QueryParam("name") String name) {
-		List<CustomerDTO> customers = customerService.getByName(name);
-		if (customers != null)
+	public Response getBy(@QueryParam("name") String name,
+			@QueryParam("surname") String surname,
+			@QueryParam("phone_num") String phoneNum,
+			@QueryParam("email") String email,
+			@QueryParam("is_active") Boolean isActive,
+			@QueryParam("discount_rate") Integer discountRate) {
+		// HashMap<String, Object> dataMap = customerService.getDataMap();
+		HashMap<String, Object> dataMap = new HashMap<String, Object>();
+		dataMap.put("name", name);
+		dataMap.put("surname", surname);
+		dataMap.put("phoneNum", phoneNum);
+		dataMap.put("email", email);
+		dataMap.put("isActive", isActive);
+		dataMap.put("discountRate", discountRate);
+
+		List<CustomerDTO> customers = customerService.findAll(dataMap);
+		if (customers != null && customers.size() != 0)
 			return Response.ok(customers).build();
 		else
 			return Response.status(Response.Status.NOT_FOUND).entity("Customers not found").build();

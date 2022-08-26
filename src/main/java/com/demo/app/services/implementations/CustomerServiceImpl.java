@@ -1,10 +1,12 @@
 package com.demo.app.services.implementations;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import com.demo.app.models.dtos.CustomerDTO;
 import com.demo.app.models.entities.Customer;
+import com.demo.app.repository.QueryEngine;
 import com.demo.app.repository.dao.CustomerDAO;
 import com.demo.app.repository.daoImpl.CustomerDAOImpl;
 import com.demo.app.services.abstracts.CustomerService;
@@ -98,6 +100,7 @@ public class CustomerServiceImpl implements CustomerService {
 			customerDAO.update(toEntity(dto).setId(id));
 			return 1;
 		} catch (Exception e) {
+			System.out.println(e);
 			System.out.println("Customer update failed!");
 			return 0;
 		}
@@ -179,6 +182,26 @@ public class CustomerServiceImpl implements CustomerService {
 			System.out.println("Customer getByDiscountRate failed!");
 			return null;
 		}
+	}
+
+	// @Override
+	// public HashMap<String, Object> getDataMap() {
+	// return customerDAO.generateDataMap();
+	// }
+
+	@Override
+	public List<CustomerDTO> findAll(HashMap<String, Object> dataMap) {
+		try {
+			return customerDAO.findAll(dataMap)
+					.stream()
+					.map(c -> toDTO(c))
+					.collect(Collectors.toList());
+		} catch (Exception e) {
+			System.out.println("Customer findAll failed!");
+			System.out.println(e);
+			return null;
+		}
+
 	}
 
 }

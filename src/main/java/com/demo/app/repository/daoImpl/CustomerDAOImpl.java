@@ -1,12 +1,21 @@
 package com.demo.app.repository.daoImpl;
 
+import java.lang.reflect.Method;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Objects;
 
 import com.demo.app.repository.DatabaseEngine;
+import com.demo.app.repository.QueryEngine;
 import com.demo.app.repository.dao.CustomerDAO;
 
 import org.hibernate.Session;
+
+import jakarta.persistence.Column;
 
 import com.demo.app.models.entities.Customer;
 
@@ -46,7 +55,23 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     @Override
     public void update(Customer customer) throws SQLException {
-        databaseEngine.merge(customer);
+        System.out.println("DISCOUNT RATE: " + Objects.nonNull(customer.getDiscountRate()));
+        Customer updatedCustomer = findById(customer.getId());
+        updatedCustomer.setName(Objects.nonNull(customer.getName()) ? customer.getName()
+                : updatedCustomer.getName())
+                .setSurname(
+                        Objects.nonNull(customer.getSurname()) ? customer.getSurname()
+                                : updatedCustomer.getSurname())
+                .setPhoneNum(Objects.nonNull(customer.getPhoneNum()) ? customer.getPhoneNum()
+                        : updatedCustomer.getPhoneNum())
+                .setEmail(Objects.nonNull(customer.getEmail()) ? customer.getEmail() : updatedCustomer.getEmail())
+                .setDiscountRate(Objects.nonNull(customer.getDiscountRate()) ? customer.getDiscountRate()
+                        : updatedCustomer.getDiscountRate())
+                .setOrders(!customer.getOrders().isEmpty() ? customer.getOrders()
+                        : updatedCustomer.getOrders())
+                .setActive(Objects.nonNull(customer.isActive()) ? customer.isActive()
+                        : updatedCustomer.isActive());
+        databaseEngine.merge(updatedCustomer);
     }
 
     @Override
@@ -114,6 +139,27 @@ public class CustomerDAOImpl implements CustomerDAO {
 
         return customers;
     }
+
+    @Override
+    // public List<Customer> findAll(String name, String surname, String phoneNum,
+    // String email, Boolean isActive, Integer discountRate) {
+    public List<Customer> findAll(HashMap<String, Object> customerData) throws SQLException {
+        Session session = databaseEngine.openSession();
+
+        QueryEngine<Customer> queryEngine = new QueryEngine<Customer>();
+        String query = queryEngine.entityDataMapToQuery(customerData, Customer.class);
+        List<Customer> customers = session.createQuery(query, Customer.class).list();
+
+        session.close();
+
+        return customers;
+    }
+
+    // @Override
+    // public HashMap<String, Object> generateDataMap() {
+    // QueryEngine<Customer> queryEngine = new QueryEngine<Customer>();
+    // return queryEngine.generateEntityDataMap(Customer.class);
+    // }
 
     // @Override
     // public List<Order> findCustomerOrdersById(int id) throws SQLException {

@@ -8,8 +8,8 @@ public class CustomerDTO {
 	private String surname;
 	private String phoneNum;
 	private String email;
-	private boolean isActive;
-	private int discountRate;
+	private Boolean isActive;
+	private Integer discountRate;
 	private List<OrderDTO> orders = new ArrayList<OrderDTO>();
 
 	public String getName() {
@@ -48,20 +48,20 @@ public class CustomerDTO {
 		return this;
 	}
 
-	public boolean isActive() {
+	public Boolean isActive() {
 		return isActive;
 	}
 
-	public CustomerDTO setActive(boolean isActive) {
+	public CustomerDTO setActive(Boolean isActive) {
 		this.isActive = isActive;
 		return this;
 	}
 
-	public int getDiscountRate() {
+	public Integer getDiscountRate() {
 		return discountRate;
 	}
 
-	public CustomerDTO setDiscountRate(int discountRate) {
+	public CustomerDTO setDiscountRate(Integer discountRate) {
 		this.discountRate = discountRate;
 		return this;
 	}
