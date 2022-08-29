@@ -61,7 +61,7 @@ public class OrderDAOImpl implements OrderDAO {
                 .setOrderDetails(Objects.nonNull(order.getOrderDetails()) ? order.getOrderDetails()
                         : updatedOrder.getOrderDetails());
 
-        databaseEngine.merge(order);
+        databaseEngine.merge(updatedOrder);
     }
 
     @Override

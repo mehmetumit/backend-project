@@ -52,15 +52,6 @@ public class OrderDetail {
 		return quantity;
 	}
 
-	public OrderDetail setQuantitiy(Integer quantity) {
-		this.quantity = quantity;
-		return this;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
 	public OrderDetail setQuantity(Integer quantity) {
 		this.quantity = quantity;
 		return this;

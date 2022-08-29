@@ -3,6 +3,7 @@ package com.demo.app.repository.daoImpl;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import com.demo.app.repository.DatabaseEngine;
 import com.demo.app.repository.QueryEngine;
@@ -50,7 +51,14 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
 
     @Override
     public void update(OrderDetail orderDetail) throws SQLException {
-        databaseEngine.merge(orderDetail);
+        OrderDetail updatedOrderDetail = findById(orderDetail.getId());
+        updatedOrderDetail
+                .setProduct(Objects.nonNull(orderDetail.getProduct()) ? orderDetail.getProduct()
+                        : updatedOrderDetail.getProduct())
+                .setQuantity(Objects.nonNull(orderDetail.getQuantitiy()) ? orderDetail.getQuantitiy()
+                        : updatedOrderDetail.getQuantitiy());
+
+        databaseEngine.merge(updatedOrderDetail);
 
     }
 

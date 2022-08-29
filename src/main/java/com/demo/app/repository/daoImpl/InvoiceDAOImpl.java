@@ -67,7 +67,7 @@ public class InvoiceDAOImpl implements InvoiceDAO {
                 .setTotalPrice(Objects.nonNull(invoice.getTotalPrice()) ? invoice.getTotalPrice()
                         : updatedInvoice.getTotalPrice());
 
-        databaseEngine.merge(invoice);
+        databaseEngine.merge(updatedInvoice);
     }
 
     @Override
