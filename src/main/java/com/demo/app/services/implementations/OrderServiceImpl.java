@@ -9,6 +9,7 @@ import com.demo.app.models.dtos.OrderDTO;
 import com.demo.app.models.entities.Order;
 import com.demo.app.repository.dao.OrderDAO;
 import com.demo.app.repository.daoImpl.OrderDAOImpl;
+import com.demo.app.services.abstracts.InvoiceService;
 import com.demo.app.services.abstracts.OrderDetailService;
 import com.demo.app.services.abstracts.OrderService;
 
@@ -19,6 +20,7 @@ public class OrderServiceImpl implements OrderService {
 
 	private static OrderDAO orderDAO = new OrderDAOImpl();
 	private static OrderDetailService orderDetailService = new OrderDetailServiceImpl();
+	private static InvoiceService invoiceService = new InvoiceServiceImpl();
 
 	@Override
 	public int add(OrderDTO dto) {
@@ -70,7 +72,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public OrderDTO toDTO(Order entity) {
 		return new OrderDTO()
-				.setInvoice(entity.getInvoice())
+				.setInvoice(invoiceService.toDTO(entity.getInvoice()))
 				.setTimestamp(entity.getTimestamp())
 				.setOrderDetails(entity.getOrderDetails()
 						.stream()
@@ -81,7 +83,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public Order toEntity(OrderDTO dto) {
 		return new Order()
-				.setInvoice(dto.getInvoice())
+				.setInvoice(invoiceService.toEntity(dto.getInvoice()))
 				.setTimestamp(dto.getTimestamp())
 				.setOrderDetails(dto.getOrderDetails()
 						.stream()

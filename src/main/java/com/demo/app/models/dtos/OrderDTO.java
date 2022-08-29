@@ -10,15 +10,15 @@ import com.demo.app.models.entities.Invoice;
  * OrderDTO
  */
 public class OrderDTO {
-	private Invoice invoice;
+	private InvoiceDTO invoice;
 	private Timestamp timestamp;
 	private List<OrderDetailDTO> orderDetails = new ArrayList<OrderDetailDTO>();
 
-	public Invoice getInvoice() {
+	public InvoiceDTO getInvoice() {
 		return invoice;
 	}
 
-	public OrderDTO setInvoice(Invoice invoice) {
+	public OrderDTO setInvoice(InvoiceDTO invoice) {
 		this.invoice = invoice;
 		return this;
 	}
