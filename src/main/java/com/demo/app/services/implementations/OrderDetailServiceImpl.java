@@ -2,6 +2,7 @@ package com.demo.app.services.implementations;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import com.demo.app.models.dtos.OrderDetailDTO;
@@ -65,16 +66,18 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 
 	@Override
 	public OrderDetailDTO toDTO(OrderDetail entity) {
-		return new OrderDetailDTO()
+		return Objects.nonNull(entity) ? new OrderDetailDTO()
 				.setQuantity(entity.getQuantitiy())
-				.setProduct(productService.toDTO(entity.getProduct()));
+				.setProduct(productService.toDTO(entity.getProduct()))
+				: null;
 	}
 
 	@Override
 	public OrderDetail toEntity(OrderDetailDTO dto) {
-		return new OrderDetail()
+		return Objects.nonNull(dto) ? new OrderDetail()
 				.setQuantity(dto.getQuantity())
-				.setProduct(productService.toEntity(dto.getProduct()));
+				.setProduct(productService.toEntity(dto.getProduct()))
+				: null;
 	}
 
 	@Override

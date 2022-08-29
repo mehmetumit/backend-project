@@ -2,6 +2,7 @@ package com.demo.app.services.implementations;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import com.demo.app.models.dtos.CustomerDTO;
@@ -66,7 +67,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public CustomerDTO toDTO(Customer entity) {
-		return new CustomerDTO()
+		return Objects.nonNull(entity) ? new CustomerDTO()
 				.setName(entity.getName())
 				.setSurname(entity.getSurname())
 				.setPhoneNum(entity.getPhoneNum())
@@ -76,7 +77,8 @@ public class CustomerServiceImpl implements CustomerService {
 				.setOrders(entity.getOrders()
 						.stream()
 						.map(order -> orderService.toDTO(order))
-						.collect(Collectors.toList()));
+						.collect(Collectors.toList()))
+				: null;
 	}
 
 	@Override

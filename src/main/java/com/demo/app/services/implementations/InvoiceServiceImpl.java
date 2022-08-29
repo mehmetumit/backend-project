@@ -3,6 +3,7 @@ package com.demo.app.services.implementations;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import com.demo.app.models.dtos.InvoiceDTO;
@@ -65,26 +66,29 @@ public class InvoiceServiceImpl implements InvoiceService {
 
 	@Override
 	public InvoiceDTO toDTO(Invoice entity) {
-		return new InvoiceDTO()
+		return Objects.nonNull(entity) ? new InvoiceDTO()
 				.setInvoiceTimestamp(entity.getInvoiceTimestamp())
 				.setDueTimestamp(entity.getDueTimestamp())
 				.setSubTotal(entity.getSubTotal())
 				.setDiscount(entity.getDiscount())
 				.setTaxRate(entity.getTaxRate())
 				.setTotalTax(entity.getTotalTax())
-				.setTotalPrice(entity.getTotalPrice());
+				.setTotalPrice(entity.getTotalPrice())
+				: null;
 	}
 
 	@Override
 	public Invoice toEntity(InvoiceDTO dto) {
-		return new Invoice()
+		// dto is null ?
+		return Objects.nonNull(dto) ? new Invoice()
 				.setInvoiceTimestamp(dto.getInvoiceTimestamp())
 				.setDueTimestamp(dto.getDueTimestamp())
 				.setSubTotal(dto.getSubTotal())
 				.setDiscount(dto.getDiscount())
 				.setTaxRate(dto.getTaxRate())
 				.setTotalTax(dto.getTotalTax())
-				.setTotalPrice(dto.getTotalPrice());
+				.setTotalPrice(dto.getTotalPrice())
+				: null;
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package com.demo.app.services.implementations;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import com.demo.app.models.dtos.SellerDTO;
@@ -63,22 +64,24 @@ public class SellerServiceImpl implements SellerService {
 
 	@Override
 	public SellerDTO toDTO(Seller entity) {
-		return new SellerDTO()
+		return Objects.nonNull(entity) ? new SellerDTO()
 				.setAddress(entity.getAddress())
 				.setPhoneNum(entity.getPhoneNum())
 				.setEmail(entity.getEmail())
 				.setFax(entity.getFax())
-				.setActive(entity.isActive());
+				.setActive(entity.isActive())
+				: null;
 	}
 
 	@Override
 	public Seller toEntity(SellerDTO dto) {
-		return new Seller()
+		return Objects.nonNull(dto) ? new Seller()
 				.setAddress(dto.getAddress())
 				.setPhoneNum(dto.getPhoneNum())
 				.setEmail(dto.getEmail())
 				.setFax(dto.getFax())
-				.setActive(dto.isActive());
+				.setActive(dto.isActive())
+				: null;
 	}
 
 	@Override

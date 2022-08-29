@@ -2,6 +2,7 @@ package com.demo.app.services.implementations;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import com.demo.app.models.dtos.SupplierDTO;
@@ -65,26 +66,28 @@ public class SupplierServiceImpl implements SupplierService {
 
 	@Override
 	public SupplierDTO toDTO(Supplier entity) {
-		return new SupplierDTO()
+		return Objects.nonNull(entity) ? new SupplierDTO()
 				.setAddress(entity.getAddress())
 				.setPhoneNum(entity.getPhoneNum())
 				.setActive(entity.isActive())
 				.setStockDetails(entity.getStockDetails()
 						.stream()
 						.map(s -> stockDetailService.toDTO(s))
-						.collect(Collectors.toList()));
+						.collect(Collectors.toList()))
+				: null;
 	}
 
 	@Override
 	public Supplier toEntity(SupplierDTO dto) {
-		return new Supplier()
+		return Objects.nonNull(dto) ? new Supplier()
 				.setAddress(dto.getAddress())
 				.setPhoneNum(dto.getPhoneNum())
 				.setActive(dto.isActive())
 				.setStockDetails(dto.getStockDetails()
 						.stream()
 						.map(s -> stockDetailService.toEntity(s))
-						.collect(Collectors.toList()));
+						.collect(Collectors.toList()))
+				: null;
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package com.demo.app.services.implementations;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import com.demo.app.models.dtos.OrderDTO;
@@ -71,24 +72,26 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public OrderDTO toDTO(Order entity) {
-		return new OrderDTO()
+		return Objects.nonNull(entity) ? new OrderDTO()
 				.setInvoice(invoiceService.toDTO(entity.getInvoice()))
 				.setTimestamp(entity.getTimestamp())
 				.setOrderDetails(entity.getOrderDetails()
 						.stream()
 						.map(od -> orderDetailService.toDTO(od))
-						.collect(Collectors.toList()));
+						.collect(Collectors.toList()))
+				: null;
 	}
 
 	@Override
 	public Order toEntity(OrderDTO dto) {
-		return new Order()
+		return Objects.nonNull(dto) ? new Order()
 				.setInvoice(invoiceService.toEntity(dto.getInvoice()))
 				.setTimestamp(dto.getTimestamp())
 				.setOrderDetails(dto.getOrderDetails()
 						.stream()
 						.map(od -> orderDetailService.toEntity(od))
-						.collect(Collectors.toList()));
+						.collect(Collectors.toList()))
+				: null;
 	}
 
 	@Override
@@ -97,6 +100,7 @@ public class OrderServiceImpl implements OrderService {
 			orderDAO.update(toEntity(dto).setId(id));
 			return 1;
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("Order update failed!");
 			return 0;
 		}

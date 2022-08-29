@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import com.demo.app.repository.DatabaseEngine;
 import com.demo.app.repository.QueryEngine;
@@ -50,6 +51,16 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public void update(Order order) throws SQLException {
+        Order updatedOrder = findById(order.getId());
+
+        updatedOrder
+                .setInvoice(Objects.nonNull(order.getInvoice()) ? order.getInvoice()
+                        : updatedOrder.getInvoice())
+                .setTimestamp(Objects.nonNull(order.getTimestamp()) ? order.getTimestamp()
+                        : updatedOrder.getTimestamp())
+                .setOrderDetails(Objects.nonNull(order.getOrderDetails()) ? order.getOrderDetails()
+                        : updatedOrder.getOrderDetails());
+
         databaseEngine.merge(order);
     }
 

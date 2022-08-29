@@ -2,6 +2,7 @@ package com.demo.app.services.implementations;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import com.demo.app.models.dtos.ProductDTO;
@@ -65,22 +66,24 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public ProductDTO toDTO(Product entity) {
-		return new ProductDTO()
+		return Objects.nonNull(entity) ? new ProductDTO()
 				.setCategoryName(entity.getCategoryName())
 				.setName(entity.getName())
 				.setStockDetail(stockDetailService.toDTO(entity.getStockDetail()))
 				.setUnitPrice(entity.getUnitPrice())
-				.setActive(entity.isActive());
+				.setActive(entity.isActive())
+				: null;
 	}
 
 	@Override
 	public Product toEntity(ProductDTO dto) {
-		return new Product()
+		return Objects.nonNull(dto) ? new Product()
 				.setCategoryName(dto.getCategoryName())
 				.setName(dto.getName())
 				.setStockDetail(stockDetailService.toEntity(dto.getStockDetail()))
 				.setUnitPrice(dto.getUnitPrice())
-				.setActive(dto.isActive());
+				.setActive(dto.isActive())
+				: null;
 	}
 
 	@Override

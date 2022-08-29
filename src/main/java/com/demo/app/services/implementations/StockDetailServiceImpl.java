@@ -2,6 +2,7 @@ package com.demo.app.services.implementations;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import com.demo.app.models.dtos.StockDetailDTO;
@@ -63,14 +64,16 @@ public class StockDetailServiceImpl implements StockDetailService {
 
 	@Override
 	public StockDetailDTO toDTO(StockDetail entity) {
-		return new StockDetailDTO()
-				.setQuantity(entity.getQuantity());
+		return Objects.nonNull(entity) ? new StockDetailDTO()
+				.setQuantity(entity.getQuantity())
+				: null;
 	}
 
 	@Override
 	public StockDetail toEntity(StockDetailDTO dto) {
-		return new StockDetail()
-				.setQuantity(dto.getQuantity());
+		return Objects.nonNull(dto) ? new StockDetail()
+				.setQuantity(dto.getQuantity())
+				: null;
 	}
 
 	@Override

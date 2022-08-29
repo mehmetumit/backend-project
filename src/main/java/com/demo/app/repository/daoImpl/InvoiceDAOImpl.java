@@ -51,7 +51,6 @@ public class InvoiceDAOImpl implements InvoiceDAO {
     @Override
     public void update(Invoice invoice) throws SQLException {
         Invoice updatedInvoice = findById(invoice.getId());
-        System.out.println(updatedInvoice.getSubTotal());
         updatedInvoice
                 .setInvoiceTimestamp(Objects.nonNull(invoice.getInvoiceTimestamp()) ? invoice.getInvoiceTimestamp()
                         : updatedInvoice.getInvoiceTimestamp())
