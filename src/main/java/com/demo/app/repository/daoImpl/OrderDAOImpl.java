@@ -11,7 +11,6 @@ import com.demo.app.repository.dao.OrderDAO;
 
 import org.hibernate.Session;
 
-import com.demo.app.models.entities.Invoice;
 import com.demo.app.models.entities.Order;
 
 public class OrderDAOImpl implements OrderDAO {
@@ -30,7 +29,8 @@ public class OrderDAOImpl implements OrderDAO {
     @Override
     public List<Order> getAll() throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from \"" + getEntityName() + "\"";
+        String query = "from " + getEntityName();
+        session.beginTransaction();
 
         List<Order> orders = session.createQuery(query, Order.class).list();
         session.close();

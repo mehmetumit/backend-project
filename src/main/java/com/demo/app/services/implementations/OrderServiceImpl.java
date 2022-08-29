@@ -50,6 +50,7 @@ public class OrderServiceImpl implements OrderService {
 					.map(o -> toDTO(o))
 					.collect(Collectors.toList());
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("Order getAll failed!");
 			return null;
 		}
@@ -60,6 +61,7 @@ public class OrderServiceImpl implements OrderService {
 		try {
 			return toDTO(orderDAO.findById(id));
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("Order getById failed!");
 			return null;
 		}

@@ -1,13 +1,9 @@
 package com.demo.app.repository;
 
-import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
-
-import jakarta.persistence.Column;
 
 /**
  * QueryEngine

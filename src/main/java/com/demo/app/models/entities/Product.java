@@ -20,9 +20,8 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	// @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	// @JoinColumn(name = "product_id", referencedColumnName = "id")
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "id", referencedColumnName = "product_id")
 	private StockDetail stockDetail;
 	@Column(name = "category_name")

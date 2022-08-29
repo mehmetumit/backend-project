@@ -23,7 +23,7 @@ public class Seller {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "seller_id", referencedColumnName = "id")
 	private List<Invoice> invoices = new ArrayList<Invoice>();
 	@Column(name = "address")

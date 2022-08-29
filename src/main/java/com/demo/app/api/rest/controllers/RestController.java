@@ -16,6 +16,7 @@ public class RestController extends Application {
 	public RestController() {
 		this.singletons.add(new CustomerController());
 		this.singletons.add(new InvoiceController());
+		this.singletons.add(new OrderController());
 	}
 
 	@Override
