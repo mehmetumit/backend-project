@@ -8,9 +8,19 @@ import java.util.List;
  */
 public class SupplierDTO {
 	List<StockDetailDTO> stockDetails = new ArrayList<StockDetailDTO>();
+	private String name;
 	private String address;
 	private String phoneNum;
 	private Boolean isActive;
+
+	public String getName() {
+		return name;
+	}
+
+	public SupplierDTO setName(String name) {
+		this.name = name;
+		return this;
+	}
 
 	public String getAddress() {
 		return address;
@@ -50,8 +60,8 @@ public class SupplierDTO {
 
 	@Override
 	public String toString() {
-		return "SupplierDTO [address=" + address + ", isActive=" + isActive + ", phoneNum=" + phoneNum
-				+ ", stockDetails=" + stockDetails + "]\n";
+		return "SupplierDTO [address=" + address + ", isActive=" + isActive + ", name=" + name + ", phoneNum="
+				+ phoneNum + ", stockDetails=" + stockDetails + "]";
 	}
 
 }
