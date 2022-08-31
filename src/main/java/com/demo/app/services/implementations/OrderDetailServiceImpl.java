@@ -36,6 +36,7 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 			orderDetailDAO.delete(id);
 			return 1;
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("OrderDetail delete failed!");
 			return 0;
 		}
@@ -59,6 +60,7 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 		try {
 			return toDTO(orderDetailDAO.findById(id));
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("OrderDetail getById failed!");
 			return null;
 		}

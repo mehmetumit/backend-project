@@ -17,7 +17,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.demo.app.models.dtos.OrderDTO;
-import com.demo.app.models.entities.Invoice;
 import com.demo.app.services.abstracts.OrderService;
 import com.demo.app.services.implementations.OrderServiceImpl;
 
