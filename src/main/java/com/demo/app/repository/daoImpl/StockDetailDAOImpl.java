@@ -3,6 +3,7 @@ package com.demo.app.repository.daoImpl;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import com.demo.app.models.entities.StockDetail;
 import com.demo.app.repository.DatabaseEngine;
@@ -49,7 +50,10 @@ public class StockDetailDAOImpl implements StockDetailDAO {
 
     @Override
     public void update(StockDetail stockDetail) throws SQLException {
-        databaseEngine.merge(stockDetail);
+        StockDetail updatedStockDetail = findById(stockDetail.getId());
+        updatedStockDetail.setQuantity(Objects.nonNull(stockDetail.getQuantity()) ? stockDetail.getQuantity()
+                : updatedStockDetail.getQuantity());
+        databaseEngine.merge(updatedStockDetail);
 
     }
 

@@ -20,6 +20,7 @@ public class RestController extends Application {
 		this.singletons.add(new OrderDetailController());
 		this.singletons.add(new ProductController());
 		this.singletons.add(new SellerController());
+		this.singletons.add(new StockDetailController());
 	}
 
 	@Override
