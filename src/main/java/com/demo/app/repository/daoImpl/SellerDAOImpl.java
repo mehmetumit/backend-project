@@ -3,6 +3,7 @@ package com.demo.app.repository.daoImpl;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import com.demo.app.repository.DatabaseEngine;
 import com.demo.app.repository.QueryEngine;
@@ -48,7 +49,23 @@ public class SellerDAOImpl implements SellerDAO {
 
     @Override
     public void update(Seller seller) throws SQLException {
-        databaseEngine.merge(seller);
+        Seller updatedSeller = findById(seller.getId());
+        updatedSeller
+                .setFax(Objects.nonNull(seller.getFax()) ? seller.getFax()
+                        : updatedSeller.getFax())
+                .setName(Objects.nonNull(seller.getName()) ? seller.getName()
+                        : updatedSeller.getName())
+                .setEmail(Objects.nonNull(seller.getEmail()) ? seller.getEmail()
+                        : updatedSeller.getEmail())
+                .setAddress(Objects.nonNull(seller.getAddress()) ? seller.getAddress()
+                        : updatedSeller.getAddress())
+                .setActive(Objects.nonNull(seller.isActive()) ? seller.isActive()
+                        : updatedSeller.isActive())
+                .setPhoneNum(Objects.nonNull(seller.getPhoneNum()) ? seller.getPhoneNum()
+                        : updatedSeller.getPhoneNum())
+                .setInvoices(Objects.nonNull(seller.getInvoices()) ? seller.getInvoices()
+                        : updatedSeller.getInvoices());
+        databaseEngine.merge(updatedSeller);
     }
 
     @Override
