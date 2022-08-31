@@ -9,6 +9,7 @@ import com.demo.app.models.dtos.StockDetailDTO;
 import com.demo.app.models.entities.StockDetail;
 import com.demo.app.repository.dao.StockDetailDAO;
 import com.demo.app.repository.daoImpl.StockDetailDAOImpl;
+import com.demo.app.services.abstracts.ProductService;
 import com.demo.app.services.abstracts.StockDetailService;
 
 /**
@@ -16,6 +17,7 @@ import com.demo.app.services.abstracts.StockDetailService;
  */
 public class StockDetailServiceImpl implements StockDetailService {
 	StockDetailDAO stockDetailDAO = new StockDetailDAOImpl();
+	ProductService productService = new ProductServiceImpl();
 
 	@Override
 	public int add(StockDetailDTO dto) {
@@ -65,6 +67,7 @@ public class StockDetailServiceImpl implements StockDetailService {
 	@Override
 	public StockDetailDTO toDTO(StockDetail entity) {
 		return Objects.nonNull(entity) ? new StockDetailDTO()
+				.setProduct(productService.toDTO(entity.getProduct()))
 				.setQuantity(entity.getQuantity())
 				: null;
 	}
@@ -72,6 +75,7 @@ public class StockDetailServiceImpl implements StockDetailService {
 	@Override
 	public StockDetail toEntity(StockDetailDTO dto) {
 		return Objects.nonNull(dto) ? new StockDetail()
+				.setProduct(productService.toEntity(dto.getProduct()))
 				.setQuantity(dto.getQuantity())
 				: null;
 	}

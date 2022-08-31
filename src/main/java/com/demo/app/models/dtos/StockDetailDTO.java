@@ -4,7 +4,17 @@ package com.demo.app.models.dtos;
  * StockDetailDTO
  */
 public class StockDetailDTO {
+	private ProductDTO product;
 	private Integer quantity;
+
+	public ProductDTO getProduct() {
+		return product;
+	}
+
+	public StockDetailDTO setProduct(ProductDTO product) {
+		this.product = product;
+		return this;
+	}
 
 	public Integer getQuantity() {
 		return quantity;
@@ -17,7 +27,7 @@ public class StockDetailDTO {
 
 	@Override
 	public String toString() {
-		return "StockDetailDTO [quantity=" + quantity + "]\n";
+		return "StockDetailDTO [product=" + product + ", quantity=" + quantity + "]";
 	}
 
 }

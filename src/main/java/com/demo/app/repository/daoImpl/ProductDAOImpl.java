@@ -61,9 +61,7 @@ public class ProductDAOImpl implements ProductDAO {
                 .setUnitPrice(Objects.nonNull(product.getUnitPrice()) ? product.getUnitPrice()
                         : updatedProduct.getUnitPrice())
                 .setCategoryName(Objects.nonNull(product.getCategoryName()) ? product.getCategoryName()
-                        : updatedProduct.getCategoryName())
-                .setStockDetail(Objects.nonNull(product.getStockDetail()) ? product.getStockDetail()
-                        : updatedProduct.getStockDetail());
+                        : updatedProduct.getCategoryName());
         databaseEngine.merge(updatedProduct);
     }
 

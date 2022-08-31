@@ -51,8 +51,10 @@ public class StockDetailDAOImpl implements StockDetailDAO {
     @Override
     public void update(StockDetail stockDetail) throws SQLException {
         StockDetail updatedStockDetail = findById(stockDetail.getId());
-        updatedStockDetail.setQuantity(Objects.nonNull(stockDetail.getQuantity()) ? stockDetail.getQuantity()
-                : updatedStockDetail.getQuantity());
+        updatedStockDetail.setProduct(Objects.nonNull(stockDetail.getProduct()) ? stockDetail.getProduct()
+                : updatedStockDetail.getProduct())
+                .setQuantity(Objects.nonNull(stockDetail.getQuantity()) ? stockDetail.getQuantity()
+                        : updatedStockDetail.getQuantity());
         databaseEngine.merge(updatedStockDetail);
 
     }

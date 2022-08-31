@@ -20,10 +20,6 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	// @JoinColumn(name = "product_id", referencedColumnName = "id")
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "id", referencedColumnName = "product_id")
-	private StockDetail stockDetail;
 	@Column(name = "category_name")
 	private String categoryName;
 	@Column(name = "name")
@@ -33,19 +29,17 @@ public class Product {
 	@Column(name = "is_active")
 	private Boolean isActive;
 
-	public Product(int id, StockDetail stockDetail, String categoryName, String name, Double unitPrice,
+	public Product(int id, String categoryName, String name, Double unitPrice,
 			Boolean isActive) {
 		this.id = id;
-		this.stockDetail = stockDetail;
 		this.categoryName = categoryName;
 		this.name = name;
 		this.unitPrice = unitPrice;
 		this.isActive = isActive;
 	}
 
-	public Product(StockDetail stockDetail, String categoryName, String name, Double unitPrice,
+	public Product(String categoryName, String name, Double unitPrice,
 			Boolean isActive) {
-		this.stockDetail = stockDetail;
 		this.categoryName = categoryName;
 		this.name = name;
 		this.unitPrice = unitPrice;
@@ -62,15 +56,6 @@ public class Product {
 
 	public Product setId(int id) {
 		this.id = id;
-		return this;
-	}
-
-	public StockDetail getStockDetail() {
-		return stockDetail;
-	}
-
-	public Product setStockDetail(StockDetail stockDetail) {
-		this.stockDetail = stockDetail;
 		return this;
 	}
 
@@ -113,7 +98,7 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [categoryName=" + categoryName + ", id=" + id + ", isActive=" + isActive + ", name=" + name
-				+ ", stockDetail=" + stockDetail + ", unitPrice=" + unitPrice + "]\n";
+				+ ", unitPrice=" + unitPrice + "]\n";
 	}
 
 }

@@ -10,14 +10,12 @@ import com.demo.app.models.entities.Product;
 import com.demo.app.repository.dao.ProductDAO;
 import com.demo.app.repository.daoImpl.ProductDAOImpl;
 import com.demo.app.services.abstracts.ProductService;
-import com.demo.app.services.abstracts.StockDetailService;
 
 /**
  * ProductServiceImpl
  */
 public class ProductServiceImpl implements ProductService {
 	private static ProductDAO productDAO = new ProductDAOImpl();
-	private static StockDetailService stockDetailService = new StockDetailServiceImpl();
 
 	@Override
 	public int add(ProductDTO dto) {
@@ -69,7 +67,6 @@ public class ProductServiceImpl implements ProductService {
 		return Objects.nonNull(entity) ? new ProductDTO()
 				.setCategoryName(entity.getCategoryName())
 				.setName(entity.getName())
-				.setStockDetail(stockDetailService.toDTO(entity.getStockDetail()))
 				.setUnitPrice(entity.getUnitPrice())
 				.setActive(entity.isActive())
 				: null;
@@ -80,7 +77,6 @@ public class ProductServiceImpl implements ProductService {
 		return Objects.nonNull(dto) ? new Product()
 				.setCategoryName(dto.getCategoryName())
 				.setName(dto.getName())
-				.setStockDetail(stockDetailService.toEntity(dto.getStockDetail()))
 				.setUnitPrice(dto.getUnitPrice())
 				.setActive(dto.isActive())
 				: null;

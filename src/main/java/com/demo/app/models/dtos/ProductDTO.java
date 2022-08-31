@@ -6,7 +6,6 @@ package com.demo.app.models.dtos;
 public class ProductDTO {
 	private String categoryName;
 	private String name;
-	private StockDetailDTO stockDetail;
 	private Double unitPrice;
 	private Boolean isActive;
 
@@ -25,15 +24,6 @@ public class ProductDTO {
 
 	public ProductDTO setName(String name) {
 		this.name = name;
-		return this;
-	}
-
-	public StockDetailDTO getStockDetail() {
-		return stockDetail;
-	}
-
-	public ProductDTO setStockDetail(StockDetailDTO stockDetail) {
-		this.stockDetail = stockDetail;
 		return this;
 	}
 
@@ -58,7 +48,7 @@ public class ProductDTO {
 	@Override
 	public String toString() {
 		return "ProductDTO [categoryName=" + categoryName + ", isActive=" + isActive + ", name=" + name
-				+ ", stockDetail=" + stockDetail + ", unitPrice=" + unitPrice + "]\n";
+				+ ", unitPrice=" + unitPrice + "]\n";
 	}
 
 }
