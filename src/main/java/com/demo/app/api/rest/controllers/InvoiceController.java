@@ -49,8 +49,9 @@ public class InvoiceController {
 			@QueryParam("tax_rate") Integer taxRate,
 			@QueryParam("total_tax") Integer totalTax,
 			@QueryParam("total_price") Double totalPrice) {
-		// HashMap<String, Object> dataMap = customerService.getDataMap();
+
 		HashMap<String, Object> dataMap = new HashMap<String, Object>();
+
 		dataMap.put("invoiceTimestamp", invoiceTimestamp);
 		dataMap.put("dueTimestamp", dueTimestamp);
 		dataMap.put("subTotal", subTotal);

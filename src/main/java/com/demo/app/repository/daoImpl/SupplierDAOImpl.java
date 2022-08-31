@@ -3,6 +3,7 @@ package com.demo.app.repository.daoImpl;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import com.demo.app.repository.DatabaseEngine;
 import com.demo.app.repository.QueryEngine;
@@ -50,7 +51,19 @@ public class SupplierDAOImpl implements SupplierDAO {
 
     @Override
     public void update(Supplier supplier) throws SQLException {
-        databaseEngine.merge(supplier);
+        Supplier updatedSupplier = findById(supplier.getId());
+        updatedSupplier
+                .setName(Objects.nonNull(supplier.getName()) ? supplier.getName()
+                        : updatedSupplier.getName())
+                .setAddress(Objects.nonNull(supplier.getAddress()) ? supplier.getAddress()
+                        : updatedSupplier.getAddress())
+                .setActive(Objects.nonNull(supplier.isActive()) ? supplier.isActive()
+                        : updatedSupplier.isActive())
+                .setPhoneNum(Objects.nonNull(supplier.getPhoneNum()) ? supplier.getPhoneNum()
+                        : updatedSupplier.getPhoneNum())
+                .setStockDetails(Objects.nonNull(supplier.getStockDetails()) ? supplier.getStockDetails()
+                        : updatedSupplier.getStockDetails());
+        databaseEngine.merge(updatedSupplier);
     }
 
     @Override

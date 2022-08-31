@@ -42,9 +42,9 @@ public class StockDetailController {
 	@Path("/q")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getBy(@QueryParam("quantity") Integer quantity) {
-		// HashMap<String, Object> dataMap = customerService.getDataMap();
 		HashMap<String, Object> dataMap = new HashMap<String, Object>();
 		dataMap.put("quantity", quantity);
+
 		List<StockDetailDTO> stockDetails = stockDetailService.findAll(dataMap);
 		if (stockDetails != null && !stockDetails.isEmpty())
 			return Response.ok(stockDetails).build();
