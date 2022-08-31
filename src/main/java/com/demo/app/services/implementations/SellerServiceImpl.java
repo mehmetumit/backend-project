@@ -9,13 +9,15 @@ import com.demo.app.models.dtos.SellerDTO;
 import com.demo.app.models.entities.Seller;
 import com.demo.app.repository.dao.SellerDAO;
 import com.demo.app.repository.daoImpl.SellerDAOImpl;
+import com.demo.app.services.abstracts.InvoiceService;
 import com.demo.app.services.abstracts.SellerService;
 
 /**
  * SellerServiceImpl
  */
 public class SellerServiceImpl implements SellerService {
-	SellerDAO sellerDAO = new SellerDAOImpl();
+	private static SellerDAO sellerDAO = new SellerDAOImpl();
+	private static InvoiceService invoiceService = new InvoiceServiceImpl();
 
 	@Override
 	public int add(SellerDTO dto) {
@@ -70,6 +72,10 @@ public class SellerServiceImpl implements SellerService {
 				.setEmail(entity.getEmail())
 				.setFax(entity.getFax())
 				.setActive(entity.isActive())
+				.setInvoices(entity.getInvoices()
+						.stream()
+						.map(inv -> invoiceService.toDTO(inv))
+						.collect(Collectors.toList()))
 				: null;
 	}
 
@@ -81,6 +87,10 @@ public class SellerServiceImpl implements SellerService {
 				.setEmail(dto.getEmail())
 				.setFax(dto.getFax())
 				.setActive(dto.isActive())
+				.setInvoices(dto.getInvoices()
+						.stream()
+						.map(inv -> invoiceService.toEntity(inv))
+						.collect(Collectors.toList()))
 				: null;
 	}
 
