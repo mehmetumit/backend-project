@@ -67,6 +67,7 @@ public class SellerServiceImpl implements SellerService {
 	@Override
 	public SellerDTO toDTO(Seller entity) {
 		return Objects.nonNull(entity) ? new SellerDTO()
+				.setName(entity.getName())
 				.setAddress(entity.getAddress())
 				.setPhoneNum(entity.getPhoneNum())
 				.setEmail(entity.getEmail())
@@ -82,6 +83,7 @@ public class SellerServiceImpl implements SellerService {
 	@Override
 	public Seller toEntity(SellerDTO dto) {
 		return Objects.nonNull(dto) ? new Seller()
+				.setName(dto.getName())
 				.setAddress(dto.getAddress())
 				.setPhoneNum(dto.getPhoneNum())
 				.setEmail(dto.getEmail())

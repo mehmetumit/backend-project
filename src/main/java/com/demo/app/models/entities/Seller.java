@@ -26,6 +26,8 @@ public class Seller {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "seller_id", referencedColumnName = "id")
 	private List<Invoice> invoices = new ArrayList<Invoice>();
+	@Column(name = "name")
+	private String name;
 	@Column(name = "address")
 	private String address;
 	@Column(name = "phone_num")
@@ -37,8 +39,9 @@ public class Seller {
 	@Column(name = "is_active")
 	private Boolean isActive;
 
-	public Seller(int id, String address, String phoneNum, String email, String fax, Boolean isActive) {
+	public Seller(int id, String name, String address, String phoneNum, String email, String fax, Boolean isActive) {
 		this.id = id;
+		this.name = name;
 		this.address = address;
 		this.phoneNum = phoneNum;
 		this.email = email;
@@ -46,7 +49,8 @@ public class Seller {
 		this.isActive = isActive;
 	}
 
-	public Seller(String address, String phoneNum, String email, String fax, Boolean isActive) {
+	public Seller(String name, String address, String phoneNum, String email, String fax, Boolean isActive) {
+		this.name = name;
 		this.address = address;
 		this.phoneNum = phoneNum;
 		this.email = email;
@@ -65,6 +69,16 @@ public class Seller {
 	public Seller setId(int id) {
 		this.id = id;
 		return this;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public Seller setName(String name) {
+		this.name = name;
+		return this;
+
 	}
 
 	public String getAddress() {
@@ -124,7 +138,7 @@ public class Seller {
 	@Override
 	public String toString() {
 		return "Seller [address=" + address + ", email=" + email + ", fax=" + fax + ", id=" + id + ", invoices="
-				+ invoices + ", isActive=" + isActive + ", phoneNum=" + phoneNum + "]\n";
+				+ invoices + ", isActive=" + isActive + ", name=" + name + ", phoneNum=" + phoneNum + "]";
 	}
 
 }
