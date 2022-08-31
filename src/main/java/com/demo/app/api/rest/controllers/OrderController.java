@@ -56,7 +56,7 @@ public class OrderController {
 	public Response getBy(@QueryParam("order_timestamp") Timestamp timestamp) {
 		// HashMap<String, Object> dataMap = customerService.getDataMap();
 		HashMap<String, Object> dataMap = new HashMap<String, Object>();
-		dataMap.put("order_timestamp", timestamp);
+		dataMap.put("orderTimestamp", timestamp);
 
 		List<OrderDTO> orders = orderService.findAll(dataMap);
 		if (orders != null && !orders.isEmpty())
@@ -74,7 +74,7 @@ public class OrderController {
 		if (success)
 			return Response.ok(order).build();
 		else
-			return Response.status(Response.Status.BAD_REQUEST).entity("order adding failed").build();
+			return Response.status(Response.Status.BAD_REQUEST).entity("Order adding failed").build();
 
 	}
 
