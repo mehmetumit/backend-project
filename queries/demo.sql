@@ -25,18 +25,18 @@ CREATE TABLE "order"(
 	customer_id INT REFERENCES customer(id) NOT NULL,
 	order_timestamp TIMESTAMP NOT NULL
 );
-CREATE TABLE "order_detail"(
-	id SERIAL PRIMARY KEY,
-	order_id INT REFERENCES "order"(id) NOT NULL,
-	quantity INT CHECK(quantity > 0) DEFAULT 0
-);
 CREATE TABLE "product"(
 	id SERIAL PRIMARY KEY,
-	order_detail_id INT REFERENCES order_detail(id) NOT NULL,
 	category_name VARCHAR(255) NOT NULL,
 	name VARCHAR(255) NOT NULL,
 	unit_price NUMERIC(12,2) DEFAULT 0 NOT NULL,
 	is_active BOOL DEFAULT TRUE NOT NULL
+);
+CREATE TABLE "order_detail"(
+	id SERIAL PRIMARY KEY,
+	order_id INT REFERENCES "order"(id) NOT NULL,
+	product_id INT REFERENCES product(id) NOT NULL,
+	quantity INT CHECK(quantity > 0) DEFAULT 0
 );
 CREATE TABLE "supplier"(
 	id SERIAL PRIMARY KEY,
@@ -77,7 +77,7 @@ CREATE OR REPLACE FUNCTION calculate_sub_total()
 	LANGUAGE plpgsql AS
 $$
 BEGIN
-	NEW.sub_total := (select SUM(unit_price * quantity) from "order" left join order_detail on "order".id = order_detail.order_id left join product on order_detail.id = product.order_detail_id where "order".id = NEW.order_id);
+	NEW.sub_total := (select SUM(unit_price * quantity) from "order" left join order_detail on "order".id = order_detail.order_id left join product on order_detail.product_id = product.id where "order".id = NEW.order_id);
 	RETURN NEW;
 END;
 $$;
