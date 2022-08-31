@@ -151,6 +151,7 @@ public class ProductServiceImpl implements ProductService {
 					.map(c -> toDTO(c))
 					.collect(Collectors.toList());
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("Product findAll failed!");
 			return null;
 		}

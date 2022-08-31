@@ -3,6 +3,7 @@ package com.demo.app.repository.daoImpl;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import com.demo.app.repository.DatabaseEngine;
 import com.demo.app.repository.QueryEngine;
@@ -51,7 +52,19 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     public void update(Product product) throws SQLException {
-        databaseEngine.merge(product);
+        Product updatedProduct = findById(product.getId());
+        updatedProduct
+                .setName(Objects.nonNull(product.getName()) ? product.getName()
+                        : updatedProduct.getName())
+                .setActive(Objects.nonNull(product.isActive()) ? product.isActive()
+                        : updatedProduct.isActive())
+                .setUnitPrice(Objects.nonNull(product.getUnitPrice()) ? product.getUnitPrice()
+                        : updatedProduct.getUnitPrice())
+                .setCategoryName(Objects.nonNull(product.getCategoryName()) ? product.getCategoryName()
+                        : updatedProduct.getCategoryName())
+                .setStockDetail(Objects.nonNull(product.getStockDetail()) ? product.getStockDetail()
+                        : updatedProduct.getStockDetail());
+        databaseEngine.merge(updatedProduct);
     }
 
     @Override
