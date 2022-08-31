@@ -56,7 +56,7 @@ CREATE TABLE "seller"(
 	name VARCHAR(255) NOT NULL,
 	address VARCHAR(255) NOT NULL,
 	phone_num PHONE NOT NULL,
-	email_addr EMAIL NOT NULL,
+	email EMAIL NOT NULL,
 	fax VARCHAR(255) DEFAULT '' NOT NULL,
 	is_active BOOL DEFAULT TRUE NOT NULL
 );

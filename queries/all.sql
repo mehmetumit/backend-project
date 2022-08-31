@@ -56,7 +56,7 @@ CREATE TABLE "seller"(
 	name VARCHAR(255) NOT NULL,
 	address VARCHAR(255) NOT NULL,
 	phone_num PHONE NOT NULL,
-	email_addr EMAIL NOT NULL,
+	email EMAIL NOT NULL,
 	fax VARCHAR(255) DEFAULT '' NOT NULL,
 	is_active BOOL DEFAULT TRUE NOT NULL
 );
@@ -130,11 +130,11 @@ INSERT INTO order_detail(order_id, product_id, quantity) VALUES(3, 6, 12);
 INSERT INTO order_detail(order_id, product_id, quantity) VALUES(4, 7, 23);
 INSERT INTO order_detail(order_id, product_id, quantity) VALUES(5, 7, 42);
 INSERT INTO order_detail(order_id, product_id, quantity) VALUES(6, 8, 18);
-INSERT INTO seller(name, address, phone_num, email_addr, fax, is_active) VALUES('Migros', 'Örnek Mah. Deneme Sk. No:34 Ankara', '5865934392', 'migros@domain.com', '', true);
-INSERT INTO seller(name, address, phone_num, email_addr, fax, is_active) VALUES('Seyhanler', 'Konak Mah. Çiçek Sk. No:12 Bursa', '5358323481', 'seyhanlar@domain.com', '02123413223@fax.demo', true);
-INSERT INTO seller(name, address, phone_num, email_addr, fax, is_active) VALUES('Yunus', 'Kanaryalı Mah. Badem Sk. No:2 Ankara', '2223456312', 'yunus@domain.com', '02543234643@fax.demo', false);
-INSERT INTO seller(name, address, phone_num, email_addr, fax, is_active) VALUES('Carrefour', 'Odunluk Mah. Gülbahçe Sk. No:1 Bursa', '2334534534', 'carrefour@domain.com', '022345435434fax.demo', true);
-INSERT INTO seller(name, address, phone_num, email_addr, fax, is_active) VALUES('Bim', 'Alageyik Mah. Papatya Sk. No:3 Bursa', '2545345345', 'bim@domain.com', '', false);
+INSERT INTO seller(name, address, phone_num, email, fax, is_active) VALUES('Migros', 'Örnek Mah. Deneme Sk. No:34 Ankara', '5865934392', 'migros@domain.com', '', true);
+INSERT INTO seller(name, address, phone_num, email, fax, is_active) VALUES('Seyhanler', 'Konak Mah. Çiçek Sk. No:12 Bursa', '5358323481', 'seyhanlar@domain.com', '02123413223@fax.demo', true);
+INSERT INTO seller(name, address, phone_num, email, fax, is_active) VALUES('Yunus', 'Kanaryalı Mah. Badem Sk. No:2 Ankara', '2223456312', 'yunus@domain.com', '02543234643@fax.demo', false);
+INSERT INTO seller(name, address, phone_num, email, fax, is_active) VALUES('Carrefour', 'Odunluk Mah. Gülbahçe Sk. No:1 Bursa', '2334534534', 'carrefour@domain.com', '022345435434fax.demo', true);
+INSERT INTO seller(name, address, phone_num, email, fax, is_active) VALUES('Bim', 'Alageyik Mah. Papatya Sk. No:3 Bursa', '2545345345', 'bim@domain.com', '', false);
 INSERT INTO supplier(name, address, phone_num, is_active) VALUES('Eker Bursa Depo', 'Odunluk Mahallesi Erdoğan Bin Yücel Cad. 13/A, 16110 Nilüfer', '2223334445', true);
 INSERT INTO supplier(name, address, phone_num, is_active) VALUES('Eker Kocaeli Depo', 'Mahmutpaşa, Eski Bağdat Yolu No:23, 41040 Başiskele/Kocaeli', '5345629445', true);
 INSERT INTO supplier(name, address, phone_num, is_active) VALUES('Eker Edirne Depo', '22130 Sazlıdere/Edirne Merkez/Edirne', '5863234234', false);
