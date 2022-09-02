@@ -35,7 +35,8 @@ public class ProductDAOImpl implements ProductDAO {
     @Override
     public List<Product> getAll() throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName();
+        QueryEngine<Product> queryEngine = new QueryEngine<Product>();
+        String query = queryEngine.from(Product.class).build();
 
         List<Product> products = session.createQuery(query, Product.class).list();
         session.close();
@@ -68,7 +69,8 @@ public class ProductDAOImpl implements ProductDAO {
     @Override
     public Product findByName(String name) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " where name = " + name;
+        QueryEngine<Product> queryEngine = new QueryEngine<Product>();
+        String query = queryEngine.from(Product.class).where().equal("name", name).build();
 
         Product product = session.createQuery(query, Product.class).getSingleResult();
         session.close();
@@ -79,7 +81,8 @@ public class ProductDAOImpl implements ProductDAO {
     @Override
     public List<Product> findByCategory(String categoryName) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " where categoryName = " + categoryName;
+        QueryEngine<Product> queryEngine = new QueryEngine<Product>();
+        String query = queryEngine.from(Product.class).where().equal("categoryName", categoryName).build();
 
         List<Product> products = session.createQuery(query, Product.class).list();
         session.close();
@@ -90,7 +93,8 @@ public class ProductDAOImpl implements ProductDAO {
     @Override
     public List<Product> findByUnitPrice(double unitPrice) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " where unitPrice = " + unitPrice;
+        QueryEngine<Product> queryEngine = new QueryEngine<Product>();
+        String query = queryEngine.from(Product.class).where().equal("unitPrice", unitPrice).build();
 
         List<Product> products = session.createQuery(query, Product.class).list();
         session.close();
@@ -101,7 +105,8 @@ public class ProductDAOImpl implements ProductDAO {
     @Override
     public List<Product> findByActive(boolean isActive) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " where isActive = " + isActive;
+        QueryEngine<Product> queryEngine = new QueryEngine<Product>();
+        String query = queryEngine.from(Product.class).where().equal("isActive", isActive).build();
 
         List<Product> products = session.createQuery(query, Product.class).list();
         session.close();
@@ -114,7 +119,8 @@ public class ProductDAOImpl implements ProductDAO {
         Session session = databaseEngine.openSession();
 
         QueryEngine<Product> queryEngine = new QueryEngine<Product>();
-        String query = queryEngine.entityDataMapToQuery(dataMap, Product.class);
+        String query = queryEngine.from(Product.class).whereEqualEntityDataMap(dataMap).build();
+
         List<Product> products = session.createQuery(query, Product.class).list();
 
         session.close();
