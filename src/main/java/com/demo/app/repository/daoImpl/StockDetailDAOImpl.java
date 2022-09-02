@@ -9,7 +9,6 @@ import com.demo.app.models.entities.StockDetail;
 import com.demo.app.repository.DatabaseEngine;
 import com.demo.app.repository.QueryEngine;
 import com.demo.app.repository.dao.StockDetailDAO;
-
 import org.hibernate.Session;
 
 public class StockDetailDAOImpl implements StockDetailDAO {
@@ -34,7 +33,8 @@ public class StockDetailDAOImpl implements StockDetailDAO {
     @Override
     public List<StockDetail> getAll() throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName();
+        QueryEngine<StockDetail> queryEngine = new QueryEngine<StockDetail>();
+        String query = queryEngine.from(StockDetail.class).build();
 
         List<StockDetail> stockDetails = session.createQuery(query, StockDetail.class).list();
         session.close();
@@ -62,7 +62,8 @@ public class StockDetailDAOImpl implements StockDetailDAO {
     @Override
     public List<StockDetail> findByQuantity(int quantity) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " where quantity = " + quantity;
+        QueryEngine<StockDetail> queryEngine = new QueryEngine<StockDetail>();
+        String query = queryEngine.from(StockDetail.class).where().equal("quantity", quantity).build();
 
         List<StockDetail> stockDetails = session.createQuery(query, StockDetail.class).list();
         session.close();
@@ -75,9 +76,17 @@ public class StockDetailDAOImpl implements StockDetailDAO {
         Session session = databaseEngine.openSession();
 
         QueryEngine<StockDetail> queryEngine = new QueryEngine<StockDetail>();
-        String query = queryEngine.entityDataMapToQuery(dataMap, StockDetail.class);
-        List<StockDetail> orderDetails = session.createQuery(query, StockDetail.class).list();
+        String query;
+        queryEngine.from(StockDetail.class);
 
+        if (dataMap.get("productId") != null) {
+            queryEngine.joinAs("product", "p");
+            dataMap.put("p.id", dataMap.get("productId"));
+            dataMap.remove("productId");
+        }
+        query = queryEngine.whereEqualEntityDataMap(dataMap).build();
+        List<StockDetail> orderDetails = session.createQuery(query, StockDetail.class).list();
+        System.out.println(query);
         session.close();
 
         return orderDetails;

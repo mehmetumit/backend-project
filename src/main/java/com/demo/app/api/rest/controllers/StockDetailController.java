@@ -41,9 +41,11 @@ public class StockDetailController {
 	@GET
 	@Path("/q")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getBy(@QueryParam("quantity") Integer quantity) {
+	public Response getBy(@QueryParam("quantity") Integer quantity,
+			@QueryParam("product_id") Integer productId) {
 		HashMap<String, Object> dataMap = new HashMap<String, Object>();
 		dataMap.put("quantity", quantity);
+		dataMap.put("productId", productId);
 
 		List<StockDetailDTO> stockDetails = stockDetailService.findAll(dataMap);
 		if (stockDetails != null && !stockDetails.isEmpty())

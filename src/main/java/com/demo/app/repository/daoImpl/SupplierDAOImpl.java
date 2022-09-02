@@ -35,7 +35,8 @@ public class SupplierDAOImpl implements SupplierDAO {
     @Override
     public List<Supplier> getAll() throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName();
+        QueryEngine<Supplier> queryEngine = new QueryEngine<Supplier>();
+        String query = queryEngine.from(Supplier.class).build();
 
         List<Supplier> suppliers = session.createQuery(query, Supplier.class).list();
         session.close();
@@ -69,7 +70,8 @@ public class SupplierDAOImpl implements SupplierDAO {
     @Override
     public Supplier findByName(String name) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " where name = " + name;
+        QueryEngine<Supplier> queryEngine = new QueryEngine<Supplier>();
+        String query = queryEngine.from(Supplier.class).where().equal("name", name).build();
 
         Supplier supplier = session.createQuery(query, Supplier.class).getSingleResult();
         session.close();
@@ -80,7 +82,8 @@ public class SupplierDAOImpl implements SupplierDAO {
     @Override
     public Supplier findByAddress(String address) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " where address = " + address;
+        QueryEngine<Supplier> queryEngine = new QueryEngine<Supplier>();
+        String query = queryEngine.from(Supplier.class).where().equal("address", address).build();
 
         Supplier supplier = session.createQuery(query, Supplier.class).getSingleResult();
         session.close();
@@ -91,7 +94,8 @@ public class SupplierDAOImpl implements SupplierDAO {
     @Override
     public Supplier findByPhoneNum(String phoneNum) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " where phoneNum = " + phoneNum;
+        QueryEngine<Supplier> queryEngine = new QueryEngine<Supplier>();
+        String query = queryEngine.from(Supplier.class).where().equal("phoneNum", phoneNum).build();
 
         Supplier supplier = session.createQuery(query, Supplier.class).getSingleResult();
         session.close();
@@ -102,7 +106,8 @@ public class SupplierDAOImpl implements SupplierDAO {
     @Override
     public List<Supplier> findByActive(boolean isActive) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " where isActive = " + isActive;
+        QueryEngine<Supplier> queryEngine = new QueryEngine<Supplier>();
+        String query = queryEngine.from(Supplier.class).where().equal("isActive", isActive).build();
 
         List<Supplier> supplier = session.createQuery(query, Supplier.class).list();
         session.close();
@@ -113,9 +118,16 @@ public class SupplierDAOImpl implements SupplierDAO {
     @Override
     public List<Supplier> findAll(HashMap<String, Object> dataMap) throws SQLException {
         Session session = databaseEngine.openSession();
-
         QueryEngine<Supplier> queryEngine = new QueryEngine<Supplier>();
-        String query = queryEngine.entityDataMapToQuery(dataMap, Supplier.class);
+        String query;
+        queryEngine.from(Supplier.class);
+        if (dataMap.get("stockDetailId") != null) {
+            queryEngine.joinAs("stockDetails", "sd");
+            dataMap.put("sd.id", dataMap.get("stockDetailId"));
+            dataMap.remove("stockDetailId");
+        }
+        query = queryEngine.whereEqualEntityDataMap(dataMap).build();
+
         List<Supplier> suppliers = session.createQuery(query, Supplier.class).list();
 
         session.close();
