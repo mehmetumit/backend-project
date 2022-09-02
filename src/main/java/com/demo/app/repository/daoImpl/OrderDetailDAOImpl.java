@@ -35,7 +35,9 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
     @Override
     public List<OrderDetail> getAll() throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName();
+        QueryEngine<OrderDetail> queryEngine = new QueryEngine<OrderDetail>();
+
+        String query = queryEngine.from(OrderDetail.class).build();
 
         List<OrderDetail> orderDetails = session.createQuery(query, OrderDetail.class).list();
         session.close();
@@ -65,7 +67,10 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
     @Override
     public List<OrderDetail> findByQuantity(int quantity) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " where quantity = " + quantity;
+        QueryEngine<OrderDetail> queryEngine = new QueryEngine<OrderDetail>();
+
+        // String query = "from " + getEntityName() + " where quantity = " + quantity;
+        String query = queryEngine.from(OrderDetail.class).where().equal("quantity", quantity).build();
 
         List<OrderDetail> orderDetails = session.createQuery(query, OrderDetail.class).list();
         session.close();
@@ -76,9 +81,20 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
     @Override
     public List<OrderDetail> findAll(HashMap<String, Object> dataMap) throws SQLException {
         Session session = databaseEngine.openSession();
-
         QueryEngine<OrderDetail> queryEngine = new QueryEngine<OrderDetail>();
-        String query = queryEngine.entityDataMapToQuery(dataMap, OrderDetail.class);
+
+        // String query =
+        // queryEngine.from(OrderDetail.class).whereEqualEntityDataMap(dataMap).build();
+        String query;
+        queryEngine.from(OrderDetail.class);
+        if (dataMap.get("productId") != null) {
+            queryEngine.joinAs("product", "p");
+            dataMap.put("p.id", dataMap.get("productId"));
+            dataMap.remove("productId");
+
+        }
+        query = queryEngine.whereEqualEntityDataMap(dataMap).build();
+
         List<OrderDetail> orderDetails = session.createQuery(query, OrderDetail.class).list();
 
         session.close();
