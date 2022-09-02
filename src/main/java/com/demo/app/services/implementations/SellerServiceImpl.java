@@ -178,6 +178,7 @@ public class SellerServiceImpl implements SellerService {
 					.map(c -> toDTO(c))
 					.collect(Collectors.toList());
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("Seller findAll failed!");
 			return null;
 		}

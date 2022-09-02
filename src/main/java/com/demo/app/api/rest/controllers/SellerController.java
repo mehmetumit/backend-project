@@ -56,13 +56,15 @@ public class SellerController {
 			@QueryParam("phone_num") String phoneNum,
 			@QueryParam("email") String email,
 			@QueryParam("fax") String fax,
-			@QueryParam("is_active") Boolean isActive) {
+			@QueryParam("is_active") Boolean isActive,
+			@QueryParam("invoice_id") Integer invoiceId) {
 		HashMap<String, Object> dataMap = new HashMap<String, Object>();
 		dataMap.put("address", address);
 		dataMap.put("phoneNum", phoneNum);
 		dataMap.put("email", email);
 		dataMap.put("fax", fax);
 		dataMap.put("isActive", isActive);
+		dataMap.put("invoiceId", invoiceId);
 
 		List<SellerDTO> sellers = sellerService.findAll(dataMap);
 		if (sellers != null && !sellers.isEmpty())

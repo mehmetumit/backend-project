@@ -34,7 +34,8 @@ public class SellerDAOImpl implements SellerDAO {
     @Override
     public List<Seller> getAll() throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName();
+        QueryEngine<Seller> queryEngine = new QueryEngine<Seller>();
+        String query = queryEngine.from(Seller.class).build();
 
         List<Seller> sellers = session.createQuery(query, Seller.class).list();
         session.close();
@@ -71,7 +72,8 @@ public class SellerDAOImpl implements SellerDAO {
     @Override
     public Seller findByName(String name) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " where seller.name = " + name;
+        QueryEngine<Seller> queryEngine = new QueryEngine<Seller>();
+        String query = queryEngine.from(Seller.class).where().equal("name", name).build();
 
         Seller seller = session.createQuery(query, Seller.class).getSingleResult();
         session.close();
@@ -82,7 +84,8 @@ public class SellerDAOImpl implements SellerDAO {
     @Override
     public Seller findByAddress(String address) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " where seller.address = " + address;
+        QueryEngine<Seller> queryEngine = new QueryEngine<Seller>();
+        String query = queryEngine.from(Seller.class).where().equal("address", address).build();
 
         Seller seller = session.createQuery(query, Seller.class).getSingleResult();
         session.close();
@@ -93,7 +96,8 @@ public class SellerDAOImpl implements SellerDAO {
     @Override
     public Seller findByPhoneNum(String phoneNum) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " where seller.phoneNum = " + phoneNum;
+        QueryEngine<Seller> queryEngine = new QueryEngine<Seller>();
+        String query = queryEngine.from(Seller.class).where().equal("phoneNum", phoneNum).build();
 
         Seller seller = session.createQuery(query, Seller.class).getSingleResult();
         session.close();
@@ -104,7 +108,8 @@ public class SellerDAOImpl implements SellerDAO {
     @Override
     public Seller findByEmail(String email) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " where seller.email = " + email;
+        QueryEngine<Seller> queryEngine = new QueryEngine<Seller>();
+        String query = queryEngine.from(Seller.class).equal("email", email).build();
 
         Seller seller = session.createQuery(query, Seller.class).getSingleResult();
         session.close();
@@ -115,7 +120,8 @@ public class SellerDAOImpl implements SellerDAO {
     @Override
     public Seller findByFax(String fax) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " where seller.fax = " + fax;
+        QueryEngine<Seller> queryEngine = new QueryEngine<Seller>();
+        String query = queryEngine.from(Seller.class).where().equal("fax", fax).build();
 
         Seller seller = session.createQuery(query, Seller.class).getSingleResult();
         session.close();
@@ -126,7 +132,8 @@ public class SellerDAOImpl implements SellerDAO {
     @Override
     public List<Seller> findByActive(boolean isActive) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " where seller.isActive = " + isActive;
+        QueryEngine<Seller> queryEngine = new QueryEngine<Seller>();
+        String query = queryEngine.from(Seller.class).where().equal("isActive", isActive).build();
 
         List<Seller> sellers = session.createQuery(query, Seller.class).list();
         session.close();
@@ -137,9 +144,17 @@ public class SellerDAOImpl implements SellerDAO {
     @Override
     public List<Seller> findAll(HashMap<String, Object> dataMap) throws SQLException {
         Session session = databaseEngine.openSession();
-
         QueryEngine<Seller> queryEngine = new QueryEngine<Seller>();
-        String query = queryEngine.entityDataMapToQuery(dataMap, Seller.class);
+
+        String query;
+        queryEngine.from(Seller.class);
+        if (dataMap.get("invoiceId") != null) {
+            dataMap.put("inv.id", dataMap.get("invoiceId"));
+            dataMap.remove("invoiceId");
+            queryEngine.joinAs("invoices", "inv");
+        }
+        query = queryEngine.whereEqualEntityDataMap(dataMap).build();
+        System.out.println(query);
         List<Seller> sellers = session.createQuery(query, Seller.class).list();
 
         session.close();
