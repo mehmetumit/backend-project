@@ -35,7 +35,9 @@ public class InvoiceDAOImpl implements InvoiceDAO {
     @Override
     public List<Invoice> getAll() throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName();
+        QueryEngine<Invoice> queryEngine = new QueryEngine<Invoice>();
+        // String query = "from " + getEntityName();
+        String query = queryEngine.from(Invoice.class).build();
 
         List<Invoice> invoices = session.createQuery(query, Invoice.class).list();
         session.close();
@@ -73,7 +75,10 @@ public class InvoiceDAOImpl implements InvoiceDAO {
     @Override
     public List<Invoice> findByInvoiceTimestamp(Timestamp invoiceTimestamp) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " inv where inv.invoiceTimestamp = " + invoiceTimestamp;
+        QueryEngine<Invoice> queryEngine = new QueryEngine<Invoice>();
+        // String query = "from " + getEntityName() + " inv where inv.invoiceTimestamp =
+        // " + invoiceTimestamp;
+        String query = queryEngine.from(Invoice.class).where().equal("invoiceTimestamp", invoiceTimestamp).build();
 
         List<Invoice> invoices = session.createQuery(query, Invoice.class).list();
         session.close();
@@ -84,7 +89,10 @@ public class InvoiceDAOImpl implements InvoiceDAO {
     @Override
     public List<Invoice> findByDueTimestamp(Timestamp dueTimestamp) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " inv where inv.dueTimestamp = " + dueTimestamp;
+        QueryEngine<Invoice> queryEngine = new QueryEngine<Invoice>();
+        // String query = "from " + getEntityName() + " inv where inv.dueTimestamp = " +
+        // dueTimestamp;
+        String query = queryEngine.from(Invoice.class).where().equal("dueTimestamp", dueTimestamp).build();
 
         List<Invoice> invoices = session.createQuery(query, Invoice.class).list();
         session.close();
@@ -95,7 +103,10 @@ public class InvoiceDAOImpl implements InvoiceDAO {
     @Override
     public List<Invoice> findBySubTotal(double subTotal) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " inv where inv.subTotal = " + subTotal;
+        QueryEngine<Invoice> queryEngine = new QueryEngine<Invoice>();
+        // String query = "from " + getEntityName() + " inv where inv.subTotal = " +
+        // subTotal;
+        String query = queryEngine.from(Invoice.class).equal("subTotal", subTotal).build();
 
         List<Invoice> invoices = session.createQuery(query, Invoice.class).list();
         session.close();
@@ -106,7 +117,10 @@ public class InvoiceDAOImpl implements InvoiceDAO {
     @Override
     public List<Invoice> findByDiscount(double discount) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " inv where inv.discount = " + discount;
+        QueryEngine<Invoice> queryEngine = new QueryEngine<Invoice>();
+        // String query = "from " + getEntityName() + " inv where inv.discount = " +
+        // discount;
+        String query = queryEngine.from(Invoice.class).where().equal("discount", discount).build();
 
         List<Invoice> invoices = session.createQuery(query, Invoice.class).list();
         session.close();
@@ -117,7 +131,10 @@ public class InvoiceDAOImpl implements InvoiceDAO {
     @Override
     public List<Invoice> findByTaxRate(int taxRate) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " inv where inv.taxRate = " + taxRate;
+        QueryEngine<Invoice> queryEngine = new QueryEngine<Invoice>();
+        // String query = "from " + getEntityName() + " inv where inv.taxRate = " +
+        // taxRate;
+        String query = queryEngine.from(Invoice.class).where().equal("taxRate", taxRate).build();
 
         List<Invoice> invoices = session.createQuery(query, Invoice.class).list();
         session.close();
@@ -128,7 +145,10 @@ public class InvoiceDAOImpl implements InvoiceDAO {
     @Override
     public List<Invoice> findByTotalTax(double totalTax) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " inv where inv.totalTax = " + totalTax;
+        QueryEngine<Invoice> queryEngine = new QueryEngine<Invoice>();
+        // String query = "from " + getEntityName() + " inv where inv.totalTax = " +
+        // totalTax;
+        String query = queryEngine.from(Invoice.class).where().equal("totalTax", totalTax).build();
 
         List<Invoice> invoices = session.createQuery(query, Invoice.class).list();
         session.close();
@@ -139,7 +159,11 @@ public class InvoiceDAOImpl implements InvoiceDAO {
     @Override
     public List<Invoice> findByTotalPrice(double totalPrice) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " inv where inv.totalPrice = " + totalPrice;
+        QueryEngine<Invoice> queryEngine = new QueryEngine<Invoice>();
+
+        // String query = "from " + getEntityName() + " inv where inv.totalPrice = " +
+        // totalPrice;
+        String query = queryEngine.from(Invoice.class).where().equal("totalPrice", totalPrice).build();
 
         List<Invoice> invoices = session.createQuery(query, Invoice.class).list();
         session.close();
@@ -150,9 +174,10 @@ public class InvoiceDAOImpl implements InvoiceDAO {
     @Override
     public List<Invoice> findAll(HashMap<String, Object> dataMap) throws SQLException {
         Session session = databaseEngine.openSession();
-
         QueryEngine<Invoice> queryEngine = new QueryEngine<Invoice>();
+
         String query = queryEngine.from(Invoice.class).whereEqualEntityDataMap(dataMap).build();
+
         List<Invoice> invoices = session.createQuery(query, Invoice.class).list();
 
         session.close();
