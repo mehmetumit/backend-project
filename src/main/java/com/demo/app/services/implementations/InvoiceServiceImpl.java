@@ -201,6 +201,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 					.map(c -> toDTO(c))
 					.collect(Collectors.toList());
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("Invoice findAll failed!");
 			return null;
 		}

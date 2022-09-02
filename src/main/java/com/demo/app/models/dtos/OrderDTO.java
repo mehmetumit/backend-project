@@ -4,13 +4,14 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.demo.app.models.entities.Invoice;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
  * OrderDTO
  */
 public class OrderDTO {
 	private InvoiceDTO invoice;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	private Timestamp timestamp;
 	private List<OrderDetailDTO> orderDetails = new ArrayList<OrderDetailDTO>();
 

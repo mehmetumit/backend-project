@@ -42,8 +42,8 @@ public class InvoiceController {
 	@GET
 	@Path("/q")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getBy(@QueryParam("invoice_timestamp") Timestamp invoiceTimestamp,
-			@QueryParam("due_timestamp") Timestamp dueTimestamp,
+	public Response getBy(@QueryParam("invoice_timestamp") String invoiceTimestamp,
+			@QueryParam("due_timestamp") String dueTimestamp,
 			@QueryParam("sub_total") Double subTotal,
 			@QueryParam("discount") Double discount,
 			@QueryParam("tax_rate") Integer taxRate,

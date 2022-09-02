@@ -2,11 +2,15 @@ package com.demo.app.models.dtos;
 
 import java.sql.Timestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 /**
  * InvoiceDTO
  */
 public class InvoiceDTO {
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	private Timestamp invoiceTimestamp;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	private Timestamp dueTimestamp;
 	private Double subTotal;
 	private Double discount;
