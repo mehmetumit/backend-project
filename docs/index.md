@@ -6,7 +6,7 @@ Backend project with Java and PostgreSQL
 
 # Usage
 
-## Install to war file
+## Initialize Backend
 
 ```sh
 mvn install
@@ -18,11 +18,6 @@ mvn install
 docker-compose up
 ```
 
-## Run backend
-
-```sh
-mvn clean compile exec:java
-```
 ## Restart tomcat 
 > No need to manually restart after generate new war file but you can restart if anything happens unexpected.
 ```sh
