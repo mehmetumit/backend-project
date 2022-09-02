@@ -127,6 +127,7 @@ public class OrderServiceImpl implements OrderService {
 					.map(c -> toDTO(c))
 					.collect(Collectors.toList());
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("Order findAll failed!");
 			return null;
 		}

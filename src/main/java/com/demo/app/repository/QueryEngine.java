@@ -42,7 +42,7 @@ public class QueryEngine<T> {
 	}
 
 	public QueryEngine<T> from(Class<T> entityClass) {
-		query += " from " + entityClass.getSimpleName();
+		query += " from " + entityClass.getName();
 		return this;
 	}
 
@@ -51,8 +51,8 @@ public class QueryEngine<T> {
 		return this;
 	}
 
-	public QueryEngine<T> joinAs(String joinObject, String name) {
-		query += " join " + joinObject + " " + name;
+	public QueryEngine<T> joinAs(String joinObjectName, String nameAs) {
+		query += " join " + joinObjectName + " " + nameAs;
 		return this;
 	}
 

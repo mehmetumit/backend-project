@@ -30,7 +30,8 @@ public class OrderDAOImpl implements OrderDAO {
     @Override
     public List<Order> getAll() throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName();
+        QueryEngine<Order> queryEngine = new QueryEngine<Order>();
+        String query = queryEngine.from(Order.class).build();
         session.beginTransaction();
 
         List<Order> orders = session.createQuery(query, Order.class).list();
@@ -67,7 +68,8 @@ public class OrderDAOImpl implements OrderDAO {
     @Override
     public List<Order> findByTimestamp(Timestamp timestamp) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from \"" + getEntityName() + "\" where timestamp = " + timestamp;
+        QueryEngine<Order> queryEngine = new QueryEngine<Order>();
+        String query = queryEngine.from(Order.class).where().equal("timestamp", timestamp).build();
 
         List<Order> orders = session.createQuery(query, Order.class).list();
         session.close();
@@ -78,28 +80,27 @@ public class OrderDAOImpl implements OrderDAO {
     @Override
     public List<Order> findAll(HashMap<String, Object> dataMap) throws SQLException {
         Session session = databaseEngine.openSession();
-
         QueryEngine<Order> queryEngine = new QueryEngine<Order>();
-        String query = queryEngine.entityDataMapToQuery(dataMap, Order.class);
+        session.beginTransaction();
+
+        String query;
+        queryEngine.from(Order.class);
+
+        if (dataMap.get("invoiceId") != null) {
+            queryEngine.joinAs("invoice", "inv");
+            dataMap.put("inv.id", dataMap.get("invoiceId"));
+            dataMap.remove("invoiceId");
+
+        }
+        if (dataMap.get("orderDetailId") != null) {
+            queryEngine.joinAs("orderDetails", "od");
+            dataMap.put("od.id", dataMap.get("orderDetailId"));
+            dataMap.remove("orderDetailId");
+        }
+        query = queryEngine.whereEqualEntityDataMap(dataMap).build();
         List<Order> orders = session.createQuery(query, Order.class).list();
 
         session.close();
-
         return orders;
     }
-
-    // @Override
-    // public Invoice findOrderInvoiceById(int id) throws SQLException {
-    // Session session = databaseEngine.getCurrentSession();
-    // String query = "select inv from \"" + getEntityName()
-    // + "\" ord left join ord.invoice inv where inv.order_id = "
-    // + id;
-
-    // Invoice invoice = session.createQuery(query,
-    // Invoice.class).getSingleResult();
-    // session.close();
-
-    // return invoice;
-    // }
-
 }

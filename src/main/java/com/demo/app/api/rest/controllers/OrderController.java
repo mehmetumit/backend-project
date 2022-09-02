@@ -53,10 +53,13 @@ public class OrderController {
 	@GET
 	@Path("/q")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getBy(@QueryParam("order_timestamp") Timestamp timestamp) {
-		// HashMap<String, Object> dataMap = customerService.getDataMap();
+	public Response getBy(@QueryParam("order_timestamp") Timestamp timestamp,
+			@QueryParam("invoice_id") Integer invoiceId,
+			@QueryParam("order_detail_id") Integer orderDetailId) {
 		HashMap<String, Object> dataMap = new HashMap<String, Object>();
 		dataMap.put("orderTimestamp", timestamp);
+		dataMap.put("invoiceId", invoiceId);
+		dataMap.put("orderDetailId", orderDetailId);
 
 		List<OrderDTO> orders = orderService.findAll(dataMap);
 		if (orders != null && !orders.isEmpty())
