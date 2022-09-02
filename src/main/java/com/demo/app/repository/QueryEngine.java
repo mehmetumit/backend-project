@@ -56,12 +56,6 @@ public class QueryEngine<T> {
 		return this;
 	}
 
-	public QueryEngine<T> entityDataMapToQuery(HashMap<String, Object> data, Class<T> entityClass) {
-		query = " from " + entityClass.getSimpleName();
-		// return query;
-		return this;
-	}
-
 	public String build() {
 		return query;
 	}

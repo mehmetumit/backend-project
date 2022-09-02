@@ -152,7 +152,7 @@ public class InvoiceDAOImpl implements InvoiceDAO {
         Session session = databaseEngine.openSession();
 
         QueryEngine<Invoice> queryEngine = new QueryEngine<Invoice>();
-        String query = queryEngine.entityDataMapToQuery(dataMap, Invoice.class);
+        String query = queryEngine.from(Invoice.class).whereEqualEntityDataMap(dataMap).build();
         List<Invoice> invoices = session.createQuery(query, Invoice.class).list();
 
         session.close();
