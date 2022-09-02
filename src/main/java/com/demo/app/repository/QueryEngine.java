@@ -9,10 +9,9 @@ import java.util.ListIterator;
  * QueryEngine
  */
 public class QueryEngine<T> {
+	private String query = "";
 
-	public String entityDataMapToQuery(HashMap<String, Object> data, Class<T> entityClass) {
-
-		String query = "from " + entityClass.getSimpleName();
+	public QueryEngine<T> whereEqualEntityDataMap(HashMap<String, Object> data) {
 		List<String> queries = new LinkedList<String>();
 		data.forEach((k, v) -> {
 			if (v != null)
@@ -29,6 +28,41 @@ public class QueryEngine<T> {
 			if (iterator.hasNext())
 				query += " and ";
 		}
+		return this;
+	}
+
+	public QueryEngine<T> where() {
+		query += " where ";
+		return this;
+	}
+
+	public QueryEngine<T> equal(String columnName, Object val) {
+		query += columnName + " = " + val.toString();
+		return this;
+	}
+
+	public QueryEngine<T> from(Class<T> entityClass) {
+		query += " from " + entityClass.getSimpleName();
+		return this;
+	}
+
+	public QueryEngine<T> join(String joinObject) {
+		query += " join " + joinObject;
+		return this;
+	}
+
+	public QueryEngine<T> joinAs(String joinObject, String name) {
+		query += " join " + joinObject + " " + name;
+		return this;
+	}
+
+	public QueryEngine<T> entityDataMapToQuery(HashMap<String, Object> data, Class<T> entityClass) {
+		query = " from " + entityClass.getSimpleName();
+		// return query;
+		return this;
+	}
+
+	public String build() {
 		return query;
 	}
 }

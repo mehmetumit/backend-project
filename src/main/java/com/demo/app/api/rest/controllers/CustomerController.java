@@ -45,7 +45,8 @@ public class CustomerController {
 			@QueryParam("phone_num") String phoneNum,
 			@QueryParam("email") String email,
 			@QueryParam("is_active") Boolean isActive,
-			@QueryParam("discount_rate") Integer discountRate) {
+			@QueryParam("discount_rate") Integer discountRate,
+			@QueryParam("order_id") Integer orderId) {
 		// HashMap<String, Object> dataMap = customerService.getDataMap();
 		HashMap<String, Object> dataMap = new HashMap<String, Object>();
 		dataMap.put("name", name);
@@ -54,6 +55,7 @@ public class CustomerController {
 		dataMap.put("email", email);
 		dataMap.put("isActive", isActive);
 		dataMap.put("discountRate", discountRate);
+		dataMap.put("orderId", orderId);
 
 		List<CustomerDTO> customers = customerService.findAll(dataMap);
 		if (customers != null && !customers.isEmpty())

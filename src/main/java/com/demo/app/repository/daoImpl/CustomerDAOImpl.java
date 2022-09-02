@@ -18,6 +18,7 @@ import org.hibernate.Session;
 import jakarta.persistence.Column;
 
 import com.demo.app.models.entities.Customer;
+import com.demo.app.models.entities.Order;
 
 public class CustomerDAOImpl implements CustomerDAO {
     DatabaseEngine databaseEngine = DatabaseEngine.getEngine();
@@ -144,7 +145,19 @@ public class CustomerDAOImpl implements CustomerDAO {
         Session session = databaseEngine.openSession();
 
         QueryEngine<Customer> queryEngine = new QueryEngine<Customer>();
-        String query = queryEngine.entityDataMapToQuery(customerData, Customer.class);
+        // String query = queryEngine.entityDataMapToQuery(customerData,
+        // Customer.class);
+        String query;
+        if (customerData.get("orderId") != null) {
+            customerData.put("o.id", customerData.get("orderId"));
+            customerData.remove("orderId");
+            query = queryEngine.from(Customer.class).joinAs("orders", "o")
+                    .whereEqualEntityDataMap(customerData).build();
+        } else {
+            query = queryEngine.from(Customer.class).whereEqualEntityDataMap(customerData).build();
+        }
+
+        System.out.println(query);
         List<Customer> customers = session.createQuery(query, Customer.class).list();
 
         session.close();

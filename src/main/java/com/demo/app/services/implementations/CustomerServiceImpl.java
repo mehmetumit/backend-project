@@ -198,6 +198,7 @@ public class CustomerServiceImpl implements CustomerService {
 					.map(c -> toDTO(c))
 					.collect(Collectors.toList());
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("Customer findAll failed!");
 			return null;
 		}
