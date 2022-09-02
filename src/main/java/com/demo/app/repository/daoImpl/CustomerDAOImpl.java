@@ -41,7 +41,8 @@ public class CustomerDAOImpl implements CustomerDAO {
     @Override
     public List<Customer> getAll() throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName();
+        QueryEngine<Customer> queryEngine = new QueryEngine<Customer>();
+        String query = queryEngine.from(Customer.class).build();
 
         List<Customer> customers = session.createQuery(query, Customer.class).list();
         session.close();
@@ -77,7 +78,8 @@ public class CustomerDAOImpl implements CustomerDAO {
     @Override
     public List<Customer> findByName(String name) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " where name = " + name;
+        QueryEngine<Customer> queryEngine = new QueryEngine<Customer>();
+        String query = queryEngine.from(Customer.class).where().equal("name", name).build();
 
         List<Customer> customers = session.createQuery(query, Customer.class).list();
         session.close();
@@ -88,7 +90,8 @@ public class CustomerDAOImpl implements CustomerDAO {
     @Override
     public List<Customer> findBySurname(String surname) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " where surname = " + surname;
+        QueryEngine<Customer> queryEngine = new QueryEngine<Customer>();
+        String query = queryEngine.from(Customer.class).where().equal("surname", surname).build();
 
         List<Customer> customers = session.createQuery(query, Customer.class).list();
         session.close();
@@ -99,7 +102,8 @@ public class CustomerDAOImpl implements CustomerDAO {
     @Override
     public List<Customer> findByPhoneNum(String phoneNum) throws SQLException {
         Session session = databaseEngine.openSession();
-        String query = "from " + getEntityName() + " where phone_num = " + phoneNum;
+        QueryEngine<Customer> queryEngine = new QueryEngine<Customer>();
+        String query = queryEngine.from(Customer.class).where().equal("phone_num", phoneNum).build();
 
         List<Customer> customers = session.createQuery(query, Customer.class).list();
         session.close();
@@ -110,7 +114,8 @@ public class CustomerDAOImpl implements CustomerDAO {
     @Override
     public List<Customer> findByEmail(String email) throws SQLException {
         Session session = databaseEngine.getCurrentSession();
-        String query = "from " + getEntityName() + " where email = " + email;
+        QueryEngine<Customer> queryEngine = new QueryEngine<Customer>();
+        String query = queryEngine.from(Customer.class).where().equal("email", email).build();
 
         List<Customer> customers = session.createQuery(query, Customer.class).list();
         session.close();
@@ -121,7 +126,9 @@ public class CustomerDAOImpl implements CustomerDAO {
     @Override
     public List<Customer> findByActive(boolean isActive) throws SQLException {
         Session session = databaseEngine.getCurrentSession();
-        String query = "from " + getEntityName() + " where is_active = " + isActive;
+        QueryEngine<Customer> queryEngine = new QueryEngine<Customer>();
+
+        String query = queryEngine.from(Customer.class).where().equal("is_active", isActive).build();
 
         List<Customer> customers = session.createQuery(query, Customer.class).list();
         session.close();
@@ -132,7 +139,9 @@ public class CustomerDAOImpl implements CustomerDAO {
     @Override
     public List<Customer> findByDiscountRate(int discountRate) throws SQLException {
         Session session = databaseEngine.getCurrentSession();
-        String query = "from " + getEntityName() + " where discount_rate = " + discountRate;
+        QueryEngine<Customer> queryEngine = new QueryEngine<Customer>();
+
+        String query = queryEngine.from(Customer.class).where().equal("discount_rate", discountRate).build();
 
         List<Customer> customers = session.createQuery(query, Customer.class).list();
         session.close();
@@ -143,19 +152,16 @@ public class CustomerDAOImpl implements CustomerDAO {
     @Override
     public List<Customer> findAll(HashMap<String, Object> customerData) throws SQLException {
         Session session = databaseEngine.openSession();
-
         QueryEngine<Customer> queryEngine = new QueryEngine<Customer>();
-        // String query = queryEngine.entityDataMapToQuery(customerData,
-        // Customer.class);
+
         String query;
+        queryEngine.from(Customer.class);
         if (customerData.get("orderId") != null) {
             customerData.put("o.id", customerData.get("orderId"));
             customerData.remove("orderId");
-            query = queryEngine.from(Customer.class).joinAs("orders", "o")
-                    .whereEqualEntityDataMap(customerData).build();
-        } else {
-            query = queryEngine.from(Customer.class).whereEqualEntityDataMap(customerData).build();
+            queryEngine.joinAs("orders", "o");
         }
+        query = queryEngine.whereEqualEntityDataMap(customerData).build();
 
         System.out.println(query);
         List<Customer> customers = session.createQuery(query, Customer.class).list();
@@ -164,17 +170,5 @@ public class CustomerDAOImpl implements CustomerDAO {
 
         return customers;
     }
-
-    // @Override
-    // public List<Order> findCustomerOrdersById(int id) throws SQLException {
-    // Session session = databaseEngine.getCurrentSession();
-    // String query = "select ord from " + getEntityName() + " c left join c.orders
-    // ord where ord.customerId = " + id;
-
-    // List<Order> customerOrders = session.createQuery(query, Order.class).list();
-    // session.close();
-
-    // return customerOrders;
-    // }
 
 }
