@@ -20,13 +20,12 @@ public class SellerServiceImpl implements SellerService {
 	private static InvoiceService invoiceService = new InvoiceServiceImpl();
 
 	@Override
-	public int add(SellerDTO dto) {
+	public SellerDTO add(SellerDTO dto) {
 		try {
-			sellerDAO.insert(toEntity(dto));
-			return 1;
+			return toDTO(sellerDAO.insert(toEntity(dto)));
 		} catch (Exception e) {
 			System.out.println("Seller add failed!");
-			return 0;
+			return null;
 		}
 	}
 
@@ -99,13 +98,12 @@ public class SellerServiceImpl implements SellerService {
 	}
 
 	@Override
-	public int update(int id, SellerDTO dto) {
+	public SellerDTO update(int id, SellerDTO dto) {
 		try {
-			sellerDAO.update(toEntity(dto).setId(id));
-			return 1;
+			return toDTO(sellerDAO.update(toEntity(dto).setId(id)));
 		} catch (Exception e) {
 			System.out.println("Seller update failed!");
-			return 0;
+			return null;
 		}
 	}
 

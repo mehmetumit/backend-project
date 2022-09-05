@@ -2,6 +2,7 @@ package com.demo.app.api.rest.controllers;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -73,9 +74,9 @@ public class OrderDetailController {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response newOrderDetail(OrderDetailDTO orderDetail) {
-		boolean success = orderDetailService.add(orderDetail) == 1 ? true : false;
-		if (success)
-			return Response.ok(orderDetail).build();
+		OrderDetailDTO addedOrderDetail = orderDetailService.add(orderDetail);
+		if (Objects.nonNull(addedOrderDetail))
+			return Response.ok(addedOrderDetail).build();
 		else
 			return Response.status(Response.Status.BAD_REQUEST).entity("OrderDetail adding failed").build();
 

@@ -17,10 +17,10 @@ public interface ProductDAO extends DAO<Product> {
 	List<Product> getAll() throws SQLException;
 
 	@Override
-	void insert(Product obj) throws SQLException;
+	Product insert(Product obj) throws SQLException;
 
 	@Override
-	void update(Product obj) throws SQLException;
+	Product update(Product obj) throws SQLException;
 
 	public Product findByName(String name) throws SQLException;
 

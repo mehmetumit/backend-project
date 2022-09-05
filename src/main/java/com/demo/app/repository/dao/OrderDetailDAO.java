@@ -17,10 +17,10 @@ public interface OrderDetailDAO extends DAO<OrderDetail> {
 	List<OrderDetail> getAll() throws SQLException;
 
 	@Override
-	void insert(OrderDetail obj) throws SQLException;
+	OrderDetail insert(OrderDetail obj) throws SQLException;
 
 	@Override
-	void update(OrderDetail obj) throws SQLException;
+	OrderDetail update(OrderDetail obj) throws SQLException;
 
 	public List<OrderDetail> findByQuantity(int quantity) throws SQLException;
 

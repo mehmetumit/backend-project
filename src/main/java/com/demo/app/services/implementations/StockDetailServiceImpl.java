@@ -20,13 +20,12 @@ public class StockDetailServiceImpl implements StockDetailService {
 	ProductService productService = new ProductServiceImpl();
 
 	@Override
-	public int add(StockDetailDTO dto) {
+	public StockDetailDTO add(StockDetailDTO dto) {
 		try {
-			stockDetailDAO.insert(toEntity(dto));
-			return 1;
+			return toDTO(stockDetailDAO.insert(toEntity(dto)));
 		} catch (Exception e) {
 			System.out.println("StockDetail add failed!");
-			return 0;
+			return null;
 		}
 	}
 
@@ -83,13 +82,12 @@ public class StockDetailServiceImpl implements StockDetailService {
 	}
 
 	@Override
-	public int update(int id, StockDetailDTO dto) {
+	public StockDetailDTO update(int id, StockDetailDTO dto) {
 		try {
-			stockDetailDAO.update(toEntity(dto).setId(id));
-			return 1;
+			return toDTO(stockDetailDAO.update(toEntity(dto).setId(id)));
 		} catch (Exception e) {
 			System.out.println("StockDetail update failed!");
-			return 0;
+			return null;
 		}
 	}
 

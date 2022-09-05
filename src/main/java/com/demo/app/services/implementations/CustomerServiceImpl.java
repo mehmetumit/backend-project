@@ -21,18 +21,17 @@ public class CustomerServiceImpl implements CustomerService {
 	private static OrderService orderService = new OrderServiceImpl();
 
 	@Override
-	public int add(CustomerDTO dto) {
+	public CustomerDTO add(CustomerDTO dto) {
 		try {
 			dto.setOrders(dto.getOrders()
 					.stream()
 					.map(order -> orderService.getById(order.getId()))
 					.collect(Collectors.toList()));
-			customerDAO.insert(toEntity(dto));
-			return 1;
+			return toDTO(customerDAO.insert(toEntity(dto)));
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Customer insertion failed!");
-			return 0;
+			return null;
 		}
 	}
 
@@ -104,18 +103,17 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public int update(int id, CustomerDTO dto) {
+	public CustomerDTO update(int id, CustomerDTO dto) {
 		try {
 			dto.setOrders(dto.getOrders()
 					.stream()
 					.map(order -> orderService.getById(order.getId()))
 					.collect(Collectors.toList()));
-			customerDAO.update(toEntity(dto).setId(id));
-			return 1;
+			return toDTO(customerDAO.update(toEntity(dto).setId(id)));
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Customer update failed!");
-			return 0;
+			return null;
 		}
 	}
 

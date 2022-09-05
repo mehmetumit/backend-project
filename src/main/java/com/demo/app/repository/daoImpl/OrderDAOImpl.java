@@ -46,12 +46,12 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
-    public void insert(Order order) throws SQLException {
-        databaseEngine.persist(order);
+    public Order insert(Order order) throws SQLException {
+        return (Order) databaseEngine.merge(order);
     }
 
     @Override
-    public void update(Order order) throws SQLException {
+    public Order update(Order order) throws SQLException {
         Order updatedOrder = findById(order.getId());
 
         updatedOrder
@@ -62,7 +62,7 @@ public class OrderDAOImpl implements OrderDAO {
                 .setOrderDetails(Objects.nonNull(order.getOrderDetails()) ? order.getOrderDetails()
                         : updatedOrder.getOrderDetails());
 
-        databaseEngine.merge(updatedOrder);
+        return (Order) databaseEngine.merge(updatedOrder);
     }
 
     @Override

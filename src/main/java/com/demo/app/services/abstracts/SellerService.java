@@ -12,7 +12,7 @@ import com.demo.app.models.entities.Seller;
 public interface SellerService extends Service<SellerDTO, Seller> {
 
 	@Override
-	public int add(SellerDTO dto);
+	public SellerDTO add(SellerDTO dto);
 
 	@Override
 	public int delete(int id);
@@ -30,7 +30,7 @@ public interface SellerService extends Service<SellerDTO, Seller> {
 	public Seller toEntity(SellerDTO dto);
 
 	@Override
-	public int update(int id, SellerDTO dto);
+	public SellerDTO update(int id, SellerDTO dto);
 
 	public SellerDTO getByName(String name);
 

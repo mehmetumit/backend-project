@@ -12,7 +12,7 @@ import com.demo.app.models.entities.Customer;
 public interface CustomerService extends Service<CustomerDTO, Customer> {
 
 	@Override
-	public int add(CustomerDTO dto);
+	public CustomerDTO add(CustomerDTO dto);
 
 	@Override
 	public int delete(int id);
@@ -30,7 +30,7 @@ public interface CustomerService extends Service<CustomerDTO, Customer> {
 	public Customer toEntity(CustomerDTO dto);
 
 	@Override
-	public int update(int id, CustomerDTO dto);
+	public CustomerDTO update(int id, CustomerDTO dto);
 
 	@Override
 	public List<CustomerDTO> findAll(HashMap<String, Object> dataMap);

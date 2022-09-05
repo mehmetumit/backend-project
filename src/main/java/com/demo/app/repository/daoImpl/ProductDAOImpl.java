@@ -46,13 +46,13 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public void insert(Product product) throws SQLException {
-        databaseEngine.persist(product);
+    public Product insert(Product product) throws SQLException {
+        return (Product) databaseEngine.merge(product);
 
     }
 
     @Override
-    public void update(Product product) throws SQLException {
+    public Product update(Product product) throws SQLException {
         Product updatedProduct = findById(product.getId());
         updatedProduct
                 .setName(Objects.nonNull(product.getName()) ? product.getName()
@@ -63,7 +63,7 @@ public class ProductDAOImpl implements ProductDAO {
                         : updatedProduct.getUnitPrice())
                 .setCategoryName(Objects.nonNull(product.getCategoryName()) ? product.getCategoryName()
                         : updatedProduct.getCategoryName());
-        databaseEngine.merge(updatedProduct);
+        return (Product) databaseEngine.merge(updatedProduct);
     }
 
     @Override

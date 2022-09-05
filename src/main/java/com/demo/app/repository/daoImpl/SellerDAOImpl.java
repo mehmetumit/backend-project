@@ -44,12 +44,12 @@ public class SellerDAOImpl implements SellerDAO {
     }
 
     @Override
-    public void insert(Seller seller) throws SQLException {
-        databaseEngine.persist(seller);
+    public Seller insert(Seller seller) throws SQLException {
+        return (Seller) databaseEngine.merge(seller);
     }
 
     @Override
-    public void update(Seller seller) throws SQLException {
+    public Seller update(Seller seller) throws SQLException {
         Seller updatedSeller = findById(seller.getId());
         updatedSeller
                 .setFax(Objects.nonNull(seller.getFax()) ? seller.getFax()
@@ -66,7 +66,7 @@ public class SellerDAOImpl implements SellerDAO {
                         : updatedSeller.getPhoneNum())
                 .setInvoices(Objects.nonNull(seller.getInvoices()) ? seller.getInvoices()
                         : updatedSeller.getInvoices());
-        databaseEngine.merge(updatedSeller);
+        return (Seller) databaseEngine.merge(updatedSeller);
     }
 
     @Override

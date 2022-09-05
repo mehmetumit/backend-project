@@ -13,7 +13,7 @@ import com.demo.app.models.entities.Invoice;
 public interface InvoiceService extends Service<InvoiceDTO, Invoice> {
 
 	@Override
-	public int add(InvoiceDTO dto);
+	public InvoiceDTO add(InvoiceDTO dto);
 
 	@Override
 	public int delete(int id);
@@ -31,7 +31,7 @@ public interface InvoiceService extends Service<InvoiceDTO, Invoice> {
 	public Invoice toEntity(InvoiceDTO dto);
 
 	@Override
-	public int update(int id, InvoiceDTO dto);
+	public InvoiceDTO update(int id, InvoiceDTO dto);
 
 	@Override
 	public List<InvoiceDTO> findAll(HashMap<String, Object> dataMap);

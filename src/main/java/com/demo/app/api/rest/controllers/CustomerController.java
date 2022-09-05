@@ -2,6 +2,7 @@ package com.demo.app.api.rest.controllers;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -83,9 +84,9 @@ public class CustomerController {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response newCustomer(CustomerDTO customer) {
-		boolean success = customerService.add(customer) == 1 ? true : false;
-		if (success)
-			return Response.ok(customer).build();
+		CustomerDTO addedCustomer = customerService.add(customer);
+		if (Objects.nonNull(addedCustomer))
+			return Response.ok(addedCustomer).build();
 		else
 			return Response.status(Response.Status.BAD_REQUEST).entity("Customer adding failed").build();
 	}
@@ -95,9 +96,9 @@ public class CustomerController {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateCustomer(@PathParam("id") int id, CustomerDTO customer) {
-		boolean success = customerService.update(id, customer) == 1 ? true : false;
-		if (success)
-			return Response.ok(customerService.getById(id)).build();
+		CustomerDTO updatedCustomer = customerService.update(id, customer);
+		if (Objects.nonNull(updatedCustomer))
+			return Response.ok(updatedCustomer).build();
 		else
 			return Response.status(Response.Status.BAD_REQUEST).entity("Customer updating failed").build();
 	}

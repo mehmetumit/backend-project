@@ -19,10 +19,10 @@ public interface InvoiceDAO extends DAO<Invoice> {
 	List<Invoice> getAll() throws SQLException;
 
 	@Override
-	void insert(Invoice obj) throws SQLException;
+	Invoice insert(Invoice obj) throws SQLException;
 
 	@Override
-	void update(Invoice obj) throws SQLException;
+	Invoice update(Invoice obj) throws SQLException;
 
 	public List<Invoice> findByInvoiceTimestamp(Timestamp invoiceTimestamp) throws SQLException;
 

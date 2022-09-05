@@ -3,6 +3,7 @@ package com.demo.app.api.rest.controllers;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -75,9 +76,9 @@ public class ProductController {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response newProduct(ProductDTO product) {
-		boolean success = productService.add(product) == 1 ? true : false;
-		if (success)
-			return Response.ok(product).build();
+		ProductDTO addedProduct = productService.add(product);
+		if (Objects.nonNull(addedProduct))
+			return Response.ok(addedProduct).build();
 		else
 			return Response.status(Response.Status.BAD_REQUEST).entity("Product adding failed").build();
 
@@ -88,9 +89,9 @@ public class ProductController {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateProduct(@PathParam("id") int id, ProductDTO product) {
-		boolean success = productService.update(id, product) == 1 ? true : false;
-		if (success)
-			return Response.ok(productService.getById(id)).build();
+		ProductDTO updatedProduct = productService.update(id, product);
+		if (Objects.nonNull(updatedProduct))
+			return Response.ok(updatedProduct).build();
 		else
 			return Response.status(Response.Status.BAD_REQUEST).entity("Product updating failed").build();
 	}

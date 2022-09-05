@@ -20,13 +20,12 @@ public class InvoiceServiceImpl implements InvoiceService {
 	private static InvoiceDAO invoiceDAO = new InvoiceDAOImpl();
 
 	@Override
-	public int add(InvoiceDTO dto) {
+	public InvoiceDTO add(InvoiceDTO dto) {
 		try {
-			invoiceDAO.insert(toEntity(dto));
-			return 1;
+			return toDTO(invoiceDAO.insert(toEntity(dto)));
 		} catch (Exception e) {
 			System.out.println("Invoice insertion failed!");
-			return 0;
+			return null;
 		}
 	}
 
@@ -94,13 +93,12 @@ public class InvoiceServiceImpl implements InvoiceService {
 	}
 
 	@Override
-	public int update(int id, InvoiceDTO dto) {
+	public InvoiceDTO update(int id, InvoiceDTO dto) {
 		try {
-			invoiceDAO.update(toEntity(dto).setId(id));
-			return 1;
+			return toDTO(invoiceDAO.update(toEntity(dto).setId(id)));
 		} catch (Exception e) {
 			System.out.println("Invoice getAll failed!");
-			return 0;
+			return null;
 		}
 	}
 

@@ -46,12 +46,12 @@ public class InvoiceDAOImpl implements InvoiceDAO {
     }
 
     @Override
-    public void insert(Invoice invoice) throws SQLException {
-        databaseEngine.persist(invoice);
+    public Invoice insert(Invoice invoice) throws SQLException {
+        return (Invoice) databaseEngine.merge(invoice);
     }
 
     @Override
-    public void update(Invoice invoice) throws SQLException {
+    public Invoice update(Invoice invoice) throws SQLException {
         Invoice updatedInvoice = findById(invoice.getId());
         updatedInvoice
                 .setInvoiceTimestamp(Objects.nonNull(invoice.getInvoiceTimestamp()) ? invoice.getInvoiceTimestamp()
@@ -69,7 +69,7 @@ public class InvoiceDAOImpl implements InvoiceDAO {
                 .setTotalPrice(Objects.nonNull(invoice.getTotalPrice()) ? invoice.getTotalPrice()
                         : updatedInvoice.getTotalPrice());
 
-        databaseEngine.merge(updatedInvoice);
+        return (Invoice) databaseEngine.merge(updatedInvoice);
     }
 
     @Override

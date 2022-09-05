@@ -18,13 +18,12 @@ public class ProductServiceImpl implements ProductService {
 	private static ProductDAO productDAO = new ProductDAOImpl();
 
 	@Override
-	public int add(ProductDTO dto) {
+	public ProductDTO add(ProductDTO dto) {
 		try {
-			productDAO.insert(toEntity(dto));
-			return 1;
+			return toDTO(productDAO.insert(toEntity(dto)));
 		} catch (Exception e) {
 			System.out.println("Product add failed!");
-			return 0;
+			return null;
 		}
 	}
 
@@ -85,13 +84,12 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public int update(int id, ProductDTO dto) {
+	public ProductDTO update(int id, ProductDTO dto) {
 		try {
-			productDAO.update(toEntity(dto).setId(id));
-			return 1;
+			return toDTO(productDAO.update(toEntity(dto).setId(id)));
 		} catch (Exception e) {
 			System.out.println("Product update failed!");
-			return 0;
+			return null;
 		}
 	}
 

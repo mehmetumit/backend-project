@@ -22,10 +22,10 @@ public interface OrderDAO extends DAO<Order> {
 	String getEntityName();
 
 	@Override
-	void insert(Order obj) throws SQLException;
+	Order insert(Order obj) throws SQLException;
 
 	@Override
-	void update(Order obj) throws SQLException;
+	Order update(Order obj) throws SQLException;
 
 	// Invoice findOrderInvoiceById(int id) throws SQLException;
 

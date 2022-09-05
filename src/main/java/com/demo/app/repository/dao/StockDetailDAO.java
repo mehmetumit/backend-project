@@ -18,10 +18,10 @@ public interface StockDetailDAO extends DAO<StockDetail> {
     List<StockDetail> getAll() throws SQLException;
 
     @Override
-    void insert(StockDetail obj) throws SQLException;
+    StockDetail insert(StockDetail obj) throws SQLException;
 
     @Override
-    void update(StockDetail obj) throws SQLException;
+    StockDetail update(StockDetail obj) throws SQLException;
 
     public List<StockDetail> findByQuantity(int quantity) throws SQLException;
 

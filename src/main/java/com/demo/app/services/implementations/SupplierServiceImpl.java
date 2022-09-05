@@ -20,13 +20,12 @@ public class SupplierServiceImpl implements SupplierService {
 	private static StockDetailService stockDetailService = new StockDetailServiceImpl();
 
 	@Override
-	public int add(SupplierDTO dto) {
+	public SupplierDTO add(SupplierDTO dto) {
 		try {
-			supplierDAO.insert(toEntity(dto));
-			return 1;
+			return toDTO(supplierDAO.insert(toEntity(dto)));
 		} catch (Exception e) {
 			System.out.println("Supplier add failed!");
-			return 0;
+			return null;
 		}
 	}
 
@@ -95,13 +94,12 @@ public class SupplierServiceImpl implements SupplierService {
 	}
 
 	@Override
-	public int update(int id, SupplierDTO dto) {
+	public SupplierDTO update(int id, SupplierDTO dto) {
 		try {
-			supplierDAO.update(toEntity(dto).setId(id));
-			return 1;
+			return toDTO(supplierDAO.update(toEntity(dto).setId(id)));
 		} catch (Exception e) {
 			System.out.println("Supplier update failed!");
-			return 0;
+			return null;
 		}
 	}
 

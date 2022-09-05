@@ -8,9 +8,9 @@ public interface Service<DTO, Entity> {
 
 	public List<DTO> getAll();
 
-	public int add(DTO dto);
+	public DTO add(DTO dto);
 
-	public int update(int id, DTO dto);
+	public DTO update(int id, DTO dto);
 
 	public int delete(int id);
 

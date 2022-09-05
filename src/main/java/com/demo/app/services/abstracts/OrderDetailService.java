@@ -11,7 +11,7 @@ import com.demo.app.models.entities.OrderDetail;
  */
 public interface OrderDetailService extends Service<OrderDetailDTO, OrderDetail> {
 	@Override
-	int add(OrderDetailDTO dto);
+	OrderDetailDTO add(OrderDetailDTO dto);
 
 	@Override
 	int delete(int id);
@@ -29,7 +29,7 @@ public interface OrderDetailService extends Service<OrderDetailDTO, OrderDetail>
 	OrderDetail toEntity(OrderDetailDTO dto);
 
 	@Override
-	int update(int id, OrderDetailDTO dto);
+	OrderDetailDTO update(int id, OrderDetailDTO dto);
 
 	@Override
 	public List<OrderDetailDTO> findAll(HashMap<String, Object> dataMap);

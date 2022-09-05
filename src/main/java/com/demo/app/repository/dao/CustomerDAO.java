@@ -18,10 +18,10 @@ public interface CustomerDAO extends DAO<Customer> {
 	List<Customer> getAll() throws SQLException;
 
 	@Override
-	void insert(Customer obj) throws SQLException;
+	Customer insert(Customer obj) throws SQLException;
 
 	@Override
-	void update(Customer obj) throws SQLException;
+	Customer update(Customer obj) throws SQLException;
 
 	@Override
 	List<Customer> findAll(HashMap<String, Object> dataMap) throws SQLException;

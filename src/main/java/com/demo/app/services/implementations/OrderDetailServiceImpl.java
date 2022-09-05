@@ -20,13 +20,13 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 	private static ProductService productService = new ProductServiceImpl();
 
 	@Override
-	public int add(OrderDetailDTO dto) {
+	public OrderDetailDTO add(OrderDetailDTO dto) {
 		try {
-			orderDetailDAO.insert(toEntity(dto));
-			return 1;
+			dto.setProduct(productService.getById(dto.getProduct().getId()));
+			return toDTO(orderDetailDAO.insert(toEntity(dto)));
 		} catch (Exception e) {
 			System.out.println("OrderDetail add failed!");
-			return 0;
+			return null;
 		}
 	}
 
@@ -85,13 +85,13 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 	}
 
 	@Override
-	public int update(int id, OrderDetailDTO dto) {
+	public OrderDetailDTO update(int id, OrderDetailDTO dto) {
 		try {
-			orderDetailDAO.update(toEntity(dto).setId(id));
-			return 1;
+			dto.setProduct(productService.getById(dto.getProduct().getId()));
+			return toDTO(orderDetailDAO.update(toEntity(dto).setId(id)));
 		} catch (Exception e) {
 			System.out.println("OrderDetail update failed!");
-			return 0;
+			return null;
 		}
 	}
 

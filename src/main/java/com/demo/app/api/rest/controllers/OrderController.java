@@ -3,6 +3,7 @@ package com.demo.app.api.rest.controllers;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -73,9 +74,9 @@ public class OrderController {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response newOrder(OrderDTO order) {
-		boolean success = orderService.add(order) == 1 ? true : false;
-		if (success)
-			return Response.ok(order).build();
+		OrderDTO addedOrder = orderService.add(order);
+		if (Objects.nonNull(addedOrder))
+			return Response.ok(addedOrder).build();
 		else
 			return Response.status(Response.Status.BAD_REQUEST).entity("Order adding failed").build();
 
@@ -86,9 +87,9 @@ public class OrderController {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateOrder(@PathParam("id") int id, OrderDTO order) {
-		boolean success = orderService.update(id, order) == 1 ? true : false;
-		if (success)
-			return Response.ok(orderService.getById(id)).build();
+		OrderDTO updatedOrder = orderService.update(id, order);
+		if (Objects.nonNull(updatedOrder))
+			return Response.ok(updatedOrder).build();
 		else
 			return Response.status(Response.Status.BAD_REQUEST).entity("Order updating failed").build();
 	}

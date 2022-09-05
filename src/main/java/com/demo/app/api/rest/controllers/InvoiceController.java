@@ -3,6 +3,7 @@ package com.demo.app.api.rest.controllers;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -86,9 +87,9 @@ public class InvoiceController {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response newInvoice(InvoiceDTO invoice) {
-		boolean success = invoiceService.add(invoice) == 1 ? true : false;
-		if (success)
-			return Response.ok(invoice).build();
+		InvoiceDTO addedInvoice = invoiceService.add(invoice);
+		if (Objects.nonNull(addedInvoice))
+			return Response.ok(addedInvoice).build();
 		else
 			return Response.status(Response.Status.BAD_REQUEST).entity("Invoice adding failed").build();
 
@@ -99,9 +100,9 @@ public class InvoiceController {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateInvoice(@PathParam("id") int id, InvoiceDTO invoice) {
-		boolean success = invoiceService.update(id, invoice) == 1 ? true : false;
-		if (success)
-			return Response.ok(invoiceService.getById(id)).build();
+		InvoiceDTO updatedInvoice = invoiceService.update(id, invoice);
+		if (Objects.nonNull(updatedInvoice))
+			return Response.ok(updatedInvoice).build();
 		else
 			return Response.status(Response.Status.BAD_REQUEST).entity("Invoice updating failed").build();
 	}

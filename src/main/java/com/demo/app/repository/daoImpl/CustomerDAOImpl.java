@@ -51,12 +51,12 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public void insert(Customer customer) throws SQLException {
-        databaseEngine.merge(customer);
+    public Customer insert(Customer customer) throws SQLException {
+        return (Customer) databaseEngine.merge(customer);
     }
 
     @Override
-    public void update(Customer customer) throws SQLException {
+    public Customer update(Customer customer) throws SQLException {
         Customer updatedCustomer = findById(customer.getId());
         updatedCustomer
                 .setName(Objects.nonNull(customer.getName()) ? customer.getName()
@@ -72,7 +72,7 @@ public class CustomerDAOImpl implements CustomerDAO {
                         : updatedCustomer.getOrders())
                 .setActive(Objects.nonNull(customer.isActive()) ? customer.isActive()
                         : updatedCustomer.isActive());
-        databaseEngine.merge(updatedCustomer);
+        return (Customer) databaseEngine.merge(updatedCustomer);
     }
 
     @Override

@@ -45,13 +45,13 @@ public class SupplierDAOImpl implements SupplierDAO {
     }
 
     @Override
-    public void insert(Supplier supplier) throws SQLException {
-        databaseEngine.persist(supplier);
+    public Supplier insert(Supplier supplier) throws SQLException {
+        return (Supplier) databaseEngine.merge(supplier);
 
     }
 
     @Override
-    public void update(Supplier supplier) throws SQLException {
+    public Supplier update(Supplier supplier) throws SQLException {
         Supplier updatedSupplier = findById(supplier.getId());
         updatedSupplier
                 .setName(Objects.nonNull(supplier.getName()) ? supplier.getName()
@@ -64,7 +64,7 @@ public class SupplierDAOImpl implements SupplierDAO {
                         : updatedSupplier.getPhoneNum())
                 .setStockDetails(Objects.nonNull(supplier.getStockDetails()) ? supplier.getStockDetails()
                         : updatedSupplier.getStockDetails());
-        databaseEngine.merge(updatedSupplier);
+        return (Supplier) databaseEngine.merge(updatedSupplier);
     }
 
     @Override

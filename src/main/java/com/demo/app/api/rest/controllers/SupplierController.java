@@ -2,6 +2,7 @@ package com.demo.app.api.rest.controllers;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -77,9 +78,9 @@ public class SupplierController {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response newSupplier(SupplierDTO supplier) {
-		boolean success = supplierService.add(supplier) == 1 ? true : false;
-		if (success)
-			return Response.ok(supplier).build();
+		SupplierDTO addedSupplier = supplierService.add(supplier);
+		if (Objects.nonNull(addedSupplier))
+			return Response.ok(addedSupplier).build();
 		else
 			return Response.status(Response.Status.BAD_REQUEST).entity("Supplier adding failed").build();
 
@@ -90,9 +91,9 @@ public class SupplierController {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateSupplier(@PathParam("id") int id, SupplierDTO supplier) {
-		boolean success = supplierService.update(id, supplier) == 1 ? true : false;
-		if (success)
-			return Response.ok(supplierService.getById(id)).build();
+		SupplierDTO updatedSupplier = supplierService.update(id, supplier);
+		if (Objects.nonNull(updatedSupplier))
+			return Response.ok(updatedSupplier).build();
 		else
 			return Response.status(Response.Status.BAD_REQUEST).entity("Supplier updating failed").build();
 	}

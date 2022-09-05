@@ -2,6 +2,7 @@ package com.demo.app.api.rest.controllers;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -73,9 +74,9 @@ public class StockDetailController {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response newStockDetail(StockDetailDTO stockDetail) {
-		boolean success = stockDetailService.add(stockDetail) == 1 ? true : false;
-		if (success)
-			return Response.ok(stockDetail).build();
+		StockDetailDTO addedStockDetail = stockDetailService.add(stockDetail);
+		if (Objects.nonNull(addedStockDetail))
+			return Response.ok(addedStockDetail).build();
 		else
 			return Response.status(Response.Status.BAD_REQUEST).entity("Stock Detail adding failed").build();
 
@@ -86,9 +87,9 @@ public class StockDetailController {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateStockDetail(@PathParam("id") int id, StockDetailDTO stockDetail) {
-		boolean success = stockDetailService.update(id, stockDetail) == 1 ? true : false;
-		if (success)
-			return Response.ok(stockDetailService.getById(id)).build();
+		StockDetailDTO updatedStockDetail = stockDetailService.update(id, stockDetail);
+		if (Objects.nonNull(updatedStockDetail))
+			return Response.ok(updatedStockDetail).build();
 		else
 			return Response.status(Response.Status.BAD_REQUEST).entity("Stock Detail updating failed").build();
 	}

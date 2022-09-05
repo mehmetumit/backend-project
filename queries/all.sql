@@ -66,9 +66,9 @@ CREATE TABLE "invoice"(
 	seller_id INT REFERENCES seller(id),
 	invoice_timestamp TIMESTAMP NOT NULL,
 	due_timestamp TIMESTAMP NOT NULL,
-	sub_total NUMERIC(12,2) DEFAULT 0 NOT NULL,
-	discount NUMERIC(12,2) DEFAULT 0 NOT NULL,
-	tax_rate SMALLINT DEFAULT 0 CHECK (tax_rate >= 0) NOT NULL,
+	sub_total NUMERIC(12,2) DEFAULT 0,
+	discount NUMERIC(12,2) DEFAULT 0,
+	tax_rate SMALLINT DEFAULT 0 CHECK (tax_rate >= 0),
 	total_tax NUMERIC(12,2) GENERATED ALWAYS AS (sub_total * tax_rate / 100) STORED,
 	total_price NUMERIC(12,2) GENERATED ALWAYS AS (sub_total - discount + sub_total * tax_rate / 100) STORED
 );

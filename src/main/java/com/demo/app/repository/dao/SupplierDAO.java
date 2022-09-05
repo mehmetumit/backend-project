@@ -17,10 +17,10 @@ public interface SupplierDAO extends DAO<Supplier> {
 	List<Supplier> getAll() throws SQLException;
 
 	@Override
-	void insert(Supplier obj) throws SQLException;
+	Supplier insert(Supplier obj) throws SQLException;
 
 	@Override
-	void update(Supplier obj) throws SQLException;
+	Supplier update(Supplier obj) throws SQLException;
 
 	public Supplier findByName(String name) throws SQLException;
 

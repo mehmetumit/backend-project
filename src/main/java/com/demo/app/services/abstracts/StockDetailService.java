@@ -12,7 +12,7 @@ import com.demo.app.models.entities.StockDetail;
 public interface StockDetailService extends Service<StockDetailDTO, StockDetail> {
 
 	@Override
-	int add(StockDetailDTO dto);
+	StockDetailDTO add(StockDetailDTO dto);
 
 	@Override
 	int delete(int id);
@@ -30,7 +30,7 @@ public interface StockDetailService extends Service<StockDetailDTO, StockDetail>
 	StockDetail toEntity(StockDetailDTO dto);
 
 	@Override
-	int update(int id, StockDetailDTO dto);
+	StockDetailDTO update(int id, StockDetailDTO dto);
 
 	public List<StockDetailDTO> getByQuantity(int quantity);
 

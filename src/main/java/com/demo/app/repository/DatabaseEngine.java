@@ -120,7 +120,8 @@ public class DatabaseEngine {
 	}
 
 	// Update object from database
-	public void merge(Object obj) throws SQLException {
+	public Object merge(Object obj) throws SQLException {
+		Object mergedObject;
 		if (session == null || !session.isOpen())
 			session = sessionFactory.openSession();
 		if (!session.isJoinedToTransaction())
@@ -129,7 +130,7 @@ public class DatabaseEngine {
 		Transaction transaction = session.getTransaction();
 
 		try {
-			session.merge(obj);
+			mergedObject = session.merge(obj);
 			transaction.commit();
 			// commitTransaction();
 		} catch (Exception ex) {
@@ -140,6 +141,7 @@ public class DatabaseEngine {
 			if (session != null)
 				session.close();
 		}
+		return mergedObject;
 
 	}
 

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import com.demo.app.models.dtos.InvoiceDTO;
 import com.demo.app.models.dtos.OrderDTO;
 import com.demo.app.models.entities.Order;
 import com.demo.app.repository.dao.OrderDAO;
@@ -24,13 +25,20 @@ public class OrderServiceImpl implements OrderService {
 	private static InvoiceService invoiceService = new InvoiceServiceImpl();
 
 	@Override
-	public int add(OrderDTO dto) {
+	public OrderDTO add(OrderDTO dto) {
 		try {
-			orderDAO.insert(toEntity(dto));
-			return 1;
+			InvoiceDTO invoiceDTO = dto.getInvoice();
+			if (Objects.nonNull(invoiceDTO))
+				dto.setInvoice(invoiceService.getById(dto.getInvoice().getId()));
+			dto.setOrderDetails(dto.getOrderDetails()
+					.stream()
+					.map(od -> orderDetailService.getById(od.getId()))
+					.collect(Collectors.toList()));
+			return toDTO(orderDAO.insert(toEntity(dto)));
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("Order add failed!");
-			return 0;
+			return null;
 		}
 	}
 
@@ -97,14 +105,20 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public int update(int id, OrderDTO dto) {
+	public OrderDTO update(int id, OrderDTO dto) {
 		try {
-			orderDAO.update(toEntity(dto).setId(id));
-			return 1;
+			InvoiceDTO invoiceDTO = dto.getInvoice();
+			if (Objects.nonNull(invoiceDTO))
+				dto.setInvoice(invoiceService.getById(invoiceDTO.getId()));
+			dto.setOrderDetails(dto.getOrderDetails()
+					.stream()
+					.map(od -> orderDetailService.getById(od.getId()))
+					.collect(Collectors.toList()));
+			return toDTO(orderDAO.update(toEntity(dto).setId(id)));
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Order update failed!");
-			return 0;
+			return null;
 		}
 	}
 
