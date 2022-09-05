@@ -67,6 +67,7 @@ public class StockDetailServiceImpl implements StockDetailService {
 	@Override
 	public StockDetailDTO toDTO(StockDetail entity) {
 		return Objects.nonNull(entity) ? new StockDetailDTO()
+				.setId(entity.getId())
 				.setProduct(productService.toDTO(entity.getProduct()))
 				.setQuantity(entity.getQuantity())
 				: null;
@@ -75,6 +76,7 @@ public class StockDetailServiceImpl implements StockDetailService {
 	@Override
 	public StockDetail toEntity(StockDetailDTO dto) {
 		return Objects.nonNull(dto) ? new StockDetail()
+				.setId(dto.getId())
 				.setProduct(productService.toEntity(dto.getProduct()))
 				.setQuantity(dto.getQuantity())
 				: null;

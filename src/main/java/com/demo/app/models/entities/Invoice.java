@@ -18,7 +18,7 @@ public class Invoice {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int id;
+	private Integer id;
 
 	@Column(name = "invoice_timestamp")
 	private Timestamp invoiceTimestamp;
@@ -35,7 +35,7 @@ public class Invoice {
 	@Column(name = "total_price", insertable = false, updatable = false)
 	private Double totalPrice;
 
-	public Invoice(int id, Timestamp invoiceTimestamp, Timestamp dueTimestamp,
+	public Invoice(Integer id, Timestamp invoiceTimestamp, Timestamp dueTimestamp,
 			Double subTotal, Double discount, Integer taxRate, Double totalTax, Double totalPrice) {
 		super();
 		this.id = id;
@@ -63,11 +63,11 @@ public class Invoice {
 	public Invoice() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public Invoice setId(int id) {
+	public Invoice setId(Integer id) {
 		this.id = id;
 		return this;
 	}
@@ -108,7 +108,7 @@ public class Invoice {
 		return this;
 	}
 
-	public int getTaxRate() {
+	public Integer getTaxRate() {
 		return taxRate;
 	}
 

@@ -19,7 +19,7 @@ import jakarta.persistence.Table;
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	@Column(name = "category_name")
 	private String categoryName;
 	@Column(name = "name")
@@ -29,7 +29,7 @@ public class Product {
 	@Column(name = "is_active")
 	private Boolean isActive;
 
-	public Product(int id, String categoryName, String name, Double unitPrice,
+	public Product(Integer id, String categoryName, String name, Double unitPrice,
 			Boolean isActive) {
 		this.id = id;
 		this.categoryName = categoryName;
@@ -50,11 +50,11 @@ public class Product {
 
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public Product setId(int id) {
+	public Product setId(Integer id) {
 		this.id = id;
 		return this;
 	}

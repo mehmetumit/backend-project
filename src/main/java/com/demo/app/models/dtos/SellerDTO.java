@@ -7,6 +7,7 @@ import java.util.List;
  * SellerDTO
  */
 public class SellerDTO {
+	private Integer id;
 	private String name;
 	private String address;
 	private String phoneNum;
@@ -14,6 +15,15 @@ public class SellerDTO {
 	private String fax;
 	private Boolean isActive;
 	private List<InvoiceDTO> invoices = new ArrayList<InvoiceDTO>();
+
+	public Integer getId() {
+		return id;
+	}
+
+	public SellerDTO setId(Integer id) {
+		this.id = id;
+		return this;
+	}
 
 	public String getName() {
 		return name;
@@ -80,8 +90,8 @@ public class SellerDTO {
 
 	@Override
 	public String toString() {
-		return "SellerDTO [address=" + address + ", email=" + email + ", fax=" + fax + ", invoices=" + invoices
-				+ ", isActive=" + isActive + ", name=" + name + ", phoneNum=" + phoneNum + "]";
+		return "SellerDTO [address=" + address + ", email=" + email + ", fax=" + fax + ", id=" + id + ", invoices="
+				+ invoices + ", isActive=" + isActive + ", name=" + name + ", phoneNum=" + phoneNum + "]";
 	}
 
 }

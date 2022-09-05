@@ -52,7 +52,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     @Override
     public void insert(Customer customer) throws SQLException {
-        databaseEngine.persist(customer);
+        databaseEngine.merge(customer);
     }
 
     @Override

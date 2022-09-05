@@ -10,10 +10,20 @@ import com.fasterxml.jackson.annotation.JsonFormat;
  * OrderDTO
  */
 public class OrderDTO {
+	private Integer id;
 	private InvoiceDTO invoice;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	private Timestamp timestamp;
 	private List<OrderDetailDTO> orderDetails = new ArrayList<OrderDetailDTO>();
+
+	public Integer getId() {
+		return id;
+	}
+
+	public OrderDTO setId(Integer id) {
+		this.id = id;
+		return this;
+	}
 
 	public InvoiceDTO getInvoice() {
 		return invoice;
@@ -44,7 +54,8 @@ public class OrderDTO {
 
 	@Override
 	public String toString() {
-		return "OrderDTO [invoice=" + invoice + ", orderDetails=" + orderDetails + ", timestamp=" + timestamp + "]\n";
+		return "OrderDTO [id=" + id + ", invoice=" + invoice + ", orderDetails=" + orderDetails + ", timestamp="
+				+ timestamp + "]";
 	}
 
 }

@@ -69,6 +69,7 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 	@Override
 	public OrderDetailDTO toDTO(OrderDetail entity) {
 		return Objects.nonNull(entity) ? new OrderDetailDTO()
+				.setId(entity.getId())
 				.setQuantity(entity.getQuantitiy())
 				.setProduct(productService.toDTO(entity.getProduct()))
 				: null;
@@ -77,6 +78,7 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 	@Override
 	public OrderDetail toEntity(OrderDetailDTO dto) {
 		return Objects.nonNull(dto) ? new OrderDetail()
+				.setId(dto.getId())
 				.setQuantity(dto.getQuantity())
 				.setProduct(productService.toEntity(dto.getProduct()))
 				: null;

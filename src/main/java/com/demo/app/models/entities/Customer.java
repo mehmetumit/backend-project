@@ -25,7 +25,7 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int id;
+	private Integer id;
 	// @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "customer_id", referencedColumnName = "id")
@@ -43,7 +43,7 @@ public class Customer {
 	@Column(name = "is_active")
 	private Boolean isActive;
 
-	public Customer(int id, String name, String surname, String phoneNum, String email, int discountRate,
+	public Customer(Integer id, String name, String surname, String phoneNum, String email, Integer discountRate,
 			Boolean isActive) {
 		this.id = id;
 		this.name = name;
@@ -54,7 +54,8 @@ public class Customer {
 		this.isActive = isActive;
 	}
 
-	public Customer(String name, String surname, String phoneNum, String email, int discountRate, Boolean isActive) {
+	public Customer(String name, String surname, String phoneNum, String email, Integer discountRate,
+			Boolean isActive) {
 		this.name = name;
 		this.surname = surname;
 		this.phoneNum = phoneNum;
@@ -66,11 +67,11 @@ public class Customer {
 	public Customer() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public Customer setId(int id) {
+	public Customer setId(Integer id) {
 		this.id = id;
 		return this;
 	}

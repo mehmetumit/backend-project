@@ -19,7 +19,7 @@ import jakarta.persistence.Table;
 public class StockDetail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	@OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
 	@JoinColumn(name = "id", referencedColumnName = "stock_detail_id")
 	private Product product;
@@ -27,7 +27,7 @@ public class StockDetail {
 	@Column(name = "quantity")
 	private Integer quantity;
 
-	public StockDetail(int id, Integer quantity) {
+	public StockDetail(Integer id, Integer quantity) {
 		this.id = id;
 		this.quantity = quantity;
 	}
@@ -40,7 +40,7 @@ public class StockDetail {
 
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 

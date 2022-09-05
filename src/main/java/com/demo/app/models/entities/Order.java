@@ -25,7 +25,7 @@ public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int id;
+	private Integer id;
 
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "id", referencedColumnName = "order_id")
@@ -39,7 +39,7 @@ public class Order {
 	@Column(name = "order_timestamp")
 	private Timestamp timestamp;
 
-	public Order(int id, Timestamp timestamp) {
+	public Order(Integer id, Timestamp timestamp) {
 		super();
 		this.id = id;
 		this.timestamp = timestamp;
@@ -54,11 +54,11 @@ public class Order {
 
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public Order setId(int id) {
+	public Order setId(Integer id) {
 		this.id = id;
 		return this;
 	}

@@ -73,6 +73,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public OrderDTO toDTO(Order entity) {
 		return Objects.nonNull(entity) ? new OrderDTO()
+				.setId(entity.getId())
 				.setInvoice(invoiceService.toDTO(entity.getInvoice()))
 				.setTimestamp(entity.getTimestamp())
 				.setOrderDetails(entity.getOrderDetails()
@@ -85,6 +86,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public Order toEntity(OrderDTO dto) {
 		return Objects.nonNull(dto) ? new Order()
+				.setId(dto.getId())
 				.setInvoice(invoiceService.toEntity(dto.getInvoice()))
 				.setTimestamp(dto.getTimestamp())
 				.setOrderDetails(dto.getOrderDetails()

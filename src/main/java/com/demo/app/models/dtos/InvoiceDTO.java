@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
  * InvoiceDTO
  */
 public class InvoiceDTO {
+	private Integer id;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	private Timestamp invoiceTimestamp;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
@@ -17,6 +18,15 @@ public class InvoiceDTO {
 	private Integer taxRate;
 	private Double totalTax;
 	private Double totalPrice;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public InvoiceDTO setId(Integer id) {
+		this.id = id;
+		return this;
+	}
 
 	public Timestamp getInvoiceTimestamp() {
 		return invoiceTimestamp;
@@ -83,9 +93,9 @@ public class InvoiceDTO {
 
 	@Override
 	public String toString() {
-		return "InvoiceDTO [discount=" + discount + ", dueTimestamp=" + dueTimestamp + ", invoiceTimestamp="
-				+ invoiceTimestamp + ", subTotal=" + subTotal + ", taxRate=" + taxRate + ", totalPrice=" + totalPrice
-				+ ", totalTax=" + totalTax + "]\n";
+		return "InvoiceDTO [discount=" + discount + ", dueTimestamp=" + dueTimestamp + ", id=" + id
+				+ ", invoiceTimestamp=" + invoiceTimestamp + ", subTotal=" + subTotal + ", taxRate=" + taxRate
+				+ ", totalPrice=" + totalPrice + ", totalTax=" + totalTax + "]";
 	}
 
 }

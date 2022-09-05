@@ -67,6 +67,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 	@Override
 	public InvoiceDTO toDTO(Invoice entity) {
 		return Objects.nonNull(entity) ? new InvoiceDTO()
+				.setId(entity.getId())
 				.setInvoiceTimestamp(entity.getInvoiceTimestamp())
 				.setDueTimestamp(entity.getDueTimestamp())
 				.setSubTotal(entity.getSubTotal())
@@ -81,6 +82,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 	public Invoice toEntity(InvoiceDTO dto) {
 		// dto is null ?
 		return Objects.nonNull(dto) ? new Invoice()
+				.setId(dto.getId())
 				.setInvoiceTimestamp(dto.getInvoiceTimestamp())
 				.setDueTimestamp(dto.getDueTimestamp())
 				.setSubTotal(dto.getSubTotal())

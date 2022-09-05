@@ -1,6 +1,6 @@
 # backend-project
 
-Backend project with Java and PostgreSQL
+Backend project with Java, PostgreSQL and Tomcat
 
 ---
 

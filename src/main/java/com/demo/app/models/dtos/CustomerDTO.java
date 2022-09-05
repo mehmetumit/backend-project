@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerDTO {
+	private Integer id;
 	private String name;
 	private String surname;
 	private String phoneNum;
@@ -11,6 +12,15 @@ public class CustomerDTO {
 	private Boolean isActive;
 	private Integer discountRate;
 	private List<OrderDTO> orders = new ArrayList<OrderDTO>();
+
+	public Integer getId() {
+		return id;
+	}
+
+	public CustomerDTO setId(Integer id) {
+		this.id = id;
+		return this;
+	}
 
 	public String getName() {
 		return name;
@@ -77,8 +87,9 @@ public class CustomerDTO {
 
 	@Override
 	public String toString() {
-		return "CustomerDTO [discountRate=" + discountRate + ", email=" + email + ", isActive=" + isActive + ", name="
-				+ name + ", orders=" + orders + ", phoneNum=" + phoneNum + ", surname=" + surname + "]\n";
+		return "CustomerDTO [discountRate=" + discountRate + ", email=" + email + ", id=" + id + ", isActive="
+				+ isActive + ", name=" + name + ", orders=" + orders + ", phoneNum=" + phoneNum + ", surname=" + surname
+				+ "]";
 	}
 
 }

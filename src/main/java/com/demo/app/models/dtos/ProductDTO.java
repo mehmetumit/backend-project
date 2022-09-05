@@ -4,10 +4,20 @@ package com.demo.app.models.dtos;
  * ProductDTO
  */
 public class ProductDTO {
+	private Integer id;
 	private String categoryName;
 	private String name;
 	private Double unitPrice;
 	private Boolean isActive;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public ProductDTO setId(Integer id) {
+		this.id = id;
+		return this;
+	}
 
 	public String getCategoryName() {
 		return categoryName;
@@ -47,8 +57,8 @@ public class ProductDTO {
 
 	@Override
 	public String toString() {
-		return "ProductDTO [categoryName=" + categoryName + ", isActive=" + isActive + ", name=" + name
-				+ ", unitPrice=" + unitPrice + "]\n";
+		return "ProductDTO [categoryName=" + categoryName + ", id=" + id + ", isActive=" + isActive + ", name=" + name
+				+ ", unitPrice=" + unitPrice + "]";
 	}
 
 }

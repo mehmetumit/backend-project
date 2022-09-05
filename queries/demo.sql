@@ -22,7 +22,7 @@ CREATE TABLE "customer" (
 );
 CREATE TABLE "order"(
 	id SERIAL PRIMARY KEY,
-	customer_id INT REFERENCES customer(id) NOT NULL,
+	customer_id INT REFERENCES customer(id),
 	order_timestamp TIMESTAMP NOT NULL
 );
 CREATE TABLE "product"(
@@ -34,8 +34,8 @@ CREATE TABLE "product"(
 );
 CREATE TABLE "order_detail"(
 	id SERIAL PRIMARY KEY,
-	order_id INT REFERENCES "order"(id) NOT NULL,
-	product_id INT REFERENCES product(id) NOT NULL,
+	order_id INT REFERENCES "order"(id),
+	product_id INT REFERENCES product(id),
 	quantity INT CHECK(quantity > 0) DEFAULT 0
 );
 CREATE TABLE "supplier"(
@@ -47,8 +47,8 @@ CREATE TABLE "supplier"(
 );
 CREATE TABLE "stock_detail"(
 	id SERIAL PRIMARY KEY,
-	product_id INT REFERENCES product(id) NOT NULL,
-	supplier_id INT REFERENCES supplier(id) NOT NULL,
+	product_id INT REFERENCES product(id),
+	supplier_id INT REFERENCES supplier(id),
 	quantity INT CHECK(quantity >= 0) DEFAULT 0
 );
 CREATE TABLE "seller"(
@@ -62,8 +62,8 @@ CREATE TABLE "seller"(
 );
 CREATE TABLE "invoice"(
 	id SERIAL PRIMARY KEY,
-	order_id INT REFERENCES "order"(id) NOT NULL,
-	seller_id INT REFERENCES seller(id) NOT NULL,
+	order_id INT REFERENCES "order"(id),
+	seller_id INT REFERENCES seller(id),
 	invoice_timestamp TIMESTAMP NOT NULL,
 	due_timestamp TIMESTAMP NOT NULL,
 	sub_total NUMERIC(12,2) DEFAULT 0 NOT NULL,

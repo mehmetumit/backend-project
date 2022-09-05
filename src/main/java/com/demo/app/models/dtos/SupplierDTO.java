@@ -7,11 +7,21 @@ import java.util.List;
  * SupplierDTO
  */
 public class SupplierDTO {
+	private Integer id;
 	List<StockDetailDTO> stockDetails = new ArrayList<StockDetailDTO>();
 	private String name;
 	private String address;
 	private String phoneNum;
 	private Boolean isActive;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public SupplierDTO setId(Integer id) {
+		this.id = id;
+		return this;
+	}
 
 	public String getName() {
 		return name;
@@ -60,8 +70,8 @@ public class SupplierDTO {
 
 	@Override
 	public String toString() {
-		return "SupplierDTO [address=" + address + ", isActive=" + isActive + ", name=" + name + ", phoneNum="
-				+ phoneNum + ", stockDetails=" + stockDetails + "]";
+		return "SupplierDTO [address=" + address + ", id=" + id + ", isActive=" + isActive + ", name=" + name
+				+ ", phoneNum=" + phoneNum + ", stockDetails=" + stockDetails + "]";
 	}
 
 }

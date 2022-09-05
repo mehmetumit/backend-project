@@ -23,9 +23,14 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public int add(CustomerDTO dto) {
 		try {
+			dto.setOrders(dto.getOrders()
+					.stream()
+					.map(order -> orderService.getById(order.getId()))
+					.collect(Collectors.toList()));
 			customerDAO.insert(toEntity(dto));
 			return 1;
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("Customer insertion failed!");
 			return 0;
 		}
@@ -68,6 +73,7 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public CustomerDTO toDTO(Customer entity) {
 		return Objects.nonNull(entity) ? new CustomerDTO()
+				.setId(entity.getId())
 				.setName(entity.getName())
 				.setSurname(entity.getSurname())
 				.setPhoneNum(entity.getPhoneNum())
@@ -84,6 +90,7 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public Customer toEntity(CustomerDTO dto) {
 		return new Customer()
+				.setId(dto.getId())
 				.setName(dto.getName())
 				.setSurname(dto.getSurname())
 				.setPhoneNum(dto.getPhoneNum())
@@ -99,9 +106,14 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public int update(int id, CustomerDTO dto) {
 		try {
+			dto.setOrders(dto.getOrders()
+					.stream()
+					.map(order -> orderService.getById(order.getId()))
+					.collect(Collectors.toList()));
 			customerDAO.update(toEntity(dto).setId(id));
 			return 1;
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("Customer update failed!");
 			return 0;
 		}

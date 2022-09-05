@@ -65,6 +65,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public ProductDTO toDTO(Product entity) {
 		return Objects.nonNull(entity) ? new ProductDTO()
+				.setId(entity.getId())
 				.setCategoryName(entity.getCategoryName())
 				.setName(entity.getName())
 				.setUnitPrice(entity.getUnitPrice())
@@ -75,6 +76,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Product toEntity(ProductDTO dto) {
 		return Objects.nonNull(dto) ? new Product()
+				.setId(dto.getId())
 				.setCategoryName(dto.getCategoryName())
 				.setName(dto.getName())
 				.setUnitPrice(dto.getUnitPrice())

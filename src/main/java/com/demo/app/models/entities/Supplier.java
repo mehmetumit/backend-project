@@ -22,7 +22,7 @@ import jakarta.persistence.Table;
 public class Supplier {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "supplier_id", referencedColumnName = "id")
 	List<StockDetail> stockDetails = new ArrayList<StockDetail>();
@@ -35,11 +35,11 @@ public class Supplier {
 	@Column(name = "is_active")
 	private Boolean isActive;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public Supplier setId(int id) {
+	public Supplier setId(Integer id) {
 		this.id = id;
 		return this;
 	}

@@ -22,7 +22,7 @@ import jakarta.persistence.Table;
 public class Seller {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "seller_id", referencedColumnName = "id")
 	private List<Invoice> invoices = new ArrayList<Invoice>();
@@ -39,7 +39,8 @@ public class Seller {
 	@Column(name = "is_active")
 	private Boolean isActive;
 
-	public Seller(int id, String name, String address, String phoneNum, String email, String fax, Boolean isActive) {
+	public Seller(Integer id, String name, String address, String phoneNum, String email, String fax,
+			Boolean isActive) {
 		this.id = id;
 		this.name = name;
 		this.address = address;
@@ -62,11 +63,11 @@ public class Seller {
 
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public Seller setId(int id) {
+	public Seller setId(Integer id) {
 		this.id = id;
 		return this;
 	}

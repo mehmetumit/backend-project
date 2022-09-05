@@ -67,6 +67,7 @@ public class SupplierServiceImpl implements SupplierService {
 	@Override
 	public SupplierDTO toDTO(Supplier entity) {
 		return Objects.nonNull(entity) ? new SupplierDTO()
+				.setId(entity.getId())
 				.setName(entity.getName())
 				.setAddress(entity.getAddress())
 				.setPhoneNum(entity.getPhoneNum())
@@ -81,6 +82,7 @@ public class SupplierServiceImpl implements SupplierService {
 	@Override
 	public Supplier toEntity(SupplierDTO dto) {
 		return Objects.nonNull(dto) ? new Supplier()
+				.setId(dto.getId())
 				.setName(dto.getName())
 				.setAddress(dto.getAddress())
 				.setPhoneNum(dto.getPhoneNum())
