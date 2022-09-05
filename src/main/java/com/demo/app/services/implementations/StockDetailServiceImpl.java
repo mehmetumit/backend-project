@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import com.demo.app.models.dtos.ProductDTO;
 import com.demo.app.models.dtos.StockDetailDTO;
 import com.demo.app.models.entities.StockDetail;
 import com.demo.app.repository.dao.StockDetailDAO;
@@ -22,6 +23,9 @@ public class StockDetailServiceImpl implements StockDetailService {
 	@Override
 	public StockDetailDTO add(StockDetailDTO dto) {
 		try {
+			ProductDTO product = dto.getProduct();
+			if (Objects.nonNull(product))
+				dto.setProduct(productService.getById(product.getId()));
 			return toDTO(stockDetailDAO.insert(toEntity(dto)));
 		} catch (Exception e) {
 			System.out.println("StockDetail add failed!");
@@ -84,6 +88,9 @@ public class StockDetailServiceImpl implements StockDetailService {
 	@Override
 	public StockDetailDTO update(int id, StockDetailDTO dto) {
 		try {
+			ProductDTO product = dto.getProduct();
+			if (Objects.nonNull(product))
+				dto.setProduct(productService.getById(product.getId()));
 			return toDTO(stockDetailDAO.update(toEntity(dto).setId(id)));
 		} catch (Exception e) {
 			System.out.println("StockDetail update failed!");

@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import com.demo.app.models.dtos.OrderDetailDTO;
+import com.demo.app.models.dtos.ProductDTO;
 import com.demo.app.models.entities.OrderDetail;
 import com.demo.app.repository.daoImpl.OrderDetailDAOImpl;
 import com.demo.app.repository.dao.OrderDetailDAO;
@@ -22,7 +23,9 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 	@Override
 	public OrderDetailDTO add(OrderDetailDTO dto) {
 		try {
-			dto.setProduct(productService.getById(dto.getProduct().getId()));
+			ProductDTO product = dto.getProduct();
+			if (Objects.nonNull(product))
+				dto.setProduct(productService.getById(product.getId()));
 			return toDTO(orderDetailDAO.insert(toEntity(dto)));
 		} catch (Exception e) {
 			System.out.println("OrderDetail add failed!");
@@ -87,7 +90,9 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 	@Override
 	public OrderDetailDTO update(int id, OrderDetailDTO dto) {
 		try {
-			dto.setProduct(productService.getById(dto.getProduct().getId()));
+			ProductDTO product = dto.getProduct();
+			if (Objects.nonNull(product))
+				dto.setProduct(productService.getById(product.getId()));
 			return toDTO(orderDetailDAO.update(toEntity(dto).setId(id)));
 		} catch (Exception e) {
 			System.out.println("OrderDetail update failed!");

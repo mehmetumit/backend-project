@@ -22,6 +22,10 @@ public class SellerServiceImpl implements SellerService {
 	@Override
 	public SellerDTO add(SellerDTO dto) {
 		try {
+			dto.setInvoices(dto.getInvoices()
+					.stream()
+					.map(inv -> invoiceService.getById(inv.getId()))
+					.collect(Collectors.toList()));
 			return toDTO(sellerDAO.insert(toEntity(dto)));
 		} catch (Exception e) {
 			System.out.println("Seller add failed!");
@@ -100,6 +104,10 @@ public class SellerServiceImpl implements SellerService {
 	@Override
 	public SellerDTO update(int id, SellerDTO dto) {
 		try {
+			dto.setInvoices(dto.getInvoices()
+					.stream()
+					.map(inv -> invoiceService.getById(inv.getId()))
+					.collect(Collectors.toList()));
 			return toDTO(sellerDAO.update(toEntity(dto).setId(id)));
 		} catch (Exception e) {
 			System.out.println("Seller update failed!");

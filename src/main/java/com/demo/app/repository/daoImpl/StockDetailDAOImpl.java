@@ -45,6 +45,7 @@ public class StockDetailDAOImpl implements StockDetailDAO {
 
     @Override
     public StockDetail insert(StockDetail stockDetail) throws SQLException {
+        System.out.println(stockDetail);
         return (StockDetail) databaseEngine.merge(stockDetail);
     }
 

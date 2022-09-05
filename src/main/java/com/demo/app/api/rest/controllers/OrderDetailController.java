@@ -87,9 +87,9 @@ public class OrderDetailController {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateOrderDetail(@PathParam("id") int id, OrderDetailDTO orderDetail) {
-		boolean success = orderDetailService.update(id, orderDetail) == 1 ? true : false;
-		if (success)
-			return Response.ok(orderDetailService.getById(id)).build();
+		OrderDetailDTO updatedOrderDetail = orderDetailService.update(id, orderDetail);
+		if (Objects.nonNull(updatedOrderDetail))
+			return Response.ok(updatedOrderDetail).build();
 		else
 			return Response.status(Response.Status.BAD_REQUEST).entity("Order Detail updating failed").build();
 	}
