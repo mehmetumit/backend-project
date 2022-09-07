@@ -32,7 +32,6 @@ public class SellerController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response all() {
 		List<SellerDTO> sellers = sellerService.getAll();
-		System.out.println(sellers);
 		if (sellers != null && !sellers.isEmpty())
 			return Response.ok(sellers).build();
 		else

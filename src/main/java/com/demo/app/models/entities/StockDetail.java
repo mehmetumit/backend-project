@@ -21,7 +21,7 @@ public class StockDetail {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-	@JoinColumn(name = "id", referencedColumnName = "stock_detail_id")
+	@JoinColumn(name = "product_id", referencedColumnName = "id")
 	private Product product;
 
 	@Column(name = "quantity")

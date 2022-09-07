@@ -57,7 +57,6 @@ public class OrderDetailController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getBy(@QueryParam("quantity") Integer quantity,
 			@QueryParam("product_id") Integer productId) {
-		// HashMap<String, Object> dataMap = customerService.getDataMap();
 		HashMap<String, Object> dataMap = new HashMap<String, Object>();
 		dataMap.put("quantity", quantity);
 		dataMap.put("productId", productId);
