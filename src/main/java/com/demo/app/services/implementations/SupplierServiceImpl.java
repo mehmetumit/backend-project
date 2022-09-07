@@ -22,6 +22,10 @@ public class SupplierServiceImpl implements SupplierService {
 	@Override
 	public SupplierDTO add(SupplierDTO dto) {
 		try {
+			dto.setStockDetails(dto.getStockDetails()
+					.stream()
+					.map(sd -> stockDetailService.getById(sd.getId()))
+					.collect(Collectors.toList()));
 			return toDTO(supplierDAO.insert(toEntity(dto)));
 		} catch (Exception e) {
 			System.out.println("Supplier add failed!");
@@ -96,6 +100,10 @@ public class SupplierServiceImpl implements SupplierService {
 	@Override
 	public SupplierDTO update(int id, SupplierDTO dto) {
 		try {
+			dto.setStockDetails(dto.getStockDetails()
+					.stream()
+					.map(sd -> stockDetailService.getById(sd.getId()))
+					.collect(Collectors.toList()));
 			return toDTO(supplierDAO.update(toEntity(dto).setId(id)));
 		} catch (Exception e) {
 			System.out.println("Supplier update failed!");

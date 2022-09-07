@@ -111,7 +111,6 @@ public class CustomerServiceImpl implements CustomerService {
 					.collect(Collectors.toList()));
 			return toDTO(customerDAO.update(toEntity(dto).setId(id)));
 		} catch (Exception e) {
-			e.printStackTrace();
 			System.out.println("Customer update failed!");
 			return null;
 		}
