@@ -1,1 +1,1319 @@
-{"info":{"_postman_id":"7a0b3ba2-3f23-4831-a912-479c99c06ca3","name":"requests","schema":"https://schema.getpostman.com/json/collection/v2.1.0/collection.json"},"item":[{"name":"rest","item":[{"name":"customers","item":[{"name":"all","request":{"description":"","method":"GET","header":[],"url":{"raw":"localhost:8080/rest/customers","host":["localhost:8080"],"path":["rest","customers"]},"auth":{}},"response":[]},{"name":"one(id)","request":{"description":"","method":"GET","header":[],"url":{"raw":"localhost:8080/rest/customers/id/10","host":["localhost:8080"],"path":["rest","customers","id","10"]},"auth":{}},"response":[]},{"name":"newCustomer","request":{"description":"","method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n\t\"name\": \"James\",\n\t\"surname\": \"Clone\",\n\t\"phoneNum\": \"3428782343\",\n\t\"email\": \"007@domain.com\",\n\t\"discountRate\": 1,\n\t\"active\": false\n}"},"url":{"raw":"localhost:8080/rest/customers/","host":["localhost:8080"],"path":["rest","customers",""]},"auth":{}},"response":[]},{"name":"updateCustomer","request":{"description":"","method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n\t\"name\": \"James\",\n\t\"surname\": \"Bond\",\n\t\"email\": \"007@domain.com\"\n}"},"url":{"raw":"localhost:8080/rest/customers/id/10","host":["localhost:8080"],"path":["rest","customers","id","10"]},"auth":{}},"response":[]},{"name":"deleteCustomer","request":{"description":"","method":"DELETE","header":[],"url":{"raw":"localhost:8080/rest/customers/id/11","host":["localhost:8080"],"path":["rest","customers","id","11"]},"auth":{}},"response":[]},{"name":"getBy","request":{"description":"","method":"GET","header":[],"url":{"raw":"localhost:8080/rest/customers/q","query":[{"key":"order_id","value":"11"}],"host":["localhost:8080"],"path":["rest","customers","q"]},"auth":{}},"response":[]}]},{"name":"invoices","item":[{"name":"all","request":{"description":"","method":"GET","header":[],"url":{"raw":"localhost:8080/rest/invoices","host":["localhost:8080"],"path":["rest","invoices"]},"auth":{}},"response":[]},{"name":"getBy","request":{"description":"","method":"GET","header":[],"url":{"raw":"localhost:8080/rest/invoices/q","query":[{"key":"invoice_timestamp","value":"\"2021-08-11 11:00:11\""},{"key":"invoice_timestamp","value":"'2021-08-11 11:00:11.0'"}],"host":["localhost:8080"],"path":["rest","invoices","q"]},"auth":{}},"response":[]},{"name":"one(id)","request":{"description":"","method":"GET","header":[],"url":{"raw":"localhost:8080/rest/invoices/id/6","host":["localhost:8080"],"path":["rest","invoices","id","6"]},"auth":{}},"response":[]},{"name":"deleteInvoice","request":{"description":"","method":"DELETE","header":[],"url":{"raw":"localhost:8080/rest/invoices/id/6","host":["localhost:8080"],"path":["rest","invoices","id","6"]},"auth":{}},"response":[]},{"name":"newInvoice","request":{"description":"","method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n\t\"invoiceTimestamp\": 1760561853000,\n\t\"dueTimestamp\": 1794880000000,\n\t\"subTotal\": 10,\n\t\"discount\": 5.0,\n\t\"taxRate\": 3,\n\t\"totalTax\": 1.9,\n\t\"totalPrice\": 11.1\n}"},"url":{"raw":"localhost:8080/rest/invoices","host":["localhost:8080"],"path":["rest","invoices"]},"auth":{}},"response":[]},{"name":"updateInvoice","request":{"description":"","method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n\t\"invoiceTimestamp\": 1660561814000,\n\t\"dueTimestamp\": 1663333200000,\n\t\"discount\": 10.0,\n\t\"taxRate\": 1,\n\t\"subTotal\":10000\n}"},"url":{"raw":"localhost:8080/rest/invoices/id/4","host":["localhost:8080"],"path":["rest","invoices","id","4"]},"auth":{}},"response":[]}]},{"name":"orders","item":[{"name":"all","request":{"description":"","method":"GET","header":[],"url":{"raw":"localhost:8080/rest/orders/","host":["localhost:8080"],"path":["rest","orders",""]},"auth":{}},"response":[]},{"name":"getBy","request":{"description":"","method":"GET","header":[],"url":{"raw":"localhost:8080/rest/orders/q","query":[{"key":"invoice_id","value":"3"},{"key":"order_detail_id","value":"5"}],"host":["localhost:8080"],"path":["rest","orders","q"]},"auth":{}},"response":[]},{"name":"one(id)","request":{"description":"","method":"GET","header":[],"url":{"raw":"localhost:8080/rest/orders/id/7","host":["localhost:8080"],"path":["rest","orders","id","7"]},"auth":{}},"response":[]},{"name":"deleteOrder","request":{"description":"","method":"DELETE","header":[],"url":{"raw":"localhost:8080/rest/orders/id/8","host":["localhost:8080"],"path":["rest","orders","id","8"]},"auth":{}},"response":[]},{"name":"newOrder","request":{"description":"","method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n\t\"invoice\": {\n\t\t\"invoiceTimestamp\": \"2021-06-13 11:00:11\",\n\t\t\"dueTimestamp\": \"2021-08-11 13:00:11\",\n\t\t\"subTotal\": 119.4,\n\t\t\"discount\": 10.0,\n\t\t\"taxRate\": 8,\n\t\t\"totalTax\": 9.55,\n\t\t\"totalPrice\": 118.95\n\t},\n\t\"timestamp\": \"2021-06-12 12:00:11.0\"\n}"},"url":{"raw":"localhost:8080/rest/orders/","host":["localhost:8080"],"path":["rest","orders",""]},"auth":{}},"response":[]},{"name":"updateOrder","request":{"description":"","method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n\t\"timestamp\": 1650554004000\n}"},"url":{"raw":"localhost:8080/rest/orders/id/7","host":["localhost:8080"],"path":["rest","orders","id","7"]},"auth":{}},"response":[]}]},{"name":"order_details","item":[{"name":"all","request":{"description":"","method":"GET","header":[],"url":{"raw":"localhost:8080/rest/order_details","host":["localhost:8080"],"path":["rest","order_details"]},"auth":{}},"response":[]},{"name":"getBy","request":{"description":"","method":"GET","header":[],"url":{"raw":"localhost:8080/rest/order_details/q","query":[{"key":"quantity","value":"30"},{"key":"product_id","value":"2"}],"host":["localhost:8080"],"path":["rest","order_details","q"]},"auth":{}},"response":[]},{"name":"one(id)","request":{"description":"","method":"GET","header":[],"url":{"raw":"localhost:8080/rest/order_details/id/11","host":["localhost:8080"],"path":["rest","order_details","id","11"]},"auth":{}},"response":[]},{"name":"deleteOrderDetail","request":{"description":"","method":"DELETE","header":[],"url":{"raw":"localhost:8080/rest/order_details/id/11","host":["localhost:8080"],"path":["rest","order_details","id","11"]},"auth":{}},"response":[]},{"name":"newOrderDetail","request":{"description":"","method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n\t\"quantity\": 123\n}"},"url":{"raw":"localhost:8080/rest/order_details/","host":["localhost:8080"],"path":["rest","order_details",""]},"auth":{}},"response":[]},{"name":"updateOrderDetail","request":{"description":"","method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n\t\"quantity\" : 123\n}"},"url":{"raw":"localhost:8080/rest/order_details/id/1","host":["localhost:8080"],"path":["rest","order_details","id","1"]},"auth":{}},"response":[]}]},{"name":"products","item":[{"name":"all","request":{"description":"","method":"GET","header":[],"url":{"raw":"localhost:8080/rest/products/","host":["localhost:8080"],"path":["rest","products",""]},"auth":{}},"response":[]},{"name":"one(id)","request":{"description":"","method":"GET","header":[],"url":{"raw":"localhost:8080/rest/products/id/12","host":["localhost:8080"],"path":["rest","products","id","12"]},"auth":{}},"response":[]},{"name":"getBy","request":{"description":"","method":"GET","header":[],"url":{"raw":"localhost:8080/rest/products/q","query":[{"key":"category_name","value":"\"Yoğurt\""},{"key":"is_active","value":"false"}],"host":["localhost:8080"],"path":["rest","products","q"]},"auth":{}},"response":[]},{"name":"updateProduct","request":{"description":"","method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n\t\"categoryName\": \"Ayran\",\n\t\"active\": false\n}"},"url":{"raw":"localhost:8080/rest/products/id/12","host":["localhost:8080"],"path":["rest","products","id","12"]},"auth":{}},"response":[]},{"name":"newProduct","request":{"description":"","method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n\t\"categoryName\": \"Ayran\",\n\t\"name\": \"Tombul Ayran 293ml\",\n\t\"unitPrice\": 6.75,\n\t\"active\": true\n}"},"url":{"raw":"localhost:8080/rest/products/","host":["localhost:8080"],"path":["rest","products",""]},"auth":{}},"response":[]},{"name":"deleteProduct","request":{"description":"","method":"DELETE","header":[],"url":{"raw":"localhost:8080/rest/products/id/12","host":["localhost:8080"],"path":["rest","products","id","12"]},"auth":{}},"response":[]}]},{"name":"sellers","item":[{"name":"all","request":{"description":"","method":"GET","header":[],"url":{"raw":"localhost:8080/rest/sellers","host":["localhost:8080"],"path":["rest","sellers"]},"auth":{}},"response":[]},{"name":"one(id)","request":{"description":"","method":"GET","header":[],"url":{"raw":"localhost:8080/rest/sellers/id/10","host":["localhost:8080"],"path":["rest","sellers","id","10"]},"auth":{}},"response":[]},{"name":"getBy","request":{"description":"","method":"GET","header":[],"url":{"raw":"localhost:8080/rest/sellers/q","query":[{"key":"invoice_id","value":"9"}],"host":["localhost:8080"],"path":["rest","sellers","q"]},"auth":{}},"response":[]},{"name":"newSeller","request":{"description":"","method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n\t\"address\": \"Demo mah. demo sokak demo evleri\",\n\t\"phoneNum\": \"55555555\",\n\t\"name\": \"Demo2\",\n\t\"email\": \"demo2@domain.com\",\n\t\"fax\": \"\",\n\t\"active\": false\n}"},"url":{"raw":"localhost:8080/rest/sellers","host":["localhost:8080"],"path":["rest","sellers"]},"auth":{}},"response":[]},{"name":"updateSeller","request":{"description":"","method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n\t\"name\": \"Demonew\",\n\t\"active\": true\n}"},"url":{"raw":"localhost:8080/rest/sellers/id/10","host":["localhost:8080"],"path":["rest","sellers","id","10"]},"auth":{}},"response":[]},{"name":"deleteSeller","request":{"description":"","method":"DELETE","header":[],"url":{"raw":"localhost:8080/rest/sellers/id/10","host":["localhost:8080"],"path":["rest","sellers","id","10"]},"auth":{}},"response":[]}]},{"name":"stock_details","item":[{"name":"all","request":{"description":"","method":"GET","header":[],"url":{"raw":"localhost:8080/rest/stock_details","host":["localhost:8080"],"path":["rest","stock_details"]},"auth":{}},"response":[]},{"name":"getBy","request":{"description":"","method":"GET","header":[],"url":{"raw":"localhost:8080/rest/stock_details/q","query":[{"key":"product_id","value":"1"}],"host":["localhost:8080"],"path":["rest","stock_details","q"]},"auth":{}},"response":[]},{"name":"one(id)","request":{"description":"","method":"GET","header":[],"url":{"raw":"localhost:8080/rest/stock_details/id/2","host":["localhost:8080"],"path":["rest","stock_details","id","2"]},"auth":{}},"response":[]},{"name":"newStockDetail","request":{"description":"","method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n\t\t\"quantity\": 1977\n}"},"url":{"raw":"localhost:8080/rest/stock_details/","host":["localhost:8080"],"path":["rest","stock_details",""]},"auth":{}},"response":[]},{"name":"updateStockDetail","request":{"description":"","method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n\t\"quantity\": 123\n}"},"url":{"raw":"localhost:8080/rest/stock_details/id/2","host":["localhost:8080"],"path":["rest","stock_details","id","2"]},"auth":{}},"response":[]},{"name":"deleteStockDetail","request":{"description":"","method":"DELETE","header":[],"url":{"raw":"localhost:8080/rest/stock_details/id/2","host":["localhost:8080"],"path":["rest","stock_details","id","2"]},"auth":{}},"response":[]}]},{"name":"suppliers","item":[{"name":"all","request":{"description":"","method":"GET","header":[],"url":{"raw":"localhost:8080/rest/suppliers","host":["localhost:8080"],"path":["rest","suppliers"]},"auth":{}},"response":[]},{"name":"getBy","request":{"description":"","method":"GET","header":[],"url":{"raw":"localhost:8080/rest/suppliers/q","query":[{"key":"stock_detail_id","value":"9"}],"host":["localhost:8080"],"path":["rest","suppliers","q"]},"auth":{}},"response":[]},{"name":"one(id)","request":{"description":"","method":"GET","header":[],"url":{"raw":"localhost:8080/rest/suppliers/id/8","host":["localhost:8080"],"path":["rest","suppliers","id","8"]},"auth":{}},"response":[]},{"name":"newSupplier","request":{"description":"","method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n\t\"name\":\"demo\",\n\t\"address\": \"Demo adres\",\n\t\"phoneNum\": \"1234567876\",\n\t\"active\": false\n}"},"url":{"raw":"localhost:8080/rest/suppliers/","host":["localhost:8080"],"path":["rest","suppliers",""]},"auth":{}},"response":[]},{"name":"updateSupplier","request":{"description":"","method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n\t\"active\": true\n}"},"url":{"raw":"localhost:8080/rest/suppliers/id/8","host":["localhost:8080"],"path":["rest","suppliers","id","8"]},"auth":{}},"response":[]},{"name":"deleteSupplier","request":{"description":"","method":"DELETE","header":[],"url":{"raw":"localhost:8080/rest/suppliers/id/8","host":["localhost:8080"],"path":["rest","suppliers","id","8"]},"auth":{}},"response":[]}]}]}]}
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Backend Project REST API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "undefinedAuth": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "customers"
+    },
+    {
+      "name": "invoices"
+    },
+    {
+      "name": "orders"
+    },
+    {
+      "name": "order_details"
+    },
+    {
+      "name": "products"
+    },
+    {
+      "name": "sellers"
+    },
+    {
+      "name": "stock_details"
+    },
+    {
+      "name": "suppliers"
+    }
+  ],
+  "paths": {
+    "/rest/customers": {
+      "get": {
+        "tags": ["customers"],
+        "summary": "all",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/customers/id/10": {
+      "get": {
+        "tags": ["customers"],
+        "summary": "one(id)",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["customers"],
+        "summary": "updateCustomer",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "name": "James",
+                  "surname": "Bond",
+                  "email": "007@domain.com"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/customers/": {
+      "post": {
+        "tags": ["customers"],
+        "summary": "newCustomer",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "name": "James",
+                  "surname": "Clone",
+                  "phoneNum": "3428782343",
+                  "email": "007@domain.com",
+                  "discountRate": 1,
+                  "active": false
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/customers/id/11": {
+      "delete": {
+        "tags": ["customers"],
+        "summary": "deleteCustomer",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/customers/q": {
+      "get": {
+        "tags": ["customers"],
+        "summary": "getBy",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/invoices": {
+      "get": {
+        "tags": ["invoices"],
+        "summary": "all",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["invoices"],
+        "summary": "newInvoice",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "invoiceTimestamp": 1760561853000,
+                  "dueTimestamp": 1794880000000,
+                  "subTotal": 10,
+                  "discount": 5,
+                  "taxRate": 3,
+                  "totalTax": 1.9,
+                  "totalPrice": 11.1
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/invoices/q": {
+      "get": {
+        "tags": ["invoices"],
+        "summary": "getBy",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/invoices/id/6": {
+      "get": {
+        "tags": ["invoices"],
+        "summary": "one(id)",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["invoices"],
+        "summary": "deleteInvoice",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/invoices/id/4": {
+      "put": {
+        "tags": ["invoices"],
+        "summary": "updateInvoice",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "invoiceTimestamp": 1660561814000,
+                  "dueTimestamp": 1663333200000,
+                  "discount": 10,
+                  "taxRate": 1,
+                  "subTotal": 10000
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/orders/": {
+      "get": {
+        "tags": ["orders"],
+        "summary": "all",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["orders"],
+        "summary": "newOrder",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "invoice": {
+                    "invoiceTimestamp": "2021-06-13 11:00:11",
+                    "dueTimestamp": "2021-08-11 13:00:11",
+                    "subTotal": 119.4,
+                    "discount": 10,
+                    "taxRate": 8,
+                    "totalTax": 9.55,
+                    "totalPrice": 118.95
+                  },
+                  "timestamp": "2021-06-12 12:00:11.0"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/orders/q": {
+      "get": {
+        "tags": ["orders"],
+        "summary": "getBy",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/orders/id/7": {
+      "get": {
+        "tags": ["orders"],
+        "summary": "one(id)",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["orders"],
+        "summary": "updateOrder",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "timestamp": 1650554004000
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/orders/id/8": {
+      "delete": {
+        "tags": ["orders"],
+        "summary": "deleteOrder",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/order_details": {
+      "get": {
+        "tags": ["order_details"],
+        "summary": "all",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/order_details/q": {
+      "get": {
+        "tags": ["order_details"],
+        "summary": "getBy",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/order_details/id/11": {
+      "get": {
+        "tags": ["order_details"],
+        "summary": "one(id)",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["order_details"],
+        "summary": "deleteOrderDetail",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/order_details/": {
+      "post": {
+        "tags": ["order_details"],
+        "summary": "newOrderDetail",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "quantity": 123
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/order_details/id/1": {
+      "put": {
+        "tags": ["order_details"],
+        "summary": "updateOrderDetail",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "quantity": 123
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/products/": {
+      "get": {
+        "tags": ["products"],
+        "summary": "all",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["products"],
+        "summary": "newProduct",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "categoryName": "Ayran",
+                  "name": "Tombul Ayran 293ml",
+                  "unitPrice": 6.75,
+                  "active": true
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/products/id/12": {
+      "get": {
+        "tags": ["products"],
+        "summary": "one(id)",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["products"],
+        "summary": "updateProduct",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "categoryName": "Ayran",
+                  "active": false
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["products"],
+        "summary": "deleteProduct",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/products/q": {
+      "get": {
+        "tags": ["products"],
+        "summary": "getBy",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/sellers": {
+      "get": {
+        "tags": ["sellers"],
+        "summary": "all",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["sellers"],
+        "summary": "newSeller",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "address": "Demo mah. demo sokak demo evleri",
+                  "phoneNum": "55555555",
+                  "name": "Demo2",
+                  "email": "demo2@domain.com",
+                  "fax": "",
+                  "active": false
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/sellers/id/10": {
+      "get": {
+        "tags": ["sellers"],
+        "summary": "one(id)",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["sellers"],
+        "summary": "updateSeller",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "name": "Demonew",
+                  "active": true
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["sellers"],
+        "summary": "deleteSeller",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/sellers/q": {
+      "get": {
+        "tags": ["sellers"],
+        "summary": "getBy",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/stock_details": {
+      "get": {
+        "tags": ["stock_details"],
+        "summary": "all",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/stock_details/q": {
+      "get": {
+        "tags": ["stock_details"],
+        "summary": "getBy",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/stock_details/id/2": {
+      "get": {
+        "tags": ["stock_details"],
+        "summary": "one(id)",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["stock_details"],
+        "summary": "updateStockDetail",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "quantity": 123
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["stock_details"],
+        "summary": "deleteStockDetail",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/stock_details/": {
+      "post": {
+        "tags": ["stock_details"],
+        "summary": "newStockDetail",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "quantity": 1977
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/suppliers": {
+      "get": {
+        "tags": ["suppliers"],
+        "summary": "all",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/suppliers/q": {
+      "get": {
+        "tags": ["suppliers"],
+        "summary": "getBy",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/suppliers/id/8": {
+      "get": {
+        "tags": ["suppliers"],
+        "summary": "one(id)",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["suppliers"],
+        "summary": "updateSupplier",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "active": true
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["suppliers"],
+        "summary": "deleteSupplier",
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/suppliers/": {
+      "post": {
+        "tags": ["suppliers"],
+        "summary": "newSupplier",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "name": "demo",
+                  "address": "Demo adres",
+                  "phoneNum": "1234567876",
+                  "active": false
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "undefinedAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}

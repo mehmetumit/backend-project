@@ -32,6 +32,12 @@ nav:
   - ER Diagram: ER
   - Software Architecture: arch
   - REST API: api
+plugins:
+  - swagger-ui-tag:
+      docExpansion: none
+      filter: ""
+      syntaxHighlightTheme: monokai
+      supportedSubmitMethods: ["get", "put", "post", "delete"]
 
 site_dir: ./build
 site_url: https://mehmetumit.github.io/backend-project/
