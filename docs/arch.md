@@ -1,3 +1,3 @@
 # Software Architecture
 
-![architecture](docs/img/architecture.png)
+![architecture](img/architecture.png)

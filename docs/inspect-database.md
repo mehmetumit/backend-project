@@ -2,26 +2,26 @@
 
 ## With PGADMIN
 
-![pgadmin](docs/img/pgadmin1.png)
+![pgadmin](img/pgadmin1.png)
 
-![pgadmin](docs/img/pgadmin2.png)
+![pgadmin](img/pgadmin2.png)
 
-![pgadmin](docs/img/pgadmin3.png)
+![pgadmin](img/pgadmin3.png)
 
-![pgadmin](docs/img/pgadmin4.png)
+![pgadmin](img/pgadmin4.png)
 
-![pgadmin](docs/img/pgadmin5.png)
+![pgadmin](img/pgadmin5.png)
 
 ---
 
 ## With DBeaver
 
-![dbeaver](docs/img/dbeaver1.png)
+![dbeaver](img/dbeaver1.png)
 
-![dbeaver](docs/img/dbeaver2.png)
+![dbeaver](img/dbeaver2.png)
 
-![dbeaver](docs/img/dbeaver3.png)
+![dbeaver](img/dbeaver3.png)
 
-![dbeaver](docs/img/dbeaver4.png)
+![dbeaver](img/dbeaver4.png)
 
-![dbeaver](docs/img/dbeaver5.png)
+![dbeaver](img/dbeaver5.png)

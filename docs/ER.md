@@ -1,3 +1,3 @@
 # ER Diagram
 
-![architecture](docs/img/ER.png)
+![architecture](img/ER.png)
