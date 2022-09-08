@@ -1,0 +1,14 @@
+site_name: Backend Project
+theme: material
+
+docs_dir: ./docs
+nav:
+  - File Tree: file-tree
+  - Usage: usage
+  - Inspect Database: inspect-database
+  - ER Diagram: ER
+  - Software Architecture: arch
+  - REST API: api
+site_dir: ./build
+site_url: https://mehmetumit.github.io/backend-project/
+repo_url: https://github.com/mehmetumit/backend-project
