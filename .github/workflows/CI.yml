@@ -9,8 +9,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: generate-file-tree
-        run: printf '# File Tree\n```sh\n' > docs/file-tree.md && tree --gitignore >> docs/file-tree.md && sed -i -e '$d' docs/file-tree.md && echo '```' >> docs/file-tree.md
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
