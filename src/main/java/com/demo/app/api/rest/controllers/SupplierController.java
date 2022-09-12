@@ -43,11 +43,13 @@ public class SupplierController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getBy(@QueryParam("address") String address,
 			@QueryParam("phone_num") String phoneNum,
+			@QueryParam("name") String name,
 			@QueryParam("is_active") Boolean isActive,
 			@QueryParam("stock_detail_id") Integer stockDetailId) {
 
 		HashMap<String, Object> dataMap = new HashMap<String, Object>();
 		dataMap.put("address", address);
+		dataMap.put("name", name);
 		dataMap.put("phoneNum", phoneNum);
 		dataMap.put("isActive", isActive);
 		dataMap.put("stockDetailId", stockDetailId);

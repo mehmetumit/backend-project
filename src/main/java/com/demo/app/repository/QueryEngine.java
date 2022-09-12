@@ -7,6 +7,8 @@ import java.util.ListIterator;
 
 /**
  * QueryEngine
+ * Simple Query builder class as string
+ *
  */
 public class QueryEngine<T> {
 	private String query = "";
@@ -23,6 +25,7 @@ public class QueryEngine<T> {
 		}
 
 		ListIterator<String> iterator = queries.listIterator();
+		// Put "and" between queries
 		while (iterator.hasNext()) {
 			query += iterator.next();
 			if (iterator.hasNext())

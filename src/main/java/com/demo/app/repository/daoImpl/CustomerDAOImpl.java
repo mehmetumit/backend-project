@@ -1,12 +1,8 @@
 package com.demo.app.repository.daoImpl;
 
-import java.lang.reflect.Method;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Objects;
 
 import com.demo.app.repository.DatabaseEngine;
@@ -15,10 +11,7 @@ import com.demo.app.repository.dao.CustomerDAO;
 
 import org.hibernate.Session;
 
-import jakarta.persistence.Column;
-
 import com.demo.app.models.entities.Customer;
-import com.demo.app.models.entities.Order;
 
 public class CustomerDAOImpl implements CustomerDAO {
     DatabaseEngine databaseEngine = DatabaseEngine.getEngine();
@@ -163,7 +156,6 @@ public class CustomerDAOImpl implements CustomerDAO {
         }
         query = queryEngine.whereEqualEntityDataMap(customerData).build();
 
-        System.out.println(query);
         List<Customer> customers = session.createQuery(query, Customer.class).list();
 
         session.close();

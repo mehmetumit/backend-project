@@ -48,7 +48,7 @@ public class InvoiceController {
 			@QueryParam("sub_total") Double subTotal,
 			@QueryParam("discount") Double discount,
 			@QueryParam("tax_rate") Integer taxRate,
-			@QueryParam("total_tax") Integer totalTax,
+			@QueryParam("total_tax") Double totalTax,
 			@QueryParam("total_price") Double totalPrice) {
 
 		HashMap<String, Object> dataMap = new HashMap<String, Object>();

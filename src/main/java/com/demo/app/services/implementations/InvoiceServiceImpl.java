@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 import com.demo.app.models.dtos.InvoiceDTO;
 import com.demo.app.models.entities.Invoice;
 import com.demo.app.repository.dao.InvoiceDAO;
-import com.demo.app.repository.daoImpl.CustomerDAOImpl;
 import com.demo.app.repository.daoImpl.InvoiceDAOImpl;
 import com.demo.app.services.abstracts.InvoiceService;
 

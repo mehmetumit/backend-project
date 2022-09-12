@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 
 import com.demo.app.models.dtos.CustomerDTO;
 import com.demo.app.models.entities.Customer;
-import com.demo.app.repository.QueryEngine;
 import com.demo.app.repository.dao.CustomerDAO;
 import com.demo.app.repository.daoImpl.CustomerDAOImpl;
 import com.demo.app.services.abstracts.CustomerService;
@@ -193,11 +192,6 @@ public class CustomerServiceImpl implements CustomerService {
 			return null;
 		}
 	}
-
-	// @Override
-	// public HashMap<String, Object> getDataMap() {
-	// return customerDAO.generateDataMap();
-	// }
 
 	@Override
 	public List<CustomerDTO> findAll(HashMap<String, Object> dataMap) {
